@@ -22,7 +22,7 @@ public class SettingFragment extends Fragment {
     public static SettingFragment newInstance(String content) {
         SettingFragment fragment = new SettingFragment();
         Bundle args = new Bundle();
-        args.putString("ARGS", content);
+        args.putString("ARGST", content);
         fragment.setArguments(args);
         return fragment;
     }
