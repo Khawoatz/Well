@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.khawoat_rmbp.well.MainActivity">
+
+    <com.flaviofaria.kenburnsview.KenBurnsView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/bgmassage2" />
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/logowell4"
+        android:layout_centerInParent="true"
+        android:layout_above="@+id/textLogo"/>
+
+    <TextView
+        android:id="@+id/textLogo"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:text="Well"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:id="@+id/textLogo2"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:text="Healthy With Massage"
+        android:textSize="15dp"
+        android:gravity="center"
+        android:layout_below="@id/textLogo"
+        />
+
+    <Button
+        android:id="@+id/BtnLogin"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="เข้าสู่ระบบ"
+        android:textSize="18dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/login_btn"
+        android:layout_below="@+id/textLogo"/>
+
+    <Button
+        android:id="@+id/btn_sign_up"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="18dp"
+        android:text=" ลงทะเบียนด้วยอีเมล์ "
+        android:background="@drawable/register_btn"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/BtnLogin"/>
+
+    <TextView
+        android:id="@+id/tv_signin_masseuse"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentBottom="true"
+        android:text="ทางเข้าสู่ระบบสำหรับ > พนักงานนวด"
+        android:textSize="18dp"
+        android:gravity="center"
+        android:layout_below="@id/btn_sign_up"
+        />
+
+
+</RelativeLayout>
