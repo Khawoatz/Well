@@ -82,7 +82,7 @@ public class MainFragment extends AppCompatActivity implements BottomNavigationB
         ArrayList<Fragment> fragments = new ArrayList<>();
         fragments.add(ServiceFragment.newInstance("บริการ"));
         fragments.add(RequestFragment.newInstance("งานของฉัน"));
-        fragments.add(NotificationFragment.newInstance("ข้อความ"));
+        fragments.add(NotificationFragment.newInstance("แจ้งเตือน"));
         fragments.add(SettingFragment.newInstance("ตั้งค่า"));
         return fragments;
     }

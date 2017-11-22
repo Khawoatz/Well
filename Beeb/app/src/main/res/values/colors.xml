@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
     <color name="txt_hint">#33FFFFFF</color>
     <color name="Bottom">#FFCC00</color>
+    <color name="text_shadow">#696969</color>
 </resources>

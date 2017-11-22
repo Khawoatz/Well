@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -41,12 +42,18 @@ public class SignUp extends AppCompatActivity {
         TextView tvpassword = (TextView) findViewById(R.id.tv_password);
         TextView tvsignin = (TextView) findViewById(R.id.tv_sign_in);
         TextView tvpasswordrepeat = (TextView) findViewById(R.id.tv_password_repeat);
+        TextView tvgender = (TextView) findViewById(R.id.tv_gender);
+        TextView tvtelephone = (TextView) findViewById(R.id.tv_telephone);
 
         EditText etname = (EditText) findViewById(R.id.et_name);
         EditText etsurname = (EditText) findViewById(R.id.et_surname);
         EditText etemail = (EditText) findViewById(R.id.et_email);
         EditText etpassword = (EditText) findViewById(R.id.et_password);
         EditText etpasswordrepeat = (EditText) findViewById(R.id.et_password_repeat);
+        EditText ettelephone = (EditText) findViewById(R.id.et_telephone);
+
+        RadioButton rbMale = (RadioButton) findViewById(R.id.male_radio_btn);
+        RadioButton rbFemale = (RadioButton) findViewById(R.id.female_radio_btn);
 
         Button btnSignup = (Button) findViewById(R.id.btn_sign_up);
         Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/RSUlight.ttf");
@@ -57,6 +64,7 @@ public class SignUp extends AppCompatActivity {
         tvemail.setTypeface(custom_font);
         tvpassword.setTypeface(custom_font);
         tvsignin.setTypeface(custom_font);
+        tvgender.setTypeface(custom_font);
         etname.setTypeface(custom_font);
         etsurname.setTypeface(custom_font);
         etemail.setTypeface(custom_font);
@@ -64,6 +72,10 @@ public class SignUp extends AppCompatActivity {
         btnSignup.setTypeface(custom_font);
         tvpasswordrepeat.setTypeface(custom_font);
         etpasswordrepeat.setTypeface(custom_font);
+        tvtelephone.setTypeface(custom_font);
+        ettelephone.setTypeface(custom_font);
+        rbMale.setTypeface(custom_font);
+        rbFemale.setTypeface(custom_font);
         ll_button = (LinearLayout) findViewById(R.id.ll_button);
         ease(ll_button);
 

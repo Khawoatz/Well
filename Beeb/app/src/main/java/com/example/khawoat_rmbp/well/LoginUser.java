@@ -38,7 +38,7 @@ import java.util.Map;
 public class LoginUser extends AppCompatActivity {
 
     private static final String TAG = "LoginUser";
-    private static final String URL_FOR_LOGIN = "https://";
+    private static final String URL_FOR_LOGIN = "https://databasenatta.000webhostapp.com/login_app/login.php";
     ProgressDialog progressDialog;
 
 
@@ -46,6 +46,7 @@ public class LoginUser extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_user);
+
 
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
@@ -123,7 +124,7 @@ public class LoginUser extends AppCompatActivity {
                         String user = jObj.getJSONObject("user").getString("name");
                         // Launch User activity
                         Intent intent = new Intent(LoginUser.this, MainFragment.class);
-                        intent.putExtra("username", user);
+//                        intent.putExtra("username", user);
                         startActivity(intent);
                         finish();
                     } else {
