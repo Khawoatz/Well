@@ -2,6 +2,7 @@ package com.example.khawoat_rmbp.well;
 
 import android.animation.AnimatorSet;
 import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -14,12 +15,14 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,16 +35,30 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
 
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
 public class SignUp extends AppCompatActivity {
     LinearLayout ll_button;
     private RadioGroup genderRadioGroup;
-    private EditText etname,etsurname,etemail,etpassword,etpasswordrepeat,ettelephone,etage;
+    private EditText etname,etsurname,etemail,etpassword,etpasswordrepeat,ettelephone,etage,etarea;
     private static final String TAG = "RegisterActivity";
-    private static final String URL_FOR_REGISTRATION = "https://esaan.000webhostapp.com/test/login_android/register.php";
+    private static final String URL_FOR_REGISTRATION = "https://databasenatta.000webhostapp.com/login_app/register.php";
     ProgressDialog progressDialog;
+    Button uploadButton;
+    int serverResponseCode = 0;
+    String uploadServerUri = null;
+
+    /********* File Path *********/
+    final String uploadFilePath = "/mnt/sdcard";
+    final String uploadFileName = "id_img.png";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,20 +81,25 @@ public class SignUp extends AppCompatActivity {
         TextView tvgender = (TextView) findViewById(R.id.tv_gender);
         TextView tvtelephone = (TextView) findViewById(R.id.tv_telephone);
         TextView tvage = (TextView) findViewById(R.id.tv_age);
+        TextView tvidimg = (TextView) findViewById(R.id.tv_idimg);
+        TextView tvarea = (TextView) findViewById(R.id.tv_area);
 
         etname = (EditText) findViewById(R.id.et_name);
-         etsurname = (EditText) findViewById(R.id.et_surname);
-         etemail = (EditText) findViewById(R.id.et_email);
-         etpassword = (EditText) findViewById(R.id.et_password);
-         etpasswordrepeat = (EditText) findViewById(R.id.et_password_repeat);
-         ettelephone = (EditText) findViewById(R.id.et_telephone);
-         etage = (EditText) findViewById(R.id.et_age);
+        etsurname = (EditText) findViewById(R.id.et_surname);
+        etemail = (EditText) findViewById(R.id.et_email);
+        etpassword = (EditText) findViewById(R.id.et_password);
+        etpasswordrepeat = (EditText) findViewById(R.id.et_password_repeat);
+        ettelephone = (EditText) findViewById(R.id.et_telephone);
+        etage = (EditText) findViewById(R.id.et_age);
+        etarea = (EditText) findViewById(R.id.et_area);
 
         genderRadioGroup = (RadioGroup) findViewById(R.id.gender_radio_group);
         RadioButton rbMale = (RadioButton) findViewById(R.id.male_radio_btn);
         RadioButton rbFemale = (RadioButton) findViewById(R.id.female_radio_btn);
 
         Button btnSignup = (Button) findViewById(R.id.btn_sign_up);
+        Button btnUpload = (Button) findViewById(R.id.btn_uploadid);
+
         Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/RSUlight.ttf");
         tvhaveacc.setTypeface(custom_font);
         tvsignup.setTypeface(custom_font);
@@ -100,6 +122,10 @@ public class SignUp extends AppCompatActivity {
         etage.setTypeface(custom_font);
         rbMale.setTypeface(custom_font);
         rbFemale.setTypeface(custom_font);
+        tvidimg.setTypeface(custom_font);
+        tvarea.setTypeface(custom_font);
+        etarea.setTypeface(custom_font);
+        btnUpload.setTypeface(custom_font);
         ll_button = (LinearLayout) findViewById(R.id.ll_button);
         ease(ll_button);
 
@@ -126,12 +152,180 @@ public class SignUp extends AppCompatActivity {
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),LoginUser.class);
-                startActivity(i);
+                submitForm();
+            }
+        });
+
+        /********* PHP Script Path *********/
+        uploadServerUri = "";
+        btnUpload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                progressDialog = ProgressDialog.show(SignUp.this,"","Uploading File ...",true);
+
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+
+
+                            }
+                        });
+                        uploadFile(uploadFilePath + "" + uploadFileName);
+                    }
+                }).start();
             }
         });
 
     }
+
+    @SuppressLint("LongLogTag")
+    public int uploadFile(String sourceFileUri) {
+        String FileName = sourceFileUri;
+
+        HttpURLConnection conn = null;
+        DataOutputStream dos = null;
+        String lineEnd = "\r\n";
+        String twoHyphens = "--";
+        String boundary = "*******";
+
+        int bytesRead,bytesAvailable,bufferSize;
+        byte[] buffer;
+        int maxBufferSize = 1 * 1024 * 1024;
+        File sourceFile = new File(sourceFileUri);
+
+        if (!sourceFile.isFile()) {
+            progressDialog.dismiss();
+
+            Log.e("uploadFile","Source File not Exist :"
+            +uploadFilePath+""+uploadFileName);
+
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+
+                }
+            });
+            return 0;
+        }
+        else
+            {
+
+                try {
+                    //open a URL connection to the Servlet
+                    FileInputStream fileInputStream = new FileInputStream(sourceFile);
+                    URL url = new URL(uploadServerUri);
+
+                    //Open a HTTP connection to the URL
+                    conn = (HttpURLConnection) url.openConnection();
+                    conn.setDoInput(true); // Allow Inputs
+                    conn.setDoOutput(true); // Allow Outputs
+                    conn.setUseCaches(false); // Don't use a Cached Copy
+                    conn.setRequestMethod("POST");
+                    conn.setRequestProperty("Connection", "Keep-Alive");
+                    conn.setRequestProperty("ENCTYPE", "multipart/form-data");
+                    conn.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + boundary);
+//                    conn.setRequestProperty("uploaded_file", fileName);
+
+                    dos = new DataOutputStream(conn.getOutputStream());
+
+                    dos.writeBytes(twoHyphens + boundary + lineEnd);
+//                    dos.writeBytes("Content-Disposition: form-data; name="uploaded_file";filename=""
+//                                    + fileName + """ + lineEnd);
+
+                            dos.writeBytes(lineEnd);
+
+                    // create a buffer of  maximum size
+                    bytesAvailable = fileInputStream.available();
+
+                    bufferSize = Math.min(bytesAvailable, maxBufferSize);
+                    buffer = new byte[bufferSize];
+
+                    // read file and write it into form...
+                    bytesRead = fileInputStream.read(buffer, 0, bufferSize);
+
+                    while (bytesRead > 0) {
+
+                        dos.write(buffer, 0, bufferSize);
+                        bytesAvailable = fileInputStream.available();
+                        bufferSize = Math.min(bytesAvailable, maxBufferSize);
+                        bytesRead = fileInputStream.read(buffer, 0, bufferSize);
+
+                    }
+
+                    // send multipart form data necesssary after file data...
+                    dos.writeBytes(lineEnd);
+                    dos.writeBytes(twoHyphens + boundary + twoHyphens + lineEnd);
+
+                    // Responses from the server (code and message)
+                    serverResponseCode = conn.getResponseCode();
+                    String serverResponseMessage = conn.getResponseMessage();
+
+                    Log.i("uploadFile", "HTTP Response is : "
+                            + serverResponseMessage + ": " + serverResponseCode);
+
+                    if(serverResponseCode == 200){
+
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+
+//                                String msg = "File Upload Completed.\n\n See uploaded file here : \n\n"
+//                                        +" <a class="vglnk" href="http://www.androidexample.com/media/uploads/" rel="nofollow"><span>http</span><span>://</span><span>www</span><span>.</span><span>androidexample</span><span>.</span><span>com</span><span>/</span><span>media</span><span>/</span><span>uploads</span><span>/</span></a>"
+//                                +uploadFileName;
+
+//                                messageText.setText(msg);
+                                Toast.makeText(SignUp.this, "File Upload Complete.",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+
+                    //close the streams //
+                    fileInputStream.close();
+                    dos.flush();
+                    dos.close();
+
+                } catch (MalformedURLException ex) {
+
+                    progressDialog.dismiss();
+                    ex.printStackTrace();
+
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+//                            messageText.setText("MalformedURLException Exception : check script url.");
+                            Toast.makeText(SignUp.this, "MalformedURLException",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                    Log.e("Upload file to server", "error: " + ex.getMessage(), ex);
+                } catch (Exception e) {
+
+                    progressDialog.dismiss();
+                    e.printStackTrace();
+
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+//                            messageText.setText("Got Exception : see logcat ");
+                            Toast.makeText(SignUp.this, "Got Exception : see logcat ",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    Log.e("Upload file to server Exception", "Exception : "
+                            + e.getMessage(), e);
+                }
+                progressDialog.dismiss();
+                return serverResponseCode;
+
+            } // End else block
+    }
+
+
+
+
+
 
     private void submitForm() {
         int selectedId = genderRadioGroup.getCheckedRadioButtonId();
@@ -146,10 +340,12 @@ public class SignUp extends AppCompatActivity {
                 etpassword.getText().toString(),
                 gender,
                 ettelephone.getText().toString(),
-                etage.getText().toString());
+                etage.getText().toString(),
+                etarea.getText().toString());
+
     }
     private void registerUser(final String name, final String surname, final String email, final String password, final String telephone,
-                              final String gender, final String dob) {
+                              final String gender, final String age, final String area) {
         // Tag used to cancel the request
         String cancel_req_tag = "register";
         progressDialog.setMessage("Adding you ...");
@@ -199,7 +395,9 @@ public class SignUp extends AppCompatActivity {
                 params.put("email", email);
                 params.put("password", password);
                 params.put("gender", gender);
-                params.put("age", dob);
+                params.put("telephone",telephone);
+                params.put("age", age);
+                params.put("Address",area);
                 return params;
             }
         };
@@ -245,5 +443,6 @@ public class SignUp extends AppCompatActivity {
         animatorSet.setDuration(700);
         animatorSet.start();
     }
+
 
 }
