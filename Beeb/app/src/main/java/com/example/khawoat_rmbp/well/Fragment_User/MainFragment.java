@@ -8,6 +8,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,9 +23,12 @@ import android.widget.Toast;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.example.khawoat_rmbp.well.R;
+import com.example.khawoat_rmbp.well.ViewPagerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainFragment extends AppCompatActivity implements BottomNavigationBar.OnTabSelectedListener{
 
@@ -33,7 +37,7 @@ public class MainFragment extends AppCompatActivity implements BottomNavigationB
     private ArrayList<Fragment> fragments;
     private FrameLayout frameLayout;
     private TextView mNavTv;
-
+    private ViewPager viewPager;
     private Fragment mContent;
 
     @Override
@@ -45,6 +49,13 @@ public class MainFragment extends AppCompatActivity implements BottomNavigationB
         mNavTv= (TextView) findViewById(R.id.nav_tv);
         bottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
         frameLayout= (FrameLayout) findViewById(R.id.layFrame);
+
+        viewPager = (ViewPager) findViewById(R.id.viewPager);
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);
+        viewPager.setAdapter(viewPagerAdapter);
+
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new MyTimerTaskBanner(),2000,4000);
 
         Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/RSUlight.ttf");
         bottomNavigationBar.setMode(BottomNavigationBar.MODE_SHIFTING);
@@ -70,6 +81,24 @@ public class MainFragment extends AppCompatActivity implements BottomNavigationB
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(Color.parseColor("#FFCC00"));
+        }
+    }
+    public class MyTimerTaskBanner extends TimerTask{
+
+        @Override
+        public void run() {
+            MainFragment.this.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    if (viewPager.getCurrentItem() == 0){
+                        viewPager.setCurrentItem(1);
+                    } else if (viewPager.getCurrentItem() == 1){
+                        viewPager.setCurrentItem(2);
+                    } else {
+                        viewPager.setCurrentItem(0);
+                    }
+                }
+            });
         }
     }
     private void setDefaultFragment() {

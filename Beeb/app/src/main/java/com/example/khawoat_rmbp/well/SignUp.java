@@ -348,7 +348,7 @@ public class SignUp extends AppCompatActivity {
                               final String gender, final String age, final String area) {
         // Tag used to cancel the request
         String cancel_req_tag = "register";
-        progressDialog.setMessage("Adding you ...");
+//        progressDialog.setMessage("Adding you ...");
         showDialog();
         StringRequest strReq = new StringRequest(Request.Method.POST,
                 URL_FOR_REGISTRATION, new Response.Listener<String>() {

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.khawoat_rmbp.well">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -13,19 +14,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".SignUp" />
+        <activity android:name=".LoginUser" />
+        <activity android:name=".ForgotPass" />
+        <activity android:name=".LoginMasseuse" />
+        <activity android:name=".Fragment_User.MainFragment" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignUp" />
-        <activity android:name=".LoginUser" />
-        <activity android:name=".ForgotPass" />
-        <activity android:name=".LoginMasseuse" />
-        <activity android:name=".Fragment_User.MainFragment" />
-        <activity android:name=".Fragment_User.ServiceFragment" />
+        <activity android:name=".Fragment_User.ServiceFragment"/>
         <activity android:name=".Fragment_Masseuse.MainFragmentMasseuse" />
         <activity android:name=".SignUpMasseuse"></activity>
     </application>
