@@ -50,7 +50,7 @@ public class SignUp extends AppCompatActivity {
     private RadioGroup genderRadioGroup;
     private EditText etname,etsurname,etemail,etpassword,etpasswordrepeat,ettelephone,etage,etarea;
     private static final String TAG = "RegisterActivity";
-    private static final String URL_FOR_REGISTRATION = "https://databasenatta.000webhostapp.com/login_app/register.php";
+    private static final String URL_FOR_REGISTRATION = "http://203.158.131.67/~Adminwell/App/register.php";
     ProgressDialog progressDialog;
     Button uploadButton;
     int serverResponseCode = 0;
@@ -63,6 +63,9 @@ public class SignUp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCancelable(false);
 
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
@@ -323,10 +326,6 @@ public class SignUp extends AppCompatActivity {
     }
 
 
-
-
-
-
     private void submitForm() {
         int selectedId = genderRadioGroup.getCheckedRadioButtonId();
         String gender;
@@ -342,14 +341,15 @@ public class SignUp extends AppCompatActivity {
                 ettelephone.getText().toString(),
                 etage.getText().toString(),
                 etarea.getText().toString());
+        Log.d("Gender",gender);
 
     }
-    private void registerUser(final String name, final String surname, final String email, final String password, final String telephone,
-                              final String gender, final String age, final String area) {
+    private void registerUser(final String name, final String surname, final String email, final String password, final String gender,
+                              final String telephone, final String age, final String address) {
         // Tag used to cancel the request
         String cancel_req_tag = "register";
-//        progressDialog.setMessage("Adding you ...");
-        showDialog();
+        progressDialog.setMessage("Adding you ...");
+     showDialog();
         StringRequest strReq = new StringRequest(Request.Method.POST,
                 URL_FOR_REGISTRATION, new Response.Listener<String>() {
             @Override
@@ -360,7 +360,7 @@ public class SignUp extends AppCompatActivity {
                     JSONObject jO = new JSONObject(response);
                     boolean error = jO.getBoolean("error");
                     if (!error) {
-                        String user = jO.getJSONObject("user").getString("name");
+                        String user = jO.getJSONObject("user").getString("Name");
                         Toast.makeText(getApplicationContext(), "Hi " + user +", You are successfully Added!", Toast.LENGTH_SHORT).show();
                         // Launch login activity
                         Intent intent = new Intent(
@@ -383,21 +383,21 @@ public class SignUp extends AppCompatActivity {
                 Log.e(TAG, "Registration Error: " + error.getMessage());
                 Toast.makeText(getApplicationContext(),
                         error.getMessage(), Toast.LENGTH_LONG).show();
-                hideDialog();
+//                hideDialog();
             }
         }) {
             @Override
             protected Map<String, String> getParams() {
                 // Posting params to register url
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("name", name);
-                params.put("surname",surname);
-                params.put("email", email);
-                params.put("password", password);
-                params.put("gender", gender);
-                params.put("telephone",telephone);
-                params.put("age", age);
-                params.put("Address",area);
+                params.put("Name", name);
+                params.put("Surname",surname);
+                params.put("Email", email);
+                params.put("Password", password);
+                params.put("Gender", gender);
+                params.put("Telephone",telephone);
+                params.put("Age", age);
+                params.put("Address",address);
                 return params;
             }
         };
@@ -405,11 +405,11 @@ public class SignUp extends AppCompatActivity {
         AppSingleton.getInstance(getApplicationContext()).addToRequestQueue(strReq, cancel_req_tag);
     }
     private void showDialog() {
-        if (!progressDialog.isShowing())
+        if (progressDialog.isShowing())
             progressDialog.show();
     }
     private void hideDialog() {
-        if (progressDialog.isShowing())
+        if (progressDialog != null)
             progressDialog.dismiss();
     }
 
