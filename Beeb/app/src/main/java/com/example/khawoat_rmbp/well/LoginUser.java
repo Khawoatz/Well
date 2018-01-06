@@ -38,7 +38,7 @@ import java.util.Map;
 public class LoginUser extends AppCompatActivity {
 
     private static final String TAG = "LoginUser";
-    private static final String URL_FOR_LOGIN = "https://databasenatta.000webhostapp.com/login_app/login.php";
+    private static final String URL_FOR_LOGIN = "http://203.158.131.67/~Adminwell/App/login.php";
     ProgressDialog progressDialog;
 
 
@@ -115,22 +115,22 @@ public class LoginUser extends AppCompatActivity {
                 URL_FOR_LOGIN, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.d(TAG, "Register Response: " + response.toString());
+                Log.d(TAG, "Register Response: " + response);
                 hideDialog();
                 try {
                     JSONObject jObj = new JSONObject(response);
                     boolean error = jObj.getBoolean("error");
                     if (!error) {
-                        String user = jObj.getJSONObject("user").getString("name");
+                        String user = jObj.getJSONObject("user").getString("Name");
                         // Launch User activity
                         Intent intent = new Intent(LoginUser.this, MainFragment.class);
-//                        intent.putExtra("username", user);
+                        intent.putExtra("Name", user);
                         startActivity(intent);
                         finish();
                     } else {
                         String errorMsg = jObj.getString("error_msg");
                         Toast.makeText(getApplicationContext(),
-                                "ต่อเบสไม่ได้อีสัส", Toast.LENGTH_LONG).show();
+                                errorMsg, Toast.LENGTH_LONG).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -148,8 +148,8 @@ public class LoginUser extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 // Posting params to login url
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("email", email);
-                params.put("password", password);
+                params.put("Email", email);
+                params.put("Password", password);
                 return params;
             }
         };

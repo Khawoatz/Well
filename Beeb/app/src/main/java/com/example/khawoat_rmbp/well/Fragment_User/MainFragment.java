@@ -8,22 +8,34 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.example.khawoat_rmbp.well.R;
+import com.example.khawoat_rmbp.well.SliderUtils;
 import com.example.khawoat_rmbp.well.ViewPagerAdapter;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +51,14 @@ public class MainFragment extends AppCompatActivity implements BottomNavigationB
     private TextView mNavTv;
     private ViewPager viewPager;
     private Fragment mContent;
+    private int dotscount;
+    private ImageView[] dots;
+    LinearLayout sliderDotspanel;
+    RequestQueue rq;
+    List<SliderUtils> sliderImg;
+    ViewPagerAdapter viewPagerAdapter;
+
+    String request_url = "http://203.158.131.67/~Adminwell/App/sliderjsonoutput.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,12 +66,15 @@ public class MainFragment extends AppCompatActivity implements BottomNavigationB
         setContentView(R.layout.activity_main_fragment);
 
         changeStatusBarColor();
+
+        rq = Volley.newRequestQueue(this);
+        sliderImg = new ArrayList<>();
         mNavTv= (TextView) findViewById(R.id.nav_tv);
         bottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
         frameLayout= (FrameLayout) findViewById(R.id.layFrame);
 
         viewPager = (ViewPager) findViewById(R.id.viewPager);
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(sliderImg, this);
         viewPager.setAdapter(viewPagerAdapter);
 
         Timer timer = new Timer();
@@ -101,6 +124,54 @@ public class MainFragment extends AppCompatActivity implements BottomNavigationB
             });
         }
     }
+
+    public void sendRequest(){
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, request_url, (String) null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+
+                for(int i = 0; i < response.length(); i++){
+                    SliderUtils sliderUtils = new SliderUtils();
+                    try {
+                        JSONObject jsonObject = response.getJSONObject(i);
+
+                        sliderUtils.setSliderImageUrl(jsonObject.getString("image_url"));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                    sliderImg.add(sliderUtils);
+                }
+
+                viewPagerAdapter = new ViewPagerAdapter(sliderImg,MainFragment.this);
+
+                viewPager.setAdapter(viewPagerAdapter);
+
+                sliderDotspanel = (LinearLayout) findViewById(R.id.Sliderdots);
+
+                dotscount = viewPagerAdapter.getCount();
+                dots = new ImageView[dotscount];
+
+                for(int i=0; i<dotscount; i++){
+
+                    dots[i] = new ImageView(MainFragment.this);
+                    dots[i].setImageDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.logowell4));
+
+                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+        rq.add(jsonArrayRequest);
+    }
+
     private void setDefaultFragment() {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();

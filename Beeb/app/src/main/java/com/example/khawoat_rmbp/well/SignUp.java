@@ -31,6 +31,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
@@ -42,6 +43,7 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -349,12 +351,11 @@ public class SignUp extends AppCompatActivity {
         // Tag used to cancel the request
         String cancel_req_tag = "register";
         progressDialog.setMessage("Adding you ...");
-     showDialog();
-        StringRequest strReq = new StringRequest(Request.Method.POST,
-                URL_FOR_REGISTRATION, new Response.Listener<String>() {
+        showDialog();
+        StringRequest strReq = new StringRequest(Request.Method.POST, URL_FOR_REGISTRATION, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.d(TAG, "Register Response: " + response.toString());
+                Log.d(TAG, "Register Response: " + response);
                 hideDialog();
                 try {
                     JSONObject jO = new JSONObject(response);
@@ -383,7 +384,7 @@ public class SignUp extends AppCompatActivity {
                 Log.e(TAG, "Registration Error: " + error.getMessage());
                 Toast.makeText(getApplicationContext(),
                         error.getMessage(), Toast.LENGTH_LONG).show();
-//                hideDialog();
+                hideDialog();
             }
         }) {
             @Override

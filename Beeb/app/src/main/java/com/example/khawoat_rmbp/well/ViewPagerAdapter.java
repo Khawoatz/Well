@@ -8,6 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.android.volley.toolbox.ImageLoader;
+
+import java.util.List;
+
 /**
  * Created by KHAWOAT-rMBP on 18/12/2017 AD.
  */
@@ -15,16 +19,20 @@ import android.widget.ImageView;
 public class ViewPagerAdapter extends PagerAdapter {
     private Context context;
     private LayoutInflater layoutInflater;
+    private List<SliderUtils> sliderImg;
+    private ImageLoader imageLoader;
     private Integer [] images = {R.drawable.logowell4,R.drawable.logowell4,R.drawable.logowell4};
 
-    public ViewPagerAdapter(Context context) {
+    public ViewPagerAdapter(List<SliderUtils> sliderImg, Context context) {
+        this.sliderImg = this.sliderImg;
         this.context = context;
     }
 
     @Override
     public int getCount() {
-        return images.length;
+        return sliderImg.size();
     }
+
 
     @Override
     public boolean isViewFromObject(View view, Object object) {
@@ -35,8 +43,14 @@ public class ViewPagerAdapter extends PagerAdapter {
     public Object instantiateItem(ViewGroup container, int position) {
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.activity_service_fragment,null);
+
+        SliderUtils utils = sliderImg.get(position);
+
         ImageView imageView = (ImageView) view.findViewById(R.id.imageViewBanner);
-        imageView.setImageResource(images[position]);
+//        imageView.setImageResource(images[position]);
+
+        imageLoader = CustomVolleyRequest.getInstance(context).getImageLoader();
+        imageLoader.get(utils.getSliderImageUrl(), ImageLoader.getImageListener(imageView,R.mipmap.ic_launcher,android.R.drawable.ic_dialog_alert));
 
         ViewPager vp = (ViewPager) container;
         vp.addView(view,0);

@@ -22,7 +22,15 @@
         android:layout_height="200dp">
     </android.support.v4.view.ViewPager>
 
-    
+    <LinearLayout
+        android:id="@+id/Sliderdots"
+        android:layout_below="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|center_horizontal"
+        android:orientation="horizontal">
+
+    </LinearLayout>
 
     <FrameLayout
         android:id="@+id/layFrame"

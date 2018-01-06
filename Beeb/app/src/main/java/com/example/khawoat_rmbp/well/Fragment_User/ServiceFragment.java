@@ -23,7 +23,7 @@ public class ServiceFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater,ViewGroup container,Bundle savedInstanceState) {
 
-        viewPager = (ViewPager) getView().findViewById(R.id.viewPager);
+//        viewPager = (ViewPager) getView().findViewById(R.id.viewPager);
 
 
         return inflater.inflate(R.layout.activity_service_fragment, container, false);
