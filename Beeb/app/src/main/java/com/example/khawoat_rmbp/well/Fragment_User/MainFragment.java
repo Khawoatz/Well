@@ -29,6 +29,10 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
+import com.example.khawoat_rmbp.well.BannerSlider.SliderFragment;
+import com.example.khawoat_rmbp.well.BannerSlider.SliderIndicator;
+import com.example.khawoat_rmbp.well.BannerSlider.SliderPagerAdapter;
+import com.example.khawoat_rmbp.well.BannerSlider.SliderView;
 import com.example.khawoat_rmbp.well.R;
 import com.example.khawoat_rmbp.well.SliderUtils;
 import com.example.khawoat_rmbp.well.ViewPagerAdapter;
@@ -49,16 +53,22 @@ public class MainFragment extends AppCompatActivity implements BottomNavigationB
     private ArrayList<Fragment> fragments;
     private FrameLayout frameLayout;
     private TextView mNavTv;
-    private ViewPager viewPager;
     private Fragment mContent;
     private int dotscount;
     private ImageView[] dots;
+
+    ViewPager viewPager;
     LinearLayout sliderDotspanel;
     RequestQueue rq;
     List<SliderUtils> sliderImg;
     ViewPagerAdapter viewPagerAdapter;
 
-    String request_url = "http://203.158.131.67/~Adminwell/App/sliderjsonoutput.php";
+    private SliderPagerAdapter mAdapter;
+    private SliderIndicator mIndicator;
+    private SliderView sliderView;
+    private LinearLayout mLinearLayout;
+
+    String request_url = "http://203.158.131.67/~Adminwell/sliderjsonoutput.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,18 +77,21 @@ public class MainFragment extends AppCompatActivity implements BottomNavigationB
 
         changeStatusBarColor();
 
+        sliderView = (SliderView) findViewById(R.id.sliderView);
+        mLinearLayout = (LinearLayout) findViewById(R.id.pagesContainer);
+        setupSlider();
+
         rq = Volley.newRequestQueue(this);
         sliderImg = new ArrayList<>();
+//        viewPager = (ViewPager) findViewById(R.id.viewPager);
+
         mNavTv= (TextView) findViewById(R.id.nav_tv);
         bottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
         frameLayout= (FrameLayout) findViewById(R.id.layFrame);
 
-        viewPager = (ViewPager) findViewById(R.id.viewPager);
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(sliderImg, this);
-        viewPager.setAdapter(viewPagerAdapter);
 
-        Timer timer = new Timer();
-        timer.scheduleAtFixedRate(new MyTimerTaskBanner(),2000,4000);
+//        Timer timer = new Timer();
+//        timer.scheduleAtFixedRate(new MyTimerTaskBanner(),2000,4000);
 
         Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/RSUlight.ttf");
         bottomNavigationBar.setMode(BottomNavigationBar.MODE_SHIFTING);
@@ -125,52 +138,20 @@ public class MainFragment extends AppCompatActivity implements BottomNavigationB
         }
     }
 
-    public void sendRequest(){
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, request_url, (String) null, new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
+    private void setupSlider(){
+        sliderView.setDurationScroll(800);
+        List<Fragment> fragments = new ArrayList<>();
+        fragments.add(SliderFragment.newInstance("http://203.158.131.67/~Adminwell/BannerSlide/slide1.png"));
+        fragments.add(SliderFragment.newInstance("http://203.158.131.67/~Adminwell/BannerSlide/slide2.png"));
+        fragments.add(SliderFragment.newInstance("http://203.158.131.67/~Adminwell/BannerSlide/slide3.png"));
 
-                for(int i = 0; i < response.length(); i++){
-                    SliderUtils sliderUtils = new SliderUtils();
-                    try {
-                        JSONObject jsonObject = response.getJSONObject(i);
-
-                        sliderUtils.setSliderImageUrl(jsonObject.getString("image_url"));
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-
-                    sliderImg.add(sliderUtils);
-                }
-
-                viewPagerAdapter = new ViewPagerAdapter(sliderImg,MainFragment.this);
-
-                viewPager.setAdapter(viewPagerAdapter);
-
-                sliderDotspanel = (LinearLayout) findViewById(R.id.Sliderdots);
-
-                dotscount = viewPagerAdapter.getCount();
-                dots = new ImageView[dotscount];
-
-                for(int i=0; i<dotscount; i++){
-
-                    dots[i] = new ImageView(MainFragment.this);
-                    dots[i].setImageDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.logowell4));
-
-                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
-
-                }
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        });
-
-        rq.add(jsonArrayRequest);
+        mAdapter = new SliderPagerAdapter(getSupportFragmentManager(),fragments);
+        sliderView.setAdapter(mAdapter);
+        mIndicator = new SliderIndicator(this,mLinearLayout,sliderView,R.drawable.indicator_circle);
+        mIndicator.setPageCount(fragments.size());
+        mIndicator.show();
     }
+
 
     private void setDefaultFragment() {
         FragmentManager fm = getSupportFragmentManager();

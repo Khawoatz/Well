@@ -21,10 +21,10 @@ public class ViewPagerAdapter extends PagerAdapter {
     private LayoutInflater layoutInflater;
     private List<SliderUtils> sliderImg;
     private ImageLoader imageLoader;
-    private Integer [] images = {R.drawable.logowell4,R.drawable.logowell4,R.drawable.logowell4};
+//    private Integer [] images = {R.drawable.logowell4,R.drawable.logowell4,R.drawable.logowell4};
 
     public ViewPagerAdapter(List<SliderUtils> sliderImg, Context context) {
-        this.sliderImg = this.sliderImg;
+        this.sliderImg = sliderImg;
         this.context = context;
     }
 
@@ -46,7 +46,7 @@ public class ViewPagerAdapter extends PagerAdapter {
 
         SliderUtils utils = sliderImg.get(position);
 
-        ImageView imageView = (ImageView) view.findViewById(R.id.imageViewBanner);
+        ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
 //        imageView.setImageResource(images[position]);
 
         imageLoader = CustomVolleyRequest.getInstance(context).getImageLoader();
