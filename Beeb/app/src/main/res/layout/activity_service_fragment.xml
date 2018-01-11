@@ -5,7 +5,7 @@
     android:id="@+id/activity_service_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="15dp"
+    android:padding="10dp"
     tools:context="com.example.khawoat_rmbp.well.Fragment_User.ServiceFragment">
 
     <LinearLayout
@@ -22,12 +22,7 @@
         android:src="@drawable/logohead" />
 
     </LinearLayout>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="This is Fragment Service"
-        android:gravity="center"
-        />
+
 
     <ImageView
         android:id="@+id/imageViewBanner"
@@ -80,24 +75,26 @@
         android:layout_below="@+id/tvService">
     <ImageView
         android:layout_width="0dp"
-        android:layout_height="70dp"
+        android:layout_height="80dp"
         android:layout_weight="1"
         android:layout_margin="2dp"
-        android:background="@color/Bottom"/>
+        android:src="@drawable/msherbal"
+        android:background="@drawable/borderimageview"
+        />
         <ImageView
             android:layout_width="0dp"
-            android:layout_height="70dp"
+            android:layout_height="80dp"
             android:layout_weight="1"
             android:layout_margin="2dp"
-            android:padding="2dp"
-            android:background="@color/Bottom"/>
+            android:src="@drawable/msacupunc"
+            android:background="@drawable/borderimageview"/>
         <ImageView
             android:layout_width="0dp"
-            android:layout_height="70dp"
+            android:layout_height="80dp"
             android:layout_weight="1"
             android:layout_margin="2dp"
-            android:padding="2dp"
-            android:background="@color/Bottom"/>
+            android:src="@drawable/msoil"
+            android:background="@drawable/borderimageview"/>
     </LinearLayout>
     <LinearLayout
         android:id="@+id/layoutMenu2"
@@ -107,25 +104,25 @@
         android:layout_below="@+id/layoutMenu1">
         <ImageView
             android:layout_width="0dp"
-            android:layout_height="70dp"
+            android:layout_height="80dp"
             android:layout_weight="1"
             android:layout_margin="2dp"
-            android:padding="2dp"
-            android:background="@color/Bottom" />
+            android:src="@drawable/msfoot"
+            android:background="@drawable/borderimageview" />
         <ImageView
             android:layout_width="0dp"
-            android:layout_height="70dp"
+            android:layout_height="80dp"
             android:layout_weight="1"
             android:layout_margin="2dp"
-            android:padding="2dp"
-            android:background="@color/Bottom"/>
+            android:src="@drawable/msmigrain"
+            android:background="@drawable/borderimageview"/>
         <ImageView
             android:layout_width="0dp"
-            android:layout_height="70dp"
+            android:layout_height="80dp"
             android:layout_weight="1"
             android:layout_margin="2dp"
-            android:padding="2dp"
-            android:background="@color/Bottom"/>
+            android:src="@drawable/mssports"
+            android:background="@drawable/borderimageview"/>
     </LinearLayout>
     <!--<android.support.v4.view.ViewPager-->
         <!--android:id="@+id/viewPager"-->
