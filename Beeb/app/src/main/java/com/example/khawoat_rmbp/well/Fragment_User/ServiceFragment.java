@@ -8,13 +8,19 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
+import com.example.khawoat_rmbp.well.BannerSlider.SliderFragment;
+import com.example.khawoat_rmbp.well.BannerSlider.SliderIndicator;
+import com.example.khawoat_rmbp.well.BannerSlider.SliderPagerAdapter;
+import com.example.khawoat_rmbp.well.BannerSlider.SliderView;
 import com.example.khawoat_rmbp.well.R;
 import com.example.khawoat_rmbp.well.ViewPagerAdapter;
 
-public class ServiceFragment extends Fragment {
+import java.util.ArrayList;
+import java.util.List;
 
-    private ViewPager viewPager;
+public class ServiceFragment extends Fragment {
 
     public ServiceFragment(){
 
@@ -29,6 +35,8 @@ public class ServiceFragment extends Fragment {
         return inflater.inflate(R.layout.activity_service_fragment, container, false);
 
     }
+
+
     public static ServiceFragment newInstance(String content) {
         Bundle args = new Bundle();
         args.putString("ARGS", content);

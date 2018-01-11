@@ -90,14 +90,11 @@ public class MainFragment extends AppCompatActivity implements BottomNavigationB
         frameLayout= (FrameLayout) findViewById(R.id.layFrame);
 
 
-//        Timer timer = new Timer();
-//        timer.scheduleAtFixedRate(new MyTimerTaskBanner(),2000,4000);
 
         Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/RSUlight.ttf");
         bottomNavigationBar.setMode(BottomNavigationBar.MODE_SHIFTING);
         bottomNavigationBar
-                .setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC
-                );
+                .setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC);
         bottomNavigationBar.addItem(new BottomNavigationItem(R.drawable.serviceicon, "บริการ").setActiveColorResource(R.color.Bottom))
                 .addItem(new BottomNavigationItem(R.drawable.requesticon, "งานของฉัน").setActiveColorResource(R.color.Bottom))
                 .addItem(new BottomNavigationItem(R.drawable.notificationicon, "ข้อความ").setActiveColorResource(R.color.Bottom))
@@ -117,24 +114,6 @@ public class MainFragment extends AppCompatActivity implements BottomNavigationB
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(Color.parseColor("#FFCC00"));
-        }
-    }
-    public class MyTimerTaskBanner extends TimerTask{
-
-        @Override
-        public void run() {
-            MainFragment.this.runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    if (viewPager.getCurrentItem() == 0){
-                        viewPager.setCurrentItem(1);
-                    } else if (viewPager.getCurrentItem() == 1){
-                        viewPager.setCurrentItem(2);
-                    } else {
-                        viewPager.setCurrentItem(0);
-                    }
-                }
-            });
         }
     }
 

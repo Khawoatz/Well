@@ -37,24 +37,19 @@
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="0dp"-->
         <!--android:layout_weight="1" />-->
-
+    <FrameLayout
+        android:id="@+id/layFrame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <RelativeLayout
         android:id="@+id/layout_top"
         android:layout_width="match_parent"
         android:layout_height="200dp">
 
-        <FrameLayout
-            android:id="@+id/layFrame"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-
             <com.example.khawoat_rmbp.well.BannerSlider.SliderView
                 android:id="@+id/sliderView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
-
-        </FrameLayout>
 
         <View
             android:layout_width="match_parent"
@@ -69,11 +64,10 @@
             android:layout_gravity="bottom"
             android:layout_marginBottom="8dp"
             android:gravity="center_horizontal"
-            android:orientation="horizontal"
-            />
+            android:orientation="horizontal" />
 
-
-    </RelativeLayout>
+</RelativeLayout>
+    </FrameLayout>
     <com.ashokvarma.bottomnavigation.BottomNavigationBar
         android:id="@+id/bottom_navigation_bar"
         android:layout_width="match_parent"
