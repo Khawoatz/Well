@@ -1,74 +1,28 @@
 package com.example.khawoat_rmbp.well.Fragment_User;
 
-import android.content.DialogInterface;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Build;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.Volley;
-import com.ashokvarma.bottomnavigation.BottomNavigationBar;
-import com.ashokvarma.bottomnavigation.BottomNavigationItem;
-import com.example.khawoat_rmbp.well.BannerSlider.SliderFragment;
-import com.example.khawoat_rmbp.well.BannerSlider.SliderIndicator;
-import com.example.khawoat_rmbp.well.BannerSlider.SliderPagerAdapter;
-import com.example.khawoat_rmbp.well.BannerSlider.SliderView;
+import com.example.khawoat_rmbp.well.Adapter.MyFragmentAdapter;
 import com.example.khawoat_rmbp.well.R;
-import com.example.khawoat_rmbp.well.SliderUtils;
-import com.example.khawoat_rmbp.well.ViewPagerAdapter;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
-public class MainFragment extends AppCompatActivity implements BottomNavigationBar.OnTabSelectedListener{
+public class MainFragment extends FragmentActivity {
 
-    private BottomNavigationView bottomNavigationView;
-    private BottomNavigationBar bottomNavigationBar;
-    private ArrayList<Fragment> fragments;
-    private FrameLayout frameLayout;
-    private TextView mNavTv;
-    private Fragment mContent;
-    private int dotscount;
-    private ImageView[] dots;
-
-    ViewPager viewPager;
-    LinearLayout sliderDotspanel;
-    RequestQueue rq;
-    List<SliderUtils> sliderImg;
-    ViewPagerAdapter viewPagerAdapter;
-
-    private SliderPagerAdapter mAdapter;
-    private SliderIndicator mIndicator;
-    private SliderView sliderView;
-    private LinearLayout mLinearLayout;
-
-    String request_url = "http://203.158.131.67/~Adminwell/sliderjsonoutput.php";
+    private RadioGroup radioGroup;
+    private RadioButton rb_service, rb_request,rb_notification,rb_setting;
+    private ViewPager scrollViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,36 +30,10 @@ public class MainFragment extends AppCompatActivity implements BottomNavigationB
         setContentView(R.layout.activity_main_fragment);
 
         changeStatusBarColor();
+        initView();
 
-        sliderView = (SliderView) findViewById(R.id.sliderView);
-        mLinearLayout = (LinearLayout) findViewById(R.id.pagesContainer);
-        setupSlider();
-
-        rq = Volley.newRequestQueue(this);
-        sliderImg = new ArrayList<>();
-//        viewPager = (ViewPager) findViewById(R.id.viewPager);
-
-        mNavTv= (TextView) findViewById(R.id.nav_tv);
-        bottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
-        frameLayout= (FrameLayout) findViewById(R.id.layFrame);
-
-
-
-        Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/RSUlight.ttf");
-        bottomNavigationBar.setMode(BottomNavigationBar.MODE_SHIFTING);
-        bottomNavigationBar
-                .setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC);
-        bottomNavigationBar.addItem(new BottomNavigationItem(R.drawable.serviceicon, "บริการ").setActiveColorResource(R.color.Bottom))
-                .addItem(new BottomNavigationItem(R.drawable.requesticon, "งานของฉัน").setActiveColorResource(R.color.Bottom))
-                .addItem(new BottomNavigationItem(R.drawable.notificationicon, "ข้อความ").setActiveColorResource(R.color.Bottom))
-                .addItem(new BottomNavigationItem(R.drawable.settingicon, "ตั้งค่า").setActiveColorResource(R.color.Bottom))
-                .setFirstSelectedPosition(0)
-                .initialise();
-
-        fragments = getFragments();
-        setDefaultFragment();
-        bottomNavigationBar.setTabSelectedListener(this);
     }
+
     /**
      * Making notification bar transparent
      */
@@ -117,100 +45,83 @@ public class MainFragment extends AppCompatActivity implements BottomNavigationB
         }
     }
 
-    private void setupSlider(){
-        sliderView.setDurationScroll(800);
-        List<Fragment> fragments = new ArrayList<>();
-        fragments.add(SliderFragment.newInstance("http://203.158.131.67/~Adminwell/BannerSlide/slide1.png"));
-        fragments.add(SliderFragment.newInstance("http://203.158.131.67/~Adminwell/BannerSlide/slide2.png"));
-        fragments.add(SliderFragment.newInstance("http://203.158.131.67/~Adminwell/BannerSlide/slide3.png"));
+    private void initView(){
+        // RadioGroup
+        radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+        rb_service = (RadioButton) findViewById(R.id.rb_homeservice);
+        rb_request = (RadioButton) findViewById(R.id.rb_request);
+        rb_notification = (RadioButton) findViewById(R.id.rb_notification);
+        rb_setting = (RadioButton) findViewById(R.id.rb_setting);
 
-        mAdapter = new SliderPagerAdapter(getSupportFragmentManager(),fragments);
-        sliderView.setAdapter(mAdapter);
-        mIndicator = new SliderIndicator(this,mLinearLayout,sliderView,R.drawable.indicator_circle);
-        mIndicator.setPageCount(fragments.size());
-        mIndicator.show();
-    }
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId){
+                    case R.id.rb_homeservice:
+                        scrollViewPager.setCurrentItem(0,false);
+                        break;
 
+                    case R.id.rb_request:
+                        scrollViewPager.setCurrentItem(1,false);
+                        break;
 
-    private void setDefaultFragment() {
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction transaction = fm.beginTransaction();
-        transaction.add(R.id.layFrame, ServiceFragment.newInstance("บริการ"));
-        transaction.commit();
-    }
-    private ArrayList<Fragment> getFragments() {
-        ArrayList<Fragment> fragments = new ArrayList<>();
-        fragments.add(ServiceFragment.newInstance("บริการ"));
-        fragments.add(RequestFragment.newInstance("งานของฉัน"));
-        fragments.add(NotificationFragment.newInstance("แจ้งเตือน"));
-        fragments.add(SettingFragment.newInstance("ตั้งค่า"));
-        return fragments;
-    }
-    @Override
-    public void onTabSelected(int position) {
+                    case R.id.rb_notification:
+                        scrollViewPager.setCurrentItem(2,false);
+                        break;
 
-        if (position < fragments.size()) {
-            FragmentManager fm = getSupportFragmentManager();
-            FragmentTransaction ft = fm.beginTransaction();
-            //当前的fragment
-            Fragment from = fm.findFragmentById(R.id.layFrame);
+                    case R.id.rb_setting:
+                        scrollViewPager.setCurrentItem(3,false);
+                        break;
 
-            //点击即将跳转的fragment
-            Fragment to = fragments.get(position);
-            if (to.isAdded()) {
-                ft.hide(from).show(to);
-            } else {
-                ft.hide(from).add(R.id.layFrame,to);
-                if (to.isHidden()) {
-                    ft.show(to);
-                    Log.d("----------------","被隐藏了");
-                    Log.d("----------------","为什么这个没有添加到GitHub上去");
+                }
+            }
+        });
+
+        scrollViewPager = (ViewPager) findViewById(R.id.scrollPages);
+        Fragment fragment1 = new ServiceFragment();
+        Fragment fragment2 = new RequestFragment();
+        Fragment fragment3 = new NotificationFragment();
+        Fragment fragment4 = new SettingFragment();
+        List<Fragment> fragmentList = new ArrayList<Fragment>();
+        fragmentList.add(fragment1);
+        fragmentList.add(fragment2);
+        fragmentList.add(fragment3);
+        fragmentList.add(fragment4);
+        scrollViewPager.setAdapter(new MyFragmentAdapter(getSupportFragmentManager(),fragmentList));
+        scrollViewPager.setCurrentItem(0,false);
+        scrollViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                switch (position) {
+                    case 0:
+                        Toast.makeText(MainFragment.this, "หน้าแรก", Toast.LENGTH_SHORT).show();
+                        radioGroup.check(R.id.rb_homeservice);
+                        break;
+                    case 1:
+                        Toast.makeText(MainFragment.this, "งานของฉัน", Toast.LENGTH_SHORT).show();
+                        radioGroup.check(R.id.rb_request);
+                        break;
+                    case 2:
+                        Toast.makeText(MainFragment.this, "ข้อความ", Toast.LENGTH_SHORT).show();
+                        radioGroup.check(R.id.rb_notification);
+                        break;
+                    case 3:
+                        Toast.makeText(MainFragment.this, "ตั้งค่า", Toast.LENGTH_SHORT).show();
+                        radioGroup.check(R.id.rb_setting);
+                        break;
 
                 }
             }
 
-            ft.commitAllowingStateLoss();
-        }
-    }
+            @Override
+            public void onPageScrollStateChanged(int state) {
 
-    @Override
-    public void onTabUnselected(int position) {
-        if (fragments != null) {
-            if (position < fragments.size()) {
-                FragmentManager fm = getSupportFragmentManager();
-                FragmentTransaction ft = fm.beginTransaction();
-                Fragment fragment = fragments.get(position);
-                ft.hide(fragment);
-                ft.commitAllowingStateLoss();
-            }
-        }
-
-    }
-
-    @Override
-    public void onTabReselected(int position) {
-
-    }
-    public void onBackPressed(){
-        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
-        dialog.setTitle("Exit");
-        dialog.setIcon(R.drawable.logowell4);
-        dialog.setCancelable(true);
-        dialog.setMessage("Do you want to exit ?");
-        dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                moveTaskToBack(true);
-                finish();
-                System.exit(0);
             }
         });
-
-        dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
-
-        dialog.show();
     }
 }

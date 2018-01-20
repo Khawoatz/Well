@@ -5,7 +5,7 @@
     android:id="@+id/activity_service_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
+    android:padding="3dp"
     tools:context="com.example.khawoat_rmbp.well.Fragment_User.ServiceFragment">
 
     <LinearLayout
@@ -23,39 +23,13 @@
 
     </LinearLayout>
 
-
-    <ImageView
-        android:id="@+id/imageViewBanner"
-        android:layout_width="match_parent"
-        android:layout_height="200dp" />
-
-    <RelativeLayout
-        android:id="@+id/layout_top"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/Viewpager_container"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_below="@+id/layoutLogohead">
+        android:layout_below="@+id/layoutLogohead"/>
 
-        <com.example.khawoat_rmbp.well.BannerSlider.SliderView
-            android:id="@+id/sliderView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/bg_indicator"/>
-
-        <LinearLayout
-            android:id="@+id/pagesContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="8dp"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal" />
-
-    </RelativeLayout>
 
     <TextView
         android:id="@+id/tvService"
@@ -64,7 +38,7 @@
         android:text="บริการ"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:layout_below="@id/layout_top"/>
+        android:layout_below="@id/Viewpager_container"/>
 
     <LinearLayout
         android:id="@+id/layoutMenu1"
@@ -73,56 +47,108 @@
         android:weightSum="3"
         android:layout_marginTop="5dp"
         android:layout_below="@+id/tvService">
-    <ImageView
-        android:layout_width="0dp"
-        android:layout_height="80dp"
-        android:layout_weight="1"
-        android:layout_margin="2dp"
-        android:src="@drawable/msherbal"
-        android:background="@drawable/borderimageview"
-        />
+
         <ImageView
             android:layout_width="0dp"
-            android:layout_height="80dp"
+            android:layout_height="85dp"
             android:layout_weight="1"
-            android:layout_margin="2dp"
+            android:layout_margin="3dp"
+            android:src="@drawable/msherbal"
+            android:background="@drawable/borderimageview" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="85dp"
+            android:layout_weight="1"
+            android:layout_margin="3dp"
             android:src="@drawable/msacupunc"
             android:background="@drawable/borderimageview"/>
         <ImageView
             android:layout_width="0dp"
-            android:layout_height="80dp"
+            android:layout_height="85dp"
             android:layout_weight="1"
-            android:layout_margin="2dp"
+            android:layout_margin="3dp"
             android:src="@drawable/msoil"
             android:background="@drawable/borderimageview"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layoutMenuText1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="3"
+        android:layout_below="@+id/layoutMenu1">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="นวดประคบ"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="นวดกดจุด"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="นวดน้ำมัน"/>
     </LinearLayout>
     <LinearLayout
         android:id="@+id/layoutMenu2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="3"
-        android:layout_below="@+id/layoutMenu1">
+        android:layout_below="@+id/layoutMenuText1">
         <ImageView
             android:layout_width="0dp"
-            android:layout_height="80dp"
+            android:layout_height="85dp"
             android:layout_weight="1"
-            android:layout_margin="2dp"
+            android:layout_margin="3dp"
             android:src="@drawable/msfoot"
             android:background="@drawable/borderimageview" />
         <ImageView
             android:layout_width="0dp"
-            android:layout_height="80dp"
+            android:layout_height="85dp"
             android:layout_weight="1"
-            android:layout_margin="2dp"
+            android:layout_margin="3dp"
             android:src="@drawable/msmigrain"
             android:background="@drawable/borderimageview"/>
         <ImageView
             android:layout_width="0dp"
-            android:layout_height="80dp"
+            android:layout_height="85dp"
             android:layout_weight="1"
-            android:layout_margin="2dp"
+            android:layout_margin="3dp"
             android:src="@drawable/mssports"
             android:background="@drawable/borderimageview"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layoutMenuText2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="3"
+        android:layout_below="@+id/layoutMenu2">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="นวดฝ่าเท้า"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="นวดไมเกรน"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="นวดสปอร์ต"/>
     </LinearLayout>
     <!--<android.support.v4.view.ViewPager-->
         <!--android:id="@+id/viewPager"-->

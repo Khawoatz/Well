@@ -5,72 +5,49 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFF"
     tools:context="com.example.khawoat_rmbp.well.Fragment_User.MainFragment">
 
-    <!--<TextView -->
-        <!--android:id="@+id/nav_tv"-->
-        <!--android:layout_width="100dp"-->
-        <!--android:layout_height="100dp"-->
-        <!--android:textSize="18sp"-->
-        <!--android:layout_centerInParent="true"-->
-        <!--android:visibility="gone"/>-->
-
-    <!--<android.support.v4.view.ViewPager-->
-        <!--android:id="@+id/viewPager"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="200dp">-->
-    <!--</android.support.v4.view.ViewPager>-->
-
-    <!--<LinearLayout-->
-        <!--android:id="@+id/Sliderdots"-->
-        <!--android:layout_below="@+id/viewPager"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:gravity="center_vertical|center_horizontal"-->
-        <!--android:orientation="horizontal">-->
-
-    <!--</LinearLayout>-->
-
-    <!--<FrameLayout-->
-        <!--android:id="@+id/layFrame"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="0dp"-->
-        <!--android:layout_weight="1" />-->
-    <FrameLayout
-        android:id="@+id/layFrame"
+    <RadioGroup
+        android:id="@+id/radioGroup"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    <RelativeLayout
-        android:id="@+id/layout_top"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:background="@drawable/shadow_corner">
+
+        <RadioButton
+            android:id="@+id/rb_homeservice"
+            android:checked="true"
+            android:text="หน้าแรก"
+            android:drawableTop="@drawable/rb_service_selector"
+            style="@style/style_RadioButton" />
+
+        <RadioButton
+            android:id="@+id/rb_request"
+            android:text="งานของฉัน"
+            android:drawableTop="@drawable/rb_request_selector"
+            style="@style/style_RadioButton"
+            />
+        <RadioButton
+            android:id="@+id/rb_notification"
+            android:text="ข้อความ"
+            android:drawableTop="@drawable/rb_notification_selector"
+            style="@style/style_RadioButton"
+            />
+        <RadioButton
+            android:id="@+id/rb_setting"
+            android:text="ตั้งค่า"
+            android:drawableTop="@drawable/rb_setting_selector"
+            style="@style/style_RadioButton"
+            />
+
+
+    </RadioGroup>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/scrollPages"
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="match_parent"
+        android:layout_above="@+id/radioGroup"/>
 
-            <com.example.khawoat_rmbp.well.BannerSlider.SliderView
-                android:id="@+id/sliderView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/bg_indicator"/>
-
-        <LinearLayout
-            android:id="@+id/pagesContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="8dp"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal" />
-
-</RelativeLayout>
-    </FrameLayout>
-    <com.ashokvarma.bottomnavigation.BottomNavigationBar
-        android:id="@+id/bottom_navigation_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"/>
 </RelativeLayout>

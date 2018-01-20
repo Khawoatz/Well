@@ -56,8 +56,8 @@ public class MainFragmentMasseuse extends AppCompatActivity implements BottomNav
                 .setFirstSelectedPosition(0)
                 .initialise();
 
-        fragments = getFragments();
-        setDefaultFragment();
+//        fragments = getFragments();
+//        setDefaultFragment();
         bottomNavigationBar.setTabSelectedListener(this);
     }
 
@@ -71,20 +71,20 @@ public class MainFragmentMasseuse extends AppCompatActivity implements BottomNav
             window.setStatusBarColor(Color.parseColor("#FFCC00"));
         }
     }
-    private void setDefaultFragment() {
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction transaction = fm.beginTransaction();
-        transaction.add(R.id.layFrame, ServiceFragment.newInstance("บริการ"));
-        transaction.commit();
-    }
-    private ArrayList<Fragment> getFragments() {
-        ArrayList<Fragment> fragments = new ArrayList<>();
-        fragments.add(ServiceFragment.newInstance("บริการ"));
-        fragments.add(RequestFragment.newInstance("งานของฉัน"));
-        fragments.add(NotificationFragment.newInstance("ข้อความ"));
-        fragments.add(SettingFragment.newInstance("ตั้งค่า"));
-        return fragments;
-    }
+//    private void setDefaultFragment() {
+//        FragmentManager fm = getSupportFragmentManager();
+//        FragmentTransaction transaction = fm.beginTransaction();
+//        transaction.add(R.id.layFrame, ServiceFragment.newInstance("บริการ"));
+//        transaction.commit();
+//    }
+//    private ArrayList<Fragment> getFragments() {
+//        ArrayList<Fragment> fragments = new ArrayList<>();
+//        fragments.add(ServiceFragment.newInstance("บริการ"));
+//        fragments.add(RequestFragment.newInstance("งานของฉัน"));
+//        fragments.add(NotificationFragment.newInstance("ข้อความ"));
+//        fragments.add(SettingFragment.newInstance("ตั้งค่า"));
+//        return fragments;
+//    }
 
     @Override
     public void onTabSelected(int position) {
