@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#363636"
     tools:context="com.example.khawoat_rmbp.well.SignUp">
 
-    <com.flaviofaria.kenburnsview.KenBurnsView
-        android:id="@+id/image"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/bgmassage2" />
+    <!--<com.flaviofaria.kenburnsview.KenBurnsView-->
+        <!--android:id="@+id/image"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:src="@drawable/bgmassage2" />-->
 
     <ImageView
         android:id="@+id/iv_back2"

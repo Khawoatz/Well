@@ -4,29 +4,34 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-
     <application
+        android:name="android.support.multidex.MultiDexApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name="android.support.multidex.MultiDexApplication"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".MainActivity" />
         <activity android:name=".SignUp" />
-        <activity android:name=".LoginUser" >
+        <activity android:name=".LoginUser" />
+        <activity android:name=".ForgotPass" />
+        <activity android:name=".LoginMasseuse" />
+        <activity android:name=".Fragment_User.MainFragment" />
+        <activity android:name=".Fragment_Masseuse.MainFragmentMasseuse" />
+        <activity android:name=".SignUpMasseuse" />
+        <activity android:name=".Massage_Service.Herbal_Massage"/>
+        <activity android:name=".Massage_Service.Acupunc_Massage" />
+        <activity android:name=".Massage_Service.Oil_Massage" />
+        <activity android:name=".Massage_Service.Foot_Massage" />
+        <activity android:name=".Massage_Service.Migraine_Massage" />
+        <activity android:name=".Massage_Service.Sport_Massage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ForgotPass" />
-        <activity android:name=".LoginMasseuse" />
-        <activity android:name=".Fragment_User.MainFragment" />
-        <activity android:name=".Fragment_Masseuse.MainFragmentMasseuse" />
-        <activity android:name=".SignUpMasseuse"></activity>
     </application>
 
 </manifest>
