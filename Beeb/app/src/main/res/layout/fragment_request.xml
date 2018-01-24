@@ -1,11 +1,13 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:orientation="vertical"
     tools:context="com.example.khawoat_rmbp.well.Fragment_User.RequestFragment">
 
     <!-- TODO: Update blank fragment layout -->
+
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -13,9 +15,38 @@
         android:text="Request Fragment"
         android:gravity="center"/>
 
+
     <com.nanchen.titlebar.TitleView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/titleBar"/>
+    <RelativeLayout
+        android:id="@+id/layoutTab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/titleBar">
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/appBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme">
 
-</FrameLayout>
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tabLay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </android.support.design.widget.AppBarLayout>
+
+    </RelativeLayout>
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/layoutTab">
+    <android.support.v4.view.ViewPager
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</RelativeLayout>
+</RelativeLayout>

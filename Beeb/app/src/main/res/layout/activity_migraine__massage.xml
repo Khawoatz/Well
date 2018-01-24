@@ -27,7 +27,7 @@
     <ImageView
         android:id="@+id/imgIconherbal"
         android:layout_width="100dp"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:adjustViewBounds="true"
         android:src="@drawable/msmigrain"
         android:background="@drawable/circleimage"

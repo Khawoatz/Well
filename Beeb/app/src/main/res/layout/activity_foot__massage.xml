@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context="com.example.khawoat_rmbp.well.Massage_Service.Acupunc_Massage">
 
 
@@ -13,7 +12,6 @@
         android:id="@+id/herbalBg"
         android:layout_width="match_parent"
         android:layout_height="280dp"
-        android:scaleType="centerCrop"
         android:src="@drawable/footbg" />
 
     <ImageView
@@ -22,7 +20,8 @@
         android:layout_height="35dp"
         android:src="@drawable/ic_action_back"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="15dp"/>
+
 
     <ImageView
         android:id="@+id/imgIconherbal"
@@ -59,6 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="18dp"
             android:text="@string/foot_description"
+            android:fontFamily="@assets/fonts/Circular"
             android:textColor="#979696"
             android:textSize="16sp"
             />
