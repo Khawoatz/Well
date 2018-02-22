@@ -36,8 +36,9 @@ import java.util.Map;
 
 public class LoginMasseuse extends AppCompatActivity {
 
-    private static final String TAG = "LoginUser";
-    private static final String URL_FOR_LOGIN = "https://";
+    private static final String TAG = "LoginMasseuse";
+    private static final String URL_FOR_LOGIN = "http://203.158.131.67/~Adminwell/App/loginMasseuse.php";
+    ProgressDialog progressDialog;
 
 
     @Override
@@ -57,8 +58,8 @@ public class LoginMasseuse extends AppCompatActivity {
         TextView tvforgot = (TextView) findViewById(R.id.tv_forgotpass);
         TextView tvsignin = (TextView) findViewById(R.id.tv_sign_in);
 
-        EditText etemail = (EditText) findViewById(R.id.et_email);
-        EditText etpassword = (EditText) findViewById(R.id.et_password);
+        final EditText etemail = (EditText) findViewById(R.id.et_email);
+        final EditText etpassword = (EditText) findViewById(R.id.et_password);
 
         // Progress dialog
         progressDialog = new ProgressDialog(this);
@@ -93,27 +94,35 @@ public class LoginMasseuse extends AppCompatActivity {
                 finish();
             }
         });
+
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loginUser(etemail.getText().toString(),
+                        etpassword.getText().toString());
+            }
+        });
     }
 
     private void loginUser( final String email, final String password) {
         // Tag used to cancel the request
         String cancel_req_tag = "login";
-//        progressDialog.setMessage("Logging you in...");
-//        showDialog();
+        progressDialog.setMessage("Logging you in...");
+        showDialog();
         StringRequest strReq = new StringRequest(Request.Method.POST,
                 URL_FOR_LOGIN, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.d(TAG, "Register Response: " + response.toString());
+                Log.d(TAG, "Register Response: " + response);
 //                hideDialog();
                 try {
                     JSONObject jObj = new JSONObject(response);
                     boolean error = jObj.getBoolean("error");
                     if (!error) {
-                        String user = jObj.getJSONObject("user").getString("name");
+                        String user = jObj.getJSONObject("user").getString("Name");
                         // Launch User activity
                         Intent intent = new Intent(LoginMasseuse.this, MainFragmentMasseuse.class);
-                        intent.putExtra("username", user);
+                        intent.putExtra("Name", user);
                         startActivity(intent);
                         finish();
                     } else {
@@ -130,7 +139,7 @@ public class LoginMasseuse extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 Log.e(TAG, "Login Error: " + error.getMessage());
                 Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-//                hideDialog();
+                hideDialog();
             }
         }) {
             @Override
@@ -176,12 +185,12 @@ public class LoginMasseuse extends AppCompatActivity {
         animatorSet.setDuration(700);
         animatorSet.start();
     }
-//                private void showDialog() {
-//                if (!progressDialog.isShowing())
-//                    progressDialog.show();
-//            }
-//            private void hideDialog() {
-//                if (progressDialog.isShowing())
-//                    progressDialog.dismiss();
-//            }
+                private void showDialog() {
+                if (!progressDialog.isShowing())
+                    progressDialog.show();
+            }
+            private void hideDialog() {
+                if (progressDialog.isShowing())
+                    progressDialog.dismiss();
+            }
 }

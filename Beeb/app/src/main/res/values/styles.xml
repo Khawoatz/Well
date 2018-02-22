@@ -8,6 +8,13 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#363636</item>
+        <item name="colorPrimaryDark">#FFCC00</item>
+        <item name="colorAccent">#FFCC00</item>
+    </style>
+
     <style name="style_RadioButton">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">50dp</item>

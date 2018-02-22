@@ -1,5 +1,8 @@
 package com.example.khawoat_rmbp.well.Fragment_User;
 
+import android.content.Intent;
+import android.provider.ContactsContract;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -8,10 +11,19 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.example.khawoat_rmbp.well.BannerSlider.SliderFragment;
+import com.example.khawoat_rmbp.well.LoginUser;
+import com.example.khawoat_rmbp.well.MainActivity;
+import com.example.khawoat_rmbp.well.Massage_Service.Acupunc_Massage;
+import com.example.khawoat_rmbp.well.Massage_Service.Foot_Massage;
+import com.example.khawoat_rmbp.well.Massage_Service.Herbal_Massage;
+import com.example.khawoat_rmbp.well.Massage_Service.Migraine_Massage;
+import com.example.khawoat_rmbp.well.Massage_Service.Oil_Massage;
+import com.example.khawoat_rmbp.well.Massage_Service.Sport_Massage;
 import com.example.khawoat_rmbp.well.R;
 
 import java.util.ArrayList;
@@ -22,11 +34,63 @@ public class ServiceFragment extends Fragment {
     private ViewPager viewPager;
     private RadioGroup radioGroup_homeservice;
     private RadioButton rb_homeservice, rb_request, rb_notification, rb_setting;
+    private ImageView btHerball,btAcupunc,btOil,btFoot,btMigraine,btSport;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_service_fragment, null);
 
+
+        btHerball = (ImageView) getView().findViewById(R.id.btHerbal);
+        btAcupunc = (ImageView) getView().findViewById(R.id.btAcupunc);
+        btOil = (ImageView) getView().findViewById(R.id.btOil);
+        btFoot = (ImageView) getView().findViewById(R.id.btFoot);
+        btMigraine = (ImageView) getView().findViewById(R.id.btMigraine);
+        btSport = (ImageView) getView().findViewById(R.id.btSport);
+
+        btHerball.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(),Herbal_Massage.class);
+                startActivity(i);
+            }
+        });
+
+        btAcupunc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ServiceFragment.this.getActivity(),Acupunc_Massage.class);
+                startActivity(i);
+            }
+        });
+        btOil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ServiceFragment.this.getActivity(),Oil_Massage.class);
+                startActivity(i);
+            }
+        });
+        btFoot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ServiceFragment.this.getActivity(),Foot_Massage.class);
+                startActivity(i);
+            }
+        });
+        btMigraine.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ServiceFragment.this.getActivity(),Migraine_Massage.class);
+                startActivity(i);
+            }
+        });
+        btSport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ServiceFragment.this.getActivity(),Sport_Massage.class);
+                startActivity(i);
+            }
+        });
         initView(view);
         return view;
     }

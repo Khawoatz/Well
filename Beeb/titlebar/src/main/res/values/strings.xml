@@ -1,3 +1,35 @@
 <resources>
     <string name="app_name">TitleBar</string>
+    <string-array name="province_array">
+        <item>กรุงเทพมหานคร</item>
+    </string-array>
+
+    <string-array name="district_array">
+        <item>- กรุณาเลือกเขตพื้นที่ของคุณ -</item>
+        <item>พระนคร</item>
+        <item>บางบอน</item>
+        <item>บางกะปิ</item>
+        <item>บางแค</item>
+        <item>บางเขน</item>
+        <item>บางคอแหลม</item>
+        <item>บางขุนเทียน</item>
+        <item>บางนา</item>
+        <item>บางพลัด</item>
+        <item>บางรัก</item>
+        <item>บางซื่อ</item>
+        <item>บางกอกน้อย</item>
+        <item>บางกอกใหญ่</item>
+        <item>บึงกุ่ม</item>
+        <item>จตุจักร</item>
+        <item>จอมทอง</item>
+        <item>ดินแดง</item>
+        <item>ดอนเมือง</item>
+        <item>ดุสิต</item>
+        <item>ห้วยขวาง</item>
+        <item>คันนายาว</item>
+        <item>คลองสามวา</item>
+        <item>คลองสาน</item>
+        <item>คลองเตย</item>
+        <item>หลักสี่</item>
+    </string-array>
 </resources>

@@ -33,7 +33,6 @@ public class SettingFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_setting, container, false);
-        Typeface custom_font = Typeface.createFromAsset(getActivity().getAssets(), "fonts/RSUlight.ttf");
         TitleView mTitleBar = (TitleView) view.findViewById(R.id.titleBar);
         mTitleBar.setTitle("ตั้งค่า");
         mTitleBar.setLeftButtonImage(R.drawable.settingicontitle,15,15);

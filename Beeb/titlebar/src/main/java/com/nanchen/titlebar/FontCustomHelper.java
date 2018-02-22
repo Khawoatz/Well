@@ -17,7 +17,7 @@ import android.graphics.Typeface;
 
 public class FontCustomHelper {
     private Typeface typeface;
-    private static final String FONT_URL = "fonts/icomoon.ttf";
+    private static final String FONT_URL = "fonts/RSUlight.ttf";
     private static class Holder{
         private static FontCustomHelper helper = new FontCustomHelper();
     }

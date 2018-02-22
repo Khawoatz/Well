@@ -5,17 +5,24 @@ import android.graphics.Typeface;
 import android.os.Build;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
+import com.example.khawoat_rmbp.well.Adapter.MyFragmentAdapter;
+import com.example.khawoat_rmbp.well.Fragment_User.MainFragment;
 import com.example.khawoat_rmbp.well.Fragment_User.NotificationFragment;
 import com.example.khawoat_rmbp.well.Fragment_User.RequestFragment;
 import com.example.khawoat_rmbp.well.Fragment_User.ServiceFragment;
@@ -23,16 +30,13 @@ import com.example.khawoat_rmbp.well.Fragment_User.SettingFragment;
 import com.example.khawoat_rmbp.well.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class MainFragmentMasseuse extends AppCompatActivity implements BottomNavigationBar.OnTabSelectedListener {
+public class MainFragmentMasseuse extends FragmentActivity {
 
-    private BottomNavigationView bottomNavigationView;
-    private BottomNavigationBar bottomNavigationBar;
-    private ArrayList<Fragment> fragments;
-    private FrameLayout frameLayout;
-    private TextView mNavTv;
-
-    private Fragment mContent;
+    private RadioGroup radioGroup;
+    private RadioButton rb_service, rb_request,rb_notification,rb_setting;
+    private ViewPager scrollViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,25 +44,7 @@ public class MainFragmentMasseuse extends AppCompatActivity implements BottomNav
         setContentView(R.layout.activity_main_fragment_masseuse);
 
         changeStatusBarColor();
-        mNavTv= (TextView) findViewById(R.id.nav_tv);
-        bottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
-        frameLayout= (FrameLayout) findViewById(R.id.layFrame);
-
-        Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/RSUlight.ttf");
-        bottomNavigationBar.setMode(BottomNavigationBar.MODE_SHIFTING);
-        bottomNavigationBar
-                .setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC
-                );
-        bottomNavigationBar.addItem(new BottomNavigationItem(R.drawable.serviceicon, "บริการ").setActiveColorResource(R.color.Bottom))
-                .addItem(new BottomNavigationItem(R.drawable.requesticon, "งานของฉัน").setActiveColorResource(R.color.Bottom))
-                .addItem(new BottomNavigationItem(R.drawable.notificationicon, "ข้อความ").setActiveColorResource(R.color.Bottom))
-                .addItem(new BottomNavigationItem(R.drawable.settingicon, "ตั้งค่า").setActiveColorResource(R.color.Bottom))
-                .setFirstSelectedPosition(0)
-                .initialise();
-
-//        fragments = getFragments();
-//        setDefaultFragment();
-        bottomNavigationBar.setTabSelectedListener(this);
+        initView();
     }
 
     /**
@@ -71,33 +57,84 @@ public class MainFragmentMasseuse extends AppCompatActivity implements BottomNav
             window.setStatusBarColor(Color.parseColor("#FFCC00"));
         }
     }
-//    private void setDefaultFragment() {
-//        FragmentManager fm = getSupportFragmentManager();
-//        FragmentTransaction transaction = fm.beginTransaction();
-//        transaction.add(R.id.layFrame, ServiceFragment.newInstance("บริการ"));
-//        transaction.commit();
-//    }
-//    private ArrayList<Fragment> getFragments() {
-//        ArrayList<Fragment> fragments = new ArrayList<>();
-//        fragments.add(ServiceFragment.newInstance("บริการ"));
-//        fragments.add(RequestFragment.newInstance("งานของฉัน"));
-//        fragments.add(NotificationFragment.newInstance("ข้อความ"));
-//        fragments.add(SettingFragment.newInstance("ตั้งค่า"));
-//        return fragments;
-//    }
 
-    @Override
-    public void onTabSelected(int position) {
+    private void initView(){
+        // RadioGroup
+        radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+        rb_service = (RadioButton) findViewById(R.id.rb_homeservice);
+        rb_request = (RadioButton) findViewById(R.id.rb_request);
+        rb_notification = (RadioButton) findViewById(R.id.rb_notification);
+        rb_setting = (RadioButton) findViewById(R.id.rb_setting);
 
-    }
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId){
+                    case R.id.rb_homeservice:
+                        scrollViewPager.setCurrentItem(0,false);
+                        break;
 
-    @Override
-    public void onTabUnselected(int position) {
+                    case R.id.rb_request:
+                        scrollViewPager.setCurrentItem(1,false);
+                        break;
 
-    }
+                    case R.id.rb_notification:
+                        scrollViewPager.setCurrentItem(2,false);
+                        break;
 
-    @Override
-    public void onTabReselected(int position) {
+                    case R.id.rb_setting:
+                        scrollViewPager.setCurrentItem(3,false);
+                        break;
 
+                }
+            }
+        });
+
+        scrollViewPager = (ViewPager) findViewById(R.id.scrollPages);
+        Fragment fragment1 = new NewServiceMasseuse();
+        Fragment fragment2 = new MyserviceMasseuse();
+        Fragment fragment3 = new NotificationMasseuse();
+        Fragment fragment4 = new SettingMasseuse();
+        List<Fragment> fragmentList = new ArrayList<Fragment>();
+        fragmentList.add(fragment1);
+        fragmentList.add(fragment2);
+        fragmentList.add(fragment3);
+        fragmentList.add(fragment4);
+        scrollViewPager.setAdapter(new MyFragmentAdapter(getSupportFragmentManager(),fragmentList));
+        scrollViewPager.setCurrentItem(0,false);
+        scrollViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                switch (position) {
+                    case 0:
+                        Toast.makeText(MainFragmentMasseuse.this, "หน้าแรก", Toast.LENGTH_SHORT).show();
+                        radioGroup.check(R.id.rb_homeservice);
+                        break;
+                    case 1:
+                        Toast.makeText(MainFragmentMasseuse.this, "งานของฉัน", Toast.LENGTH_SHORT).show();
+                        radioGroup.check(R.id.rb_request);
+                        break;
+                    case 2:
+                        Toast.makeText(MainFragmentMasseuse.this, "ข้อความ", Toast.LENGTH_SHORT).show();
+                        radioGroup.check(R.id.rb_notification);
+                        break;
+                    case 3:
+                        Toast.makeText(MainFragmentMasseuse.this, "ตั้งค่า", Toast.LENGTH_SHORT).show();
+                        radioGroup.check(R.id.rb_setting);
+                        break;
+
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 }

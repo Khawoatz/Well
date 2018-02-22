@@ -13,7 +13,7 @@
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
-        android:background="@drawable/shadow_corner">
+        android:background="@drawable/borderbottomnavi">
 
         <RadioButton
             android:id="@+id/rb_homeservice"

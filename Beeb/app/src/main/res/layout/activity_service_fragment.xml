@@ -47,6 +47,7 @@
         android:layout_below="@+id/tvService">
 
         <ImageView
+            android:id="@+id/btHerbal"
             android:layout_width="0dp"
             android:layout_height="85dp"
             android:layout_weight="1"
@@ -55,6 +56,7 @@
             android:background="@drawable/borderimageview" />
 
         <ImageView
+            android:id="@+id/btAcupunc"
             android:layout_width="0dp"
             android:layout_height="85dp"
             android:layout_weight="1"
@@ -62,6 +64,7 @@
             android:src="@drawable/msacupunc"
             android:background="@drawable/borderimageview"/>
         <ImageView
+            android:id="@+id/btOil"
             android:layout_width="0dp"
             android:layout_height="85dp"
             android:layout_weight="1"
@@ -102,6 +105,7 @@
         android:weightSum="3"
         android:layout_below="@+id/layoutMenuText1">
         <ImageView
+            android:id="@+id/btFoot"
             android:layout_width="0dp"
             android:layout_height="85dp"
             android:layout_weight="1"
@@ -109,6 +113,7 @@
             android:src="@drawable/msfoot"
             android:background="@drawable/borderimageview" />
         <ImageView
+            android:id="@+id/btMigraine"
             android:layout_width="0dp"
             android:layout_height="85dp"
             android:layout_weight="1"
@@ -116,6 +121,7 @@
             android:src="@drawable/msmigrain"
             android:background="@drawable/borderimageview"/>
         <ImageView
+            android:id="@+id/btSport"
             android:layout_width="0dp"
             android:layout_height="85dp"
             android:layout_weight="1"
