@@ -15,6 +15,44 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="ประเภทนวดที่คุณเลือก"
+        android:textSize="20sp"
+        android:layout_margin="10dp"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/borderbottomnavi"
+        android:padding="16dp"
+        android:layout_margin="10dp">
+        <ImageView
+    android:layout_width="80dp"
+    android:layout_height="80dp"
+    android:id="@+id/person_photo"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentTop="true"
+    android:layout_marginRight="16dp"
+    android:src="@drawable/msherbal" />
+    <TextView
+        android:id="@+id/massage_name"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_toRightOf="@+id/person_photo"
+    android:layout_alignParentTop="true"
+    android:textSize="30sp"
+    android:text="นวดประคบ" />
+    <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/person_age"
+    android:layout_toRightOf="@+id/person_photo"
+    android:layout_below="@+id/massage_name"
+    android:text="บริการนวดประคบ"
+    android:textSize="20dp" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="กรุณาระบุชั่วโมง"
         android:textSize="20sp"
         android:layout_margin="10dp"/>
@@ -23,69 +61,99 @@
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp">
+        android:layout_margin="5dp">
 
-
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/decrease"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="decreaseInteger"
-                android:text="-" />
+            android:padding="5dp">
 
             <TextView
-                android:id="@+id/integer_number"
+                android:id="@+id/tvHours1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_marginTop="16dp"
-                android:text="0"
-                android:textStyle="bold"
-                android:textSize="20sp" />
+                android:text="1 ขั่วโมง"
+                android:textSize="20sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="฿300"
+                android:textSize="20sp"
+                android:layout_below="@+id/tvHours1"/>
 
             <Button
-                android:id="@+id/increase"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="increaseInteger"
-                android:text="+" />
-        </LinearLayout>
-        <!--<RelativeLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:padding="16dp">-->
-            <!--<ImageView-->
-                <!--android:layout_width="80dp"-->
-                <!--android:layout_height="80dp"-->
-                <!--android:id="@+id/person_photo"-->
-                <!--android:layout_alignParentLeft="true"-->
-                <!--android:layout_alignParentTop="true"-->
-                <!--android:layout_marginRight="16dp"-->
-                <!--android:src="@drawable/msherbal" />-->
-            <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:id="@+id/massage_name"-->
-                <!--android:layout_toRightOf="@+id/person_photo"-->
-                <!--android:layout_alignParentTop="true"-->
-                <!--android:textSize="30sp"-->
-                <!--android:text="นวดประคบ" />-->
-            <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:id="@+id/person_age"-->
-                <!--android:layout_toRightOf="@+id/person_photo"-->
-                <!--android:layout_below="@+id/massage_name"-->
-                <!--android:text="บริการนวดประคบ"-->
-                <!--android:textSize="20dp" />-->
-        <!--</RelativeLayout>-->
+                android:layout_alignParentRight="true"
+                android:text="จอง"
+                android:layout_centerInParent="true"
+                android:background="@drawable/login_btn"/>
+        </RelativeLayout>
     </android.support.v7.widget.CardView>
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/tvHours13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1.30 ขั่วโมง"
+                android:textSize="20sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="฿350"
+                android:textSize="20sp"
+                android:layout_below="@+id/tvHours13"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="จอง"
+                android:layout_centerInParent="true"
+                android:background="@drawable/login_btn"/>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/tvHours2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2 ขั่วโมง"
+                android:textSize="20sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="฿400"
+                android:textSize="20sp"
+                android:layout_below="@+id/tvHours2"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="จอง"
+                android:layout_centerInParent="true"
+                android:background="@drawable/login_btn"/>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
 </LinearLayout>
