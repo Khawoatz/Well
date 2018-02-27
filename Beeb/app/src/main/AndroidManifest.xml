@@ -3,6 +3,7 @@
     package="com.example.khawoat_rmbp.well">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <application
         android:name="android.support.multidex.MultiDexApplication"
@@ -26,15 +27,18 @@
         <activity android:name=".Massage_Service.Foot_Massage" />
         <activity android:name=".Massage_Service.Migraine_Massage" />
         <activity android:name=".Massage_Service.Sport_Massage" />
-        <activity android:name=".Reservation.reservation">
+        <activity android:name=".Reservation.reservation"/>
+
+        <activity android:name=".Reservation.Reservation_location" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Reservation.Reservation_location" />
         <activity android:name=".Reservation.Reservation_schedule"></activity>
+        <meta-data android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_place_api"></meta-data>
     </application>
 
 </manifest>

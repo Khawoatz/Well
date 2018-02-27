@@ -25,20 +25,7 @@ public class reservation extends AppCompatActivity {
         mTitleBar.setTitle("New Booking");
         mTitleBar.setLeftButtonImage(R.drawable.requesticontitle,15,15);
     }
-    public void increaseInteger(View view) {
-        minteger = minteger + 0.5;
-        display(minteger);
 
-    }public void decreaseInteger(View view) {
-        minteger = minteger - 0.5;
-        display(minteger);
-    }
-
-    private void display(double number) {
-        TextView displayInteger = (TextView) findViewById(
-                R.id.integer_number);
-        displayInteger.setText("" + number);
-    }
     private void changeStatusBarColor() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
