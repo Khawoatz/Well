@@ -4,15 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.khawoat_rmbp.well.Update_profile_User">
+    <com.nanchen.titlebar.TitleView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/titleBar"/>
 
     <ImageView
         android:id="@+id/imgProfile"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:background="@drawable/circleimage" />
+        android:background="@drawable/circleimage"
+        android:layout_below="@id/titleBar"/>
 
     <TextView
         android:id="@+id/nameProfile"
@@ -24,9 +28,11 @@
         android:text="Natta" />
    <!--1-->
     <LinearLayout
+        android:id="@+id/ll_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_below="@id/nameProfile">
 
         <TextView
             android:layout_width="wrap_content"
@@ -42,9 +48,11 @@
     </LinearLayout>
     <!--2-->
     <LinearLayout
+        android:id="@+id/ll_surname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_below="@id/ll_name">
 
         <TextView
             android:layout_width="wrap_content"
@@ -60,9 +68,11 @@
     </LinearLayout>
     <!--3-->
     <LinearLayout
+        android:id="@+id/ll_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_below="@+id/ll_surname">
 
         <TextView
             android:layout_width="wrap_content"
@@ -78,9 +88,11 @@
     </LinearLayout>
     <!--4-->
     <LinearLayout
+        android:id="@+id/ll_telephone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_below="@+id/ll_email">
 
         <TextView
             android:layout_width="wrap_content"
@@ -96,9 +108,11 @@
     </LinearLayout>
     <!--5-->
     <LinearLayout
+        android:id="@+id/ll_district"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_below="@+id/ll_telephone">
 
         <TextView
             android:layout_width="wrap_content"
@@ -114,9 +128,11 @@
     </LinearLayout>
     <!--6-->
     <LinearLayout
+        android:id="@+id/ll_province"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_below="@+id/ll_district">
 
         <TextView
             android:layout_width="wrap_content"
@@ -127,13 +143,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
-            android:hint="จังหวะ" />
+            android:hint="จังหวัด" />
 
     </LinearLayout>
-    <com.nanchen.titlebar.TitleView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/titleBar"/>
+
 
 
 </RelativeLayout>
