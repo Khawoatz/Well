@@ -3,8 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Beeb.iml" filepath="$PROJECT_DIR$/Beeb.iml" />
+      <module fileurl="file://C:\Users\jah\StudioProjects\Well3\Beeb\Beeb.iml" filepath="C:\Users\jah\StudioProjects\Well3\Beeb\Beeb.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\jah\StudioProjects\Well3\Beeb\app\app.iml" filepath="C:\Users\jah\StudioProjects\Well3\Beeb\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/titlebar/titlebar.iml" filepath="$PROJECT_DIR$/titlebar/titlebar.iml" />
+      <module fileurl="file://C:\Users\jah\StudioProjects\Well3\Beeb\titlebar\titlebar.iml" filepath="C:\Users\jah\StudioProjects\Well3\Beeb\titlebar\titlebar.iml" />
     </modules>
   </component>
 </project>
