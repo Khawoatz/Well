@@ -44,7 +44,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_place_api" />
 
-        <activity android:name=".activity_update_profile"></activity>
+        <activity android:name=".Update_profile_User"></activity>
     </application>
 
 </manifest>
