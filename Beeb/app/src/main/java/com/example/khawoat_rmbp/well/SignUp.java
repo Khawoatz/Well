@@ -5,12 +5,17 @@ import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Build;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -30,12 +35,14 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.example.khawoat_rmbp.well.Adapter.RequestHandler;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
 
+import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -52,13 +59,34 @@ public class SignUp extends AppCompatActivity {
     private RadioGroup genderRadioGroup;
     private EditText etname,etsurname,etemail,etpassword,etpasswordrepeat,ettelephone,etage,etarea;
     private static final String TAG = "RegisterActivity";
-    private static final String URL_FOR_REGISTRATION = "http://203.158.131.67/~Adminwell/App/register.php";
+    private static final String URL_FOR_REGISTRATION = "http://203.158.131.67/~Adminwell/App/register_user.php";
+    private static final String UPLOAD_URL = "http://203.158.131.67/~Adminwell/App/upload.php";
+    private static final String UPLOAD_KEY = "image";
+    private Spinner spinnerDistrict,spinnerProvince;
     ProgressDialog progressDialog;
+    private int PICK_IMAGE_REQUEST = 1;
+    private Uri filePath;
+    private Bitmap bitmap;
+    private ImageView img_ID;
+    private Button btnUpload;
+    private String result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+
+        spinnerProvince = (Spinner) findViewById(R.id.dl_province);
+////        ArrayAdapter<String> arrayProvince=new ArrayAdapter<String>(this,
+////                android.R.layout.simple_dropdown_item_1line,SpinnerProvince);
+        ArrayAdapter arrayProvince = ArrayAdapter.createFromResource(this,R.array.province_array,R.layout.spinner_item);
+        spinnerProvince.setAdapter(arrayProvince);
+
+        spinnerDistrict = (Spinner) findViewById(R.id.dl_district);
+//        ArrayAdapter<String> arrayDistrict = new ArrayAdapter<String>(this,
+//                android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.district_array));
+        ArrayAdapter arrayDistrict = ArrayAdapter.createFromResource(this,R.array.district_array,R.layout.spinner_item);
+        spinnerDistrict.setAdapter(arrayDistrict);
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
@@ -68,6 +96,8 @@ public class SignUp extends AppCompatActivity {
         }
 
         changeStatusBarColor();
+
+        img_ID = (ImageView) findViewById(R.id.imgID);
 
         TextView tvsignup = (TextView) findViewById(R.id.tv_sign_up);
         TextView tvhaveacc = (TextView) findViewById(R.id.tv_have_acc);
@@ -90,14 +120,12 @@ public class SignUp extends AppCompatActivity {
         etpasswordrepeat = (EditText) findViewById(R.id.et_password_repeat);
         ettelephone = (EditText) findViewById(R.id.et_telephone);
         etage = (EditText) findViewById(R.id.et_age);
-        etarea = (EditText) findViewById(R.id.et_area);
-
         genderRadioGroup = (RadioGroup) findViewById(R.id.gender_radio_group);
         RadioButton rbMale = (RadioButton) findViewById(R.id.male_radio_btn);
         RadioButton rbFemale = (RadioButton) findViewById(R.id.female_radio_btn);
 
         Button btnSignup = (Button) findViewById(R.id.btn_sign_up);
-        Button btnUpload = (Button) findViewById(R.id.btn_uploadid);
+        btnUpload = (Button) findViewById(R.id.btn_uploadid);
 
         Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/RSUlight.ttf");
         tvhaveacc.setTypeface(custom_font);
@@ -123,7 +151,7 @@ public class SignUp extends AppCompatActivity {
         rbFemale.setTypeface(custom_font);
         tvidimg.setTypeface(custom_font);
         tvarea.setTypeface(custom_font);
-        etarea.setTypeface(custom_font);
+//        etarea.setTypeface(custom_font);
         btnUpload.setTypeface(custom_font);
         ll_button = (LinearLayout) findViewById(R.id.ll_button);
         ease(ll_button);
@@ -151,16 +179,95 @@ public class SignUp extends AppCompatActivity {
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                submitForm();
+
+                uploadImage();
+                submitForm(result);
+            }
+        });
+
+        btnUpload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showFileChooser();
             }
         });
 
     }
 
+    private void showFileChooser() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent,"เลือกรูปภาพ"), PICK_IMAGE_REQUEST);
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+
+            filePath = data.getData();
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+                img_ID.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public String getStringImage(Bitmap bmp){
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] imageBytes = baos.toByteArray();
+        String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
+        return encodedImage;
+    }
+
+    private void uploadImage(){
+        class UploadImage extends AsyncTask<Bitmap,Void,String> {
+
+            ProgressDialog loading;
+            RequestHandler rh = new RequestHandler();
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                loading = ProgressDialog.show(SignUp.this, "Uploading...", null,true,true);
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                loading.dismiss();
+                Toast.makeText(getApplicationContext(),s,Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public String doInBackground(Bitmap... params) {
+                bitmap = params[0];
+                String uploadImage = getStringImage(bitmap);
+                HashMap<String,String> data = new HashMap<>();
+
+                data.put(UPLOAD_KEY, uploadImage);
+
+                result = rh.sendPostRequest(UPLOAD_URL,data);
+
+                return result;
+            }
+        }
+
+        UploadImage ui = new UploadImage();
+        ui.execute(bitmap);
+    }
 
 
-    private void submitForm() {
+
+    private void submitForm(String citizenid) {
         int selectedId = genderRadioGroup.getCheckedRadioButtonId();
+        String textDistrict = spinnerDistrict.getSelectedItem().toString();
+        String textProvince = spinnerProvince.getSelectedItem().toString();
+
         String gender;
         if (selectedId == R.id.female_radio_btn)
             gender = "Female";
@@ -173,12 +280,16 @@ public class SignUp extends AppCompatActivity {
                 gender,
                 ettelephone.getText().toString(),
                 etage.getText().toString(),
-                etarea.getText().toString());
+                textDistrict,
+                textProvince,
+                citizenid);
         Log.d("Gender",gender);
+        Log.d("District",textDistrict);
+        Log.d("Province",textProvince);
 
     }
     private void registerUser(final String name, final String surname, final String email, final String password, final String gender,
-                              final String telephone, final String age, final String address) {
+                              final String telephone, final String age, final String address, final String province,final String citizenpic) {
         // Tag used to cancel the request
         String cancel_req_tag = "register";
         progressDialog.setMessage("Adding you ...");
@@ -188,27 +299,27 @@ public class SignUp extends AppCompatActivity {
             public void onResponse(String response) {
                 Log.d(TAG, "Register Response: " + response);
                 hideDialog();
-                try {
-                    JSONObject jO = new JSONObject(response);
-                    boolean error = jO.getBoolean("error");
-                    if (!error) {
-                        String user = jO.getJSONObject("user").getString("Name");
-                        Toast.makeText(getApplicationContext(), "Hi " + user +", You are successfully Added!", Toast.LENGTH_SHORT).show();
+//                try {
+//                    JSONObject jO = new JSONObject(response);
+//                    boolean error = jO.getBoolean("error");
+                    if (response.toString().equals("true")){
+//                        String user = jO.getJSONObject("user").getString("Name");
+//                        Toast.makeText(getApplicationContext(), "Hi " + user +", You are successfully Added!", Toast.LENGTH_SHORT).show();
                         // Launch login activity
-                        Intent intent = new Intent(
-                                SignUp.this,
-                                LoginUser.class);
-                        startActivity(intent);
-                        finish();
-                    } else {
-                        String errorMsg = jO.getString("error_msg");
-                        Toast.makeText(getApplicationContext(),
-                                errorMsg, Toast.LENGTH_LONG).show();
+                        Intent i = new Intent(SignUp.this,LoginUser.class);
+                        startActivity(i);
+                    Toast.makeText(SignUp.this, "Welcome :"+name, Toast.LENGTH_SHORT).show();
+
+                }else {
+
+                    Toast.makeText(SignUp.this, "ERROR", Toast.LENGTH_SHORT).show();
+
+
                     }
-                } catch (JSONException e) {
-                    e.printStackTrace();
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
                 }
-            }
+
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
@@ -229,7 +340,9 @@ public class SignUp extends AppCompatActivity {
                 params.put("Gender", gender);
                 params.put("Telephone",telephone);
                 params.put("Age", age);
-                params.put("Address",address);
+                params.put("District",address);
+                params.put("Province",province);
+                params.put("Citizen_Pic",citizenpic);
                 return params;
             }
         };

@@ -34,57 +34,56 @@ public class ServiceFragment extends Fragment {
     private ViewPager viewPager;
     private RadioGroup radioGroup_homeservice;
     private RadioButton rb_homeservice, rb_request, rb_notification, rb_setting;
-    private ImageView btHerball,btAcupunc,btOil,btFoot,btMigraine,btSport;
+    private ImageView btHerball,btAcupuncc,btOill,btFoott,btMigrainee,btSportt;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_service_fragment, null);
 
-
-        btHerball = (ImageView) getView().findViewById(R.id.btHerbal);
-        btAcupunc = (ImageView) getView().findViewById(R.id.btAcupunc);
-        btOil = (ImageView) getView().findViewById(R.id.btOil);
-        btFoot = (ImageView) getView().findViewById(R.id.btFoot);
-        btMigraine = (ImageView) getView().findViewById(R.id.btMigraine);
-        btSport = (ImageView) getView().findViewById(R.id.btSport);
+        btHerball = (ImageView) view.findViewById(R.id.btHerbal);
+        btAcupuncc = (ImageView) view.findViewById(R.id.btAcupunc);
+        btOill = (ImageView) view.findViewById(R.id.btOil);
+        btFoott = (ImageView) view.findViewById(R.id.btFoot);
+        btMigrainee = (ImageView) view.findViewById(R.id.btMigraine);
+        btSportt = (ImageView) view.findViewById(R.id.btSport);
 
         btHerball.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(),Herbal_Massage.class);
+                Intent i = new Intent(ServiceFragment.this.getActivity(),Herbal_Massage.class);
                 startActivity(i);
             }
         });
 
-        btAcupunc.setOnClickListener(new View.OnClickListener() {
+        btAcupuncc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(ServiceFragment.this.getActivity(),Acupunc_Massage.class);
                 startActivity(i);
             }
         });
-        btOil.setOnClickListener(new View.OnClickListener() {
+        btOill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(ServiceFragment.this.getActivity(),Oil_Massage.class);
                 startActivity(i);
             }
         });
-        btFoot.setOnClickListener(new View.OnClickListener() {
+        btFoott.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(ServiceFragment.this.getActivity(),Foot_Massage.class);
                 startActivity(i);
             }
         });
-        btMigraine.setOnClickListener(new View.OnClickListener() {
+        btMigrainee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(ServiceFragment.this.getActivity(),Migraine_Massage.class);
                 startActivity(i);
             }
         });
-        btSport.setOnClickListener(new View.OnClickListener() {
+        btSportt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(ServiceFragment.this.getActivity(),Sport_Massage.class);

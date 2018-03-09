@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -16,17 +16,71 @@
         android:logo="@drawable/booking"
         android:background="#FFCC00">
     </Toolbar>
-
-    <DatePicker
-        android:id="@+id/simpleDatePicker"
+    <TextView
+        android:id="@+id/tvhead"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:calendarViewShown="true"
-        android:spinnersShown="false">
-        </DatePicker>
+        android:layout_height="wrap_content"
+        android:text="โปรดเลือกวันและเวลานัดหมาย"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_margin="5dp"
+        android:layout_below="@id/toolbar"/>
+<LinearLayout
+    android:id="@+id/lldate"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:orientation="vertical"
+    android:layout_below="@id/tvhead">
 
-    <TimePicker
+    <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"></TimePicker>
+        android:layout_height="wrap_content"
+        android:text="วันที่"
+        android:textSize="15sp"/>
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:padding="5dp"
+        android:gravity="center_vertical"
+        android:background="#FFFF99"
+        android:textSize="15sp"
+        android:text=""/>
 
 </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="vertical"
+        android:layout_below="@id/lldate">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="เวลา"
+            android:textSize="15sp"/>
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:padding="5dp"
+            android:gravity="center_vertical"
+            android:background="#FFFF99"
+            android:textSize="15sp"
+            android:text=""/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_sign_up"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="ต่อไป"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:textColor="@color/colorPrimary"
+        android:background="@drawable/login_btn"
+        android:layout_alignParentBottom="true"
+        />
+</RelativeLayout>
