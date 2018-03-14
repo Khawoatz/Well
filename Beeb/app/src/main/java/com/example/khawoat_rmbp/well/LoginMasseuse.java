@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.os.Build;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -37,9 +38,10 @@ import java.util.Map;
 public class LoginMasseuse extends AppCompatActivity {
 
     private static final String TAG = "LoginMasseuse";
-    private static final String URL_FOR_LOGIN = "http://203.158.131.67/~Adminwell/App/loginMasseuse.php";
+    private static final String URL_FOR_LOGIN = "http://203.158.131.67/~Adminwell/App/Login_Mass.php";
     ProgressDialog progressDialog;
 
+    private String responseTxt = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,8 +109,8 @@ public class LoginMasseuse extends AppCompatActivity {
     private void loginUser( final String email, final String password) {
         // Tag used to cancel the request
         String cancel_req_tag = "login";
-        progressDialog.setMessage("Logging you in...");
-        showDialog();
+//        progressDialog.setMessage("Logging you in...");
+//        showDialog();
         StringRequest strReq = new StringRequest(Request.Method.POST,
                 URL_FOR_LOGIN, new Response.Listener<String>() {
             @Override
@@ -116,20 +118,18 @@ public class LoginMasseuse extends AppCompatActivity {
                 Log.d(TAG, "Register Response: " + response);
 //                hideDialog();
                 try {
+                    responseTxt = response.replace("localhost","");
                     JSONObject jObj = new JSONObject(response);
-                    boolean error = jObj.getBoolean("error");
-                    if (!error) {
-                        String user = jObj.getJSONObject("user").getString("Name");
+                        String MassID = jObj.getString("Masseuse_id");
                         // Launch User activity
+
+
                         Intent intent = new Intent(LoginMasseuse.this, MainFragmentMasseuse.class);
-                        intent.putExtra("Name", user);
+
+                        PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("IDMass",MassID).commit();
                         startActivity(intent);
                         finish();
-                    } else {
-                        String errorMsg = jObj.getString("error_msg");
-                        Toast.makeText(getApplicationContext(),
-                                errorMsg, Toast.LENGTH_LONG).show();
-                    }
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -139,7 +139,7 @@ public class LoginMasseuse extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 Log.e(TAG, "Login Error: " + error.getMessage());
                 Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-                hideDialog();
+//                hideDialog();
             }
         }) {
             @Override
@@ -185,12 +185,12 @@ public class LoginMasseuse extends AppCompatActivity {
         animatorSet.setDuration(700);
         animatorSet.start();
     }
-                private void showDialog() {
-                if (!progressDialog.isShowing())
-                    progressDialog.show();
-            }
-            private void hideDialog() {
-                if (progressDialog.isShowing())
-                    progressDialog.dismiss();
-            }
+//                private void showDialog() {
+//                if (!progressDialog.isShowing())
+//                    progressDialog.show();
+//            }
+//            private void hideDialog() {
+//                if (progressDialog.isShowing())
+//                    progressDialog.dismiss();
+//            }
 }

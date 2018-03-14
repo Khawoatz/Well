@@ -14,7 +14,7 @@ import android.widget.Spinner;
 public class SignUpMasseuse extends AppCompatActivity {
 
     private static final String TAG = "RegisterActivityMasseuse";
-    private static final String URL_FOR_REGISTRATION = "http://203.158.131.67/~Adminwell/App/register_masseuse.php";
+    private static final String URL_FOR_REGISTRATION = "http://203.158.131.67/~Adminwell/App/RegisterMass.php";
     ProgressDialog progressDialog;
     String [] SpinnerProvince = {"กรุงเทพมหานคร"};
 
