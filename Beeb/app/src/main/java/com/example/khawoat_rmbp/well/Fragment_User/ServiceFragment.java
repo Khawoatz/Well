@@ -1,6 +1,8 @@
 package com.example.khawoat_rmbp.well.Fragment_User;
 
+import android.content.Context;
 import android.content.Intent;
+import android.preference.PreferenceManager;
 import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -47,18 +49,23 @@ public class ServiceFragment extends Fragment {
         btMigrainee = (ImageView) view.findViewById(R.id.btMigraine);
         btSportt = (ImageView) view.findViewById(R.id.btSport);
 
+
+
         btHerball.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(ServiceFragment.this.getActivity(),Herbal_Massage.class);
+                PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putString("mstype","1").commit();
                 startActivity(i);
             }
+
         });
 
         btAcupuncc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(ServiceFragment.this.getActivity(),Acupunc_Massage.class);
+                PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putString("mstype","2").commit();
                 startActivity(i);
             }
         });
@@ -66,6 +73,7 @@ public class ServiceFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(ServiceFragment.this.getActivity(),Oil_Massage.class);
+                PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putString("mstype","3").commit();
                 startActivity(i);
             }
         });
@@ -73,6 +81,7 @@ public class ServiceFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(ServiceFragment.this.getActivity(),Foot_Massage.class);
+                PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putString("mstype","4").commit();
                 startActivity(i);
             }
         });
@@ -80,6 +89,7 @@ public class ServiceFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(ServiceFragment.this.getActivity(),Migraine_Massage.class);
+                PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putString("mstype","5").commit();
                 startActivity(i);
             }
         });
@@ -87,6 +97,7 @@ public class ServiceFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(ServiceFragment.this.getActivity(),Sport_Massage.class);
+                PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putString("mstype","6").commit();
                 startActivity(i);
             }
         });

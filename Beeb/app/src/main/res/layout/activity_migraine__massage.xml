@@ -25,19 +25,28 @@
         android:layout_marginTop="20dp"/>
 
     <ImageView
-        android:id="@+id/imgIconherbal"
+        android:id="@+id/imgIconmigraine"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:adjustViewBounds="true"
-        android:src="@drawable/msmigrain"
         android:background="@drawable/circleimage"
         android:padding="10dp"
-        android:layout_centerInParent="true"
+        android:src="@drawable/msmigrain" />
+    <TextView
+        android:id="@+id/tv_headmigraine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="นวดไมเกรน"
+        android:textSize="15sp"
+        android:gravity="center"
+        android:layout_below="@+id/imgIconmigraine"
         />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imgIconherbal"
+        android:layout_below="@+id/tv_headmigraine"
         android:orientation="vertical"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
@@ -68,7 +77,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/btn_sign_up"
+        android:id="@+id/btn_reserve"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="จองบริการ"

@@ -40,7 +40,7 @@ public class LoginMasseuse extends AppCompatActivity {
     private static final String TAG = "LoginMasseuse";
     private static final String URL_FOR_LOGIN = "http://203.158.131.67/~Adminwell/App/Login_Mass.php";
     ProgressDialog progressDialog;
-
+    private Button btnSignup;
     private String responseTxt = "";
 
     @Override
@@ -59,6 +59,8 @@ public class LoginMasseuse extends AppCompatActivity {
         TextView tvpassword = (TextView) findViewById(R.id.tv_password);
         TextView tvforgot = (TextView) findViewById(R.id.tv_forgotpass);
         TextView tvsignin = (TextView) findViewById(R.id.tv_sign_in);
+
+        btnSignup = (Button) findViewById(R.id.btn_sign_up);
 
         final EditText etemail = (EditText) findViewById(R.id.et_email);
         final EditText etpassword = (EditText) findViewById(R.id.et_password);
@@ -102,6 +104,14 @@ public class LoginMasseuse extends AppCompatActivity {
             public void onClick(View v) {
                 loginUser(etemail.getText().toString(),
                         etpassword.getText().toString());
+            }
+        });
+
+        btnSignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(LoginMasseuse.this,SignUpMasseuse.class);
+                startActivity(i);
             }
         });
     }

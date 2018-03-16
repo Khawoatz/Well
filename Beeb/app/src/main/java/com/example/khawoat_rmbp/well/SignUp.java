@@ -3,7 +3,10 @@ package com.example.khawoat_rmbp.well;
 import android.animation.AnimatorSet;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -51,7 +54,10 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLDecoder;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class SignUp extends AppCompatActivity {
@@ -70,11 +76,75 @@ public class SignUp extends AppCompatActivity {
     private ImageView img_ID;
     private Button btnUpload;
     private String result;
+    private String uploadImage;
+    TextView tvDistrict;
+    Dialog dialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+
+        tvDistrict = (TextView) findViewById(R.id.tv_district);
+        tvDistrict.setHint("กรุณาเลือกเขตของคุณ");
+        tvDistrict.setHintTextColor(getResources().getColor(R.color.text_shadow));
+
+        /*** ARRAY DISTRICT ***/
+
+
+//        final ArrayList itemSelected = new ArrayList();
+        tvDistrict.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(SignUp.this);
+                final String[] Dialog_district = getResources().getStringArray(R.array.district_array);
+                final boolean[] checkedItem = new boolean[Dialog_district.length];
+                final List<String> districtList = Arrays.asList(Dialog_district);
+
+                builder.setMultiChoiceItems(Dialog_district, null, new DialogInterface.OnMultiChoiceClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+
+                        checkedItem[which] = isChecked;
+
+                        String currentItem = districtList.get(which);
+
+                    }
+                });
+
+                builder.setCancelable(false);
+                builder.setTitle(" กรุณาเลือกเขตของคุณ ");
+
+                builder.setNegativeButton("เสร็จสิ้น", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        tvDistrict.setText("");
+                        for (int i = 0; i<checkedItem.length;i++){
+                            boolean checked = checkedItem[i];
+                            if (checked){
+                                tvDistrict.setText(tvDistrict.getText()+districtList.get(i)+",");
+                            }
+                        }
+
+                    }
+                });
+                builder.setPositiveButton("ยกเลิก", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                dialog = builder.create();
+                dialog.show();
+            }
+        });
+
+
+
+
+
+
 
         spinnerProvince = (Spinner) findViewById(R.id.dl_province);
 ////        ArrayAdapter<String> arrayProvince=new ArrayAdapter<String>(this,
@@ -82,11 +152,11 @@ public class SignUp extends AppCompatActivity {
         ArrayAdapter arrayProvince = ArrayAdapter.createFromResource(this,R.array.province_array,R.layout.spinner_item);
         spinnerProvince.setAdapter(arrayProvince);
 
-        spinnerDistrict = (Spinner) findViewById(R.id.dl_district);
-//        ArrayAdapter<String> arrayDistrict = new ArrayAdapter<String>(this,
-//                android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.district_array));
-        ArrayAdapter arrayDistrict = ArrayAdapter.createFromResource(this,R.array.district_array,R.layout.spinner_item);
-        spinnerDistrict.setAdapter(arrayDistrict);
+//        spinnerDistrict = (Spinner) findViewById(R.id.dl_district);
+////        ArrayAdapter<String> arrayDistrict = new ArrayAdapter<String>(this,
+////                android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.district_array));
+//        ArrayAdapter arrayDistrict = ArrayAdapter.createFromResource(this,R.array.district_array,R.layout.spinner_item);
+//        spinnerDistrict.setAdapter(arrayDistrict);
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
@@ -181,7 +251,7 @@ public class SignUp extends AppCompatActivity {
             public void onClick(View v) {
 
                 uploadImage();
-                submitForm(result);
+                submitForm(uploadImage);
             }
         });
 
@@ -246,7 +316,7 @@ public class SignUp extends AppCompatActivity {
             @Override
             public String doInBackground(Bitmap... params) {
                 bitmap = params[0];
-                String uploadImage = getStringImage(bitmap);
+                uploadImage = getStringImage(bitmap);
                 HashMap<String,String> data = new HashMap<>();
 
                 data.put(UPLOAD_KEY, uploadImage);
@@ -265,8 +335,9 @@ public class SignUp extends AppCompatActivity {
 
     private void submitForm(String citizenid) {
         int selectedId = genderRadioGroup.getCheckedRadioButtonId();
-        String textDistrict = spinnerDistrict.getSelectedItem().toString();
+//        String textDistrict = spinnerDistrict.getSelectedItem().toString();
         String textProvince = spinnerProvince.getSelectedItem().toString();
+        String textDistrict = tvDistrict.getText().toString();
 
         String gender;
         if (selectedId == R.id.female_radio_btn)
@@ -302,7 +373,7 @@ public class SignUp extends AppCompatActivity {
 //                try {
 //                    JSONObject jO = new JSONObject(response);
 //                    boolean error = jO.getBoolean("error");
-                    if (response.toString().equals("true")){
+                    if (response.equals("true")){
 //                        String user = jO.getJSONObject("user").getString("Name");
 //                        Toast.makeText(getApplicationContext(), "Hi " + user +", You are successfully Added!", Toast.LENGTH_SHORT).show();
                         // Launch login activity

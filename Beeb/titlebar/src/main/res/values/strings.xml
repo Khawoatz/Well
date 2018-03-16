@@ -5,7 +5,6 @@
     </string-array>
 
     <string-array name="district_array">
-        <item> - กรุณาเลือกเขตพื้นที่ของคุณ -</item>
         <item>พระนคร</item>
         <item>บางบอน</item>
         <item>บางกะปิ</item>

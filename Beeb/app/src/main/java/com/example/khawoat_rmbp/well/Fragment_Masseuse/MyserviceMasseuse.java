@@ -53,8 +53,8 @@ public class MyserviceMasseuse extends Fragment {
     }
     private void setupViewPager(ViewPager viewPager){
         SectionsPageAdapter adapter = new SectionsPageAdapter(getChildFragmentManager());
-        adapter.addFragment(new PendingWork(),"งานที่ดำเนินการอยู่");
-        adapter.addFragment(new SuccessWork(),"ประวัติงาน");
+        adapter.addFragment(new PendingMasseuse(),"งานที่ดำเนินการอยู่");
+        adapter.addFragment(new SuccessMasseuse(),"ประวัติงาน");
         viewPager.setAdapter(adapter);
     }
 }

@@ -79,6 +79,7 @@
         android:weightSum="3"
         android:layout_below="@+id/layoutMenu1">
         <TextView
+            android:id="@+id/tv_MsBall"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

@@ -23,7 +23,7 @@
         android:layout_marginTop="20dp"/>
 
     <ImageView
-        android:id="@+id/imgIconherbal"
+        android:id="@+id/imgIconsport"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:adjustViewBounds="true"
@@ -32,13 +32,25 @@
         android:padding="10dp"
         android:layout_centerInParent="true" />
 
+    <TextView
+        android:id="@+id/tv_headsport"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="นวดสปอร์ต"
+        android:textSize="15sp"
+        android:gravity="center"
+        android:layout_below="@+id/imgIconsport"
+        />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imgIconherbal"
+        android:layout_below="@+id/tv_headsport"
         android:orientation="vertical"
         android:paddingLeft="20dp"
         android:paddingRight="20dp">
+
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -50,6 +62,9 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -58,12 +73,12 @@
             android:textColor="#979696"
             android:textSize="16sp" />
 
-
+    </ScrollView>
 
     </LinearLayout>
 
     <Button
-        android:id="@+id/btn_sign_up"
+        android:id="@+id/btn_reserve"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="จองบริการ"

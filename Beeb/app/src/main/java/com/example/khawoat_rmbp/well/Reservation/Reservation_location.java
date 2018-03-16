@@ -1,9 +1,11 @@
 package com.example.khawoat_rmbp.well.Reservation;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.khawoat_rmbp.well.R;
@@ -15,12 +17,14 @@ import com.google.android.gms.location.places.ui.PlacePicker;
 public class Reservation_location extends AppCompatActivity {
 
     private TextView get_place;
+    private ImageView img_Map;
     int PLACE_PICKER_REQUEST = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservation_location);
+        img_Map = (ImageView) findViewById(R.id.img_Map);
         get_place = (TextView) findViewById(R.id.location_place);
         get_place.setOnClickListener(new View.OnClickListener() {
             @Override

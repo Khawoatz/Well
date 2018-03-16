@@ -358,12 +358,18 @@
                 android:layout_marginBottom="5dp"
                 android:textColor="@android:color/white"/>
 
-            <Spinner
-                android:id="@+id/dl_district"
+            <TextView
+                android:id="@+id/tv_district"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
-                android:textColor="@android:color/white"
-                />
+                android:textColor="#FFCC00"/>
+
+            <!--<Spinner-->
+                <!--android:id="@+id/dl_district"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="20dp"-->
+                <!--android:textColor="@android:color/white"-->
+                <!--/>-->
 
 
         </LinearLayout>
