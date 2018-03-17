@@ -16,17 +16,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".MainActivity"/>
-
+        <activity android:name=".MainActivity" />
         <activity android:name=".SignUp" />
         <activity android:name=".LoginUser" />
         <activity android:name=".ForgotPass" />
-        <activity android:name=".LoginMasseuse" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".LoginMasseuse">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".Fragment_User.MainFragment" />
         <activity android:name=".Fragment_Masseuse.MainFragmentMasseuse" />
@@ -45,9 +44,8 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_place_api" />
 
-        <activity android:name=".Update_profile_User" >
-
-    </activity>
+        <activity android:name=".Update_profile_User"></activity>
+        <activity android:name=".activity_update_profle_user2"></activity>
     </application>
 
 </manifest>

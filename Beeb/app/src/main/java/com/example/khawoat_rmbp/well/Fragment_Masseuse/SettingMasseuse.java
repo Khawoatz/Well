@@ -21,7 +21,7 @@ import java.util.Set;
 public class SettingMasseuse extends Fragment {
 
 
-    private Button btnEditprofile;
+    private Button btnEditprofile,btnAboutapp,btnContactus;
     public SettingMasseuse() {
         // Required empty public constructor
     }
@@ -47,11 +47,24 @@ public class SettingMasseuse extends Fragment {
         mTitleBar.setLeftButtonImage(R.drawable.settingicontitle,15,15);
 
         btnEditprofile = (Button) view.findViewById(R.id.btnEditprofile);
+        btnAboutapp = (Button) view.findViewById(R.id.btnAboutapp);
+        btnContactus = (Button) view.findViewById(R.id.btnContactus);
 
         btnEditprofile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(SettingMasseuse.this.getActivity(), Update_profile_User.class);
+                startActivity(i);
+            }
+        });
+
+        btnContactus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(android.content.Intent.ACTION_VIEW);
+                i.setData(Uri.parse("https://line.me/R/ti/p/%40and3482j"));
+              //  ntent.setData(Uri.parse("market://details?id=com.example.android"));
+
                 startActivity(i);
             }
         });

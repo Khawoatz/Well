@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +18,7 @@ import com.example.khawoat_rmbp.well.R;
 import com.nanchen.titlebar.TitleView;
 
 
-public class MyserviceMasseuse extends Fragment {
+public class MyserviceMasseuse extends Fragment,AppCompatActivity {
 
     private ViewPager mViewPager;
 
