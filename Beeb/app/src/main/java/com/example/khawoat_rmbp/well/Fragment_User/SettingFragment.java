@@ -1,6 +1,7 @@
 package com.example.khawoat_rmbp.well.Fragment_User;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,11 +9,15 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.khawoat_rmbp.well.R;
 import com.nanchen.titlebar.TitleView;
 
 public class SettingFragment extends Fragment {
+
+
+    private Button btnContactus,btnEditprofile;
 
 
     public SettingFragment() {
@@ -36,6 +41,20 @@ public class SettingFragment extends Fragment {
         TitleView mTitleBar = (TitleView) view.findViewById(R.id.titleBar);
         mTitleBar.setTitle("ตั้งค่า");
         mTitleBar.setLeftButtonImage(R.drawable.settingicontitle,15,15);
+
+        btnContactus = (Button) view.findViewById(R.id.btnContactus);
+        btnEditprofile = (Button) view.findViewById(R.id.btnEditprofile);
+
+        btnContactus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(android.content.Intent.ACTION_VIEW);
+                i.setData(Uri.parse("https://line.me/R/ti/p/%40and3482j"));
+                //  ntent.setData(Uri.parse("market://details?id=com.example.android"));
+
+                startActivity(i);
+            }
+        });
 
         // Inflate the layout for this fragment
         return view;

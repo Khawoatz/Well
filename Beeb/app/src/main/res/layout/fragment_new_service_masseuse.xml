@@ -8,15 +8,23 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="ยังไม่มีงานใหม่ในขณะนี้" />
+        android:text="@string/hello_blank_fragment" />
 
     <com.nanchen.titlebar.TitleView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/titleBar"/>
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/scrollPages"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layoutTab">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recylcerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="745dp"
+            tools:layout_editor_absoluteY="-51dp" />
+    </RelativeLayout>
+
 </RelativeLayout>
