@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -18,23 +19,17 @@ import com.example.khawoat_rmbp.well.R;
 import com.nanchen.titlebar.TitleView;
 
 
-public class MyserviceMasseuse extends Fragment,AppCompatActivity {
+public class MyserviceMasseuse extends Fragment {
 
     private ViewPager mViewPager;
 
-    public MyserviceMasseuse() {
-        // Required empty public constructor
-    }
-
-
-    public static MyserviceMasseuse newInstance(String content) {
-        MyserviceMasseuse fragment = new MyserviceMasseuse();
-        Bundle args = new Bundle();
-        args.putString("ARGS", content);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
+//    public static MyserviceMasseuse newInstance(String content) {
+//        MyserviceMasseuse fragment = new MyserviceMasseuse();
+//        Bundle args = new Bundle();
+//        args.putString("ARGS", content);
+//        fragment.setArguments(args);
+//        return fragment;
+//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
