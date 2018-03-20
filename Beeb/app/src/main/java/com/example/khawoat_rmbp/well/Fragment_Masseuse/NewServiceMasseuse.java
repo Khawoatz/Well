@@ -40,7 +40,7 @@ import java.util.Map;
 public class NewServiceMasseuse extends Fragment {
 
     private static final String URL_FROM_RECYCLERVIE_NEWSERVICE = "http://203.158.131.67/~Adminwell/App/RecyclerView_Newmyservice_Mass.php";
-    List<DataHistory>dataHistoryList;
+    List<DataHistory> dataHistoryList;
     RecyclerView recyclerView;
     String IDMass;
     private Button bntYes,bntNo;
@@ -59,7 +59,7 @@ public class NewServiceMasseuse extends Fragment {
         bntYes = (Button) view.findViewById(R.id.bntYes);
         bntNo = (Button) view.findViewById(R.id.bntNo);
         IDMass = PreferenceManager.getDefaultSharedPreferences(getContext()).getString("IDMass" , "Null Value");//การรับค่า
-        Log.d("IDmass",IDMass);
+        Log.d("MS1",IDMass);
         getdatalist(IDMass);
         //getting the recyclerview from xml
         recyclerView = (RecyclerView) view.findViewById(R.id.recylcerView);
@@ -76,13 +76,15 @@ public class NewServiceMasseuse extends Fragment {
 
         // Inflate the layout for this fragment
         return view;
+
+
     }
 
 
 
     private void getdatalist(final String id) {
         final String cancel_req_tag = "listview";
-        final StringRequest stringRequest = new StringRequest(Request.Method.GET,URL_FROM_RECYCLERVIE_NEWSERVICE, new Response.Listener<String>() {
+        final StringRequest stringRequest = new StringRequest(Request.Method.POST,URL_FROM_RECYCLERVIE_NEWSERVICE, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Log.d("LatResponse:", response.toString());
@@ -109,7 +111,8 @@ public class NewServiceMasseuse extends Fragment {
                 params.put("MS_ID", id);//  ชื่อซ้ายตรงกับ php ชื่อขวาตรงกับข้างบน
 
                 Log.d("select Map: ", String.valueOf(id));
-                return params;}
+                return params;
+            }
         };
         // Adding request to request queue
         AppSingleton.getInstance(getContext()).addToRequestQueue(stringRequest, cancel_req_tag);
