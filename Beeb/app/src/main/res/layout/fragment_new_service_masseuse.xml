@@ -4,27 +4,21 @@
     android:layout_height="match_parent"
     tools:context="com.example.khawoat_rmbp.well.Fragment_Masseuse.NewServiceMasseuse">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
     <com.nanchen.titlebar.TitleView
+        android:id="@+id/titleBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/titleBar"/>
+        android:layout_height="wrap_content" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/layoutTab">
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recylcerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:layout_editor_absoluteX="745dp"
-            tools:layout_editor_absoluteY="-51dp" />
+            android:layout_height="match_parent" />
     </RelativeLayout>
 
 </RelativeLayout>

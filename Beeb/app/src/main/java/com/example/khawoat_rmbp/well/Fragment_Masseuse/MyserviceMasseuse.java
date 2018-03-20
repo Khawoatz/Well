@@ -22,7 +22,7 @@ public class MyserviceMasseuse extends  Fragment{
 
     private ViewPager mViewPager;
 
-    public MyserviceMasseuse() {
+    public MyserviceMasseuse () {
         // Required empty public constructor
     }
 
@@ -42,7 +42,7 @@ public class MyserviceMasseuse extends  Fragment{
         View view = inflater.inflate(R.layout.fragment_myservice_masseuse, container, false);
 
         mViewPager = (ViewPager) view.findViewById(R.id.container);
-        setupViewPager(mViewPager);
+//        setupViewPager(mViewPager);
 
         TabLayout tabLayout = (TabLayout) view.findViewById(R.id.tabLay);
         tabLayout.setupWithViewPager(mViewPager);
@@ -56,6 +56,6 @@ public class MyserviceMasseuse extends  Fragment{
         SectionsPageAdapter adapter = new SectionsPageAdapter(getChildFragmentManager());
         adapter.addFragment(new PendingMasseuse(),"งานที่ดำเนินการอยู่");
         adapter.addFragment(new SuccessMasseuse(),"ประวัติงาน");
-        viewPager.setAdapter(adapter);
+  //      viewPager.setAdapter(adapter);
     }
 }

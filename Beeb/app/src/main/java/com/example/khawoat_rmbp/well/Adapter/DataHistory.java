@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
  */
 
 public class DataHistory {
-    @SerializedName("ำRes_id")
+    @SerializedName("Res_id")
     private String id;
 
     public String getId(){

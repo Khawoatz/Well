@@ -132,11 +132,11 @@ public class LoginMasseuse extends AppCompatActivity {
                     JSONObject jObj = new JSONObject(response);
                         String MassID = jObj.getString("Masseuse_id");
                         // Launch User activity
-
+                        Log.d("MassID",MassID);
 
                         Intent intent = new Intent(LoginMasseuse.this, MainFragmentMasseuse.class);
 
-                        PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("IDMass",MassID).commit();
+                        PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("IDMass",MassID).commit();//ส่งค่าไปหน้าอื่น
                         startActivity(intent);
                         finish();
 

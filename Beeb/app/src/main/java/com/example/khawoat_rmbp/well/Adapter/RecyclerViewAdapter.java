@@ -38,7 +38,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(ViewHolder holder, int position) {
 
         DataHistory dataHistory = dataHistoryList.get(position);
-
+        dataHistory.getNdCustomer();
         holder.tvNameCus.setText(dataHistory.getNdCustomer());
         holder.tvNameType.setText(dataHistory.getNameType());
         holder.tvDate.setText(dataHistory.getDate());

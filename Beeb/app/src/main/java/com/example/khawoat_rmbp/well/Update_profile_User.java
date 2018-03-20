@@ -59,6 +59,7 @@ public class Update_profile_User extends AppCompatActivity {
         edEmail = (EditText) findViewById(R.id.edEmail);
         edTel = (EditText) findViewById(R.id.edTel);
         IDMass = PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getString("IDMass" , "Null Value");//การรับค่า
+        Log.d("IDmassupdate",IDMass);
         selectDetailGatage(IDMass);
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
