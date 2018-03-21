@@ -5,7 +5,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.khawoat_rmbp.well.R;
 
@@ -19,7 +21,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     private Context context;
     private List<DataHistory> dataHistoryList;
-
+    DataHistory dataHistory;
     public RecyclerViewAdapter(Context context, List<DataHistory> DataHistoryList){
         this.context = context;
         this.dataHistoryList = DataHistoryList;
@@ -57,6 +59,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public class ViewHolder extends RecyclerView.ViewHolder {
             TextView tvNameCus,tvNameType,tvDate,tvStarTime,tvEndTime,tvLocation;
 
+
         public ViewHolder(View itemView) {
             super(itemView);
 
@@ -66,6 +69,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
            tvStarTime = (TextView) itemView.findViewById(R.id.tvStarTime);
            tvEndTime = (TextView) itemView.findViewById(R.id.tvEndTime);
            tvLocation = (TextView) itemView.findViewById(R.id.tvLocation);
+
+
         }
     }
 }

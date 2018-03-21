@@ -108,7 +108,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20dp"
-                android:text="เวลาเจบ : "
+                android:text="เวลาจบ : "
                 android:textColor="#ffff"
                 />
 
@@ -130,7 +130,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20dp"
-                android:text="เวลาเจบ : "
+                android:text="สถานที่ : "
                 android:textColor="#ffff"
                 />
 
@@ -147,21 +147,7 @@
 
         <TableRow>
 
-            <Button
-                android:id="@+id/bntYes"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="รับงาน "
 
-                />
-
-            <Button
-                android:id="@+id/bntNo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="ไม่รับงาน"
 
 
                 />
