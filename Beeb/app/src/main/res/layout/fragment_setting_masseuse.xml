@@ -101,7 +101,12 @@
             android:layout_marginTop="10dp"
             android:drawableRight="@drawable/logout"
             android:background="@drawable/borderbottomnavi" />
+       <ImageView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           />
     </LinearLayout>
+
     <com.nanchen.titlebar.TitleView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

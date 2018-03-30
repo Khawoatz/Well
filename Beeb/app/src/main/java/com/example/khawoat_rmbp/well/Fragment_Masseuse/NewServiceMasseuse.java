@@ -50,7 +50,7 @@ public class NewServiceMasseuse extends Fragment {
     private static final String URL_FROM_RECYCLERVIE_NEWSERVICE_UPDATE = "http://203.158.131.67/~Adminwell/App/RecyclerView_Newmyservice_Mass_Update.php";
 
     List<DataHistory> dataHistoryList;
-    RecyclerView recyclerView;
+     RecyclerView recyclerView;
     String IDMass;
     private Button bntYes,bntNo;
 
@@ -70,6 +70,8 @@ public class NewServiceMasseuse extends Fragment {
         final View[] view = {inflater.inflate(R.layout.fragment_new_service_masseuse, null)};
 
         IDMass = PreferenceManager.getDefaultSharedPreferences(getContext()).getString("IDMass" , "Null Value");//การรับค่า
+        Toast.makeText(getContext(),IDMass,Toast.LENGTH_SHORT).show();
+
         Log.d("MS1",IDMass);
         getdatalist(IDMass);
         //getting the recyclerview from xml
@@ -102,7 +104,7 @@ public class NewServiceMasseuse extends Fragment {
                     final String getId = dataHistoryList.get(RecyclerViewClickedItemPOS).getId();
                   //  Toast.makeText(getContext(),getId,Toast.LENGTH_SHORT).show();
                     AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                    builder.setMessage("คุณต้องการรับงานหรือไม่"+getId);
+                    builder.setMessage("คุณต้องการรับงานหรือไม่");
                     builder.setPositiveButton("รับ", new DialogInterface.OnClickListener() {
 
 
@@ -111,6 +113,8 @@ public class NewServiceMasseuse extends Fragment {
 
                           //  Toast.makeText(getContext(),"คุณได้รับงานนี้แล้ว",Toast.LENGTH_SHORT).show();
                             selectAppovred(getId,"1");
+
+
                         }
                     });
                     builder.setNegativeButton("ไม่รับ", new DialogInterface.OnClickListener() {
@@ -122,28 +126,19 @@ public class NewServiceMasseuse extends Fragment {
                         }
                     });
 
-
-
                     builder.show();
-
-
                 }
             return false;
             }
-
             @Override
             public void onTouchEvent(RecyclerView rv, MotionEvent e) {
 
             }
-
             @Override
             public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
 
             }
         });
-
-
-
 
         //initializing the dataHistoryList
         //dataHistoryList = new ArrayList<>();
@@ -157,7 +152,6 @@ public class NewServiceMasseuse extends Fragment {
 
 
     }
-
 
 
 
@@ -197,17 +191,21 @@ public class NewServiceMasseuse extends Fragment {
         AppSingleton.getInstance(getContext()).addToRequestQueue(stringRequest, cancel_req_tag);
 
     }
-
+///update
     private void selectAppovred (final String id , final String choice){
         String cancel_reg_tag ="update";
 
         StringRequest strReq = new StringRequest(Request.Method.POST, URL_FROM_RECYCLERVIE_NEWSERVICE_UPDATE, new Response.Listener<String>() {
             public void onResponse(String response) {
 
-               Log.d("response123",response.toString());
+                Log.d("response123",response.toString());
+                getdatalist(IDMass);
+                recyclerView.setAdapter(mAdapter);
                // Toast.makeText(getContext(),response.toString(),Toast.LENGTH_SHORT).show();
                 if (response.equals("AP_Success")) {
+
                     Toast.makeText(getContext(), "คุณได้รับงานนี้แล้ว", Toast.LENGTH_SHORT).show();
+
                 } else {
                     Toast.makeText(getContext(), "ไม่สำเร็จ", Toast.LENGTH_SHORT).show();
 

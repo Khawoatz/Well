@@ -10,33 +10,31 @@
     card_view:contentPadding="7dp"
     android:padding="10dp"
     android:layout_margin="7dp"
-    card_view:cardBackgroundColor="#00B9FF"
+    card_view:cardBackgroundColor="#41A541"
     >
-
-
     <TableLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
 
-       <!-- <TableRow>
-            <TextView
-                android:id="@+id/textView10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="รหัสการจอง : "
-                android:textColor="#ffff"
-                />
+        <!-- <TableRow>
+             <TextView
+                 android:id="@+id/textView10"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:textSize="20dp"
+                 android:text="รหัสการจอง : "
+                 android:textColor="#ffff"
+                 />
 
-            <TextView
-                android:id="@+id/tvRes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="reserve"
-                android:textColor="#ffff"
-                />
-        </TableRow> !-->
+             <TextView
+                 android:id="@+id/tvRes"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:textSize="20dp"
+                 android:text="reserve"
+                 android:textColor="#ffff"
+                 />
+         </TableRow> !-->
 
         <TableRow>
             <TextView
@@ -170,7 +168,7 @@
 
 
 
-                />
+            />
 
         </TableRow>
 

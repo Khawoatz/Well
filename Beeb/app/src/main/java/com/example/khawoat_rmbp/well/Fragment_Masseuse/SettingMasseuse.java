@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RatingBar;
 
 import com.example.khawoat_rmbp.well.R;
 import com.example.khawoat_rmbp.well.Update_profile_User;
@@ -22,6 +23,8 @@ public class SettingMasseuse extends Fragment {
 
 
     private Button btnEditprofile,btnAboutapp,btnContactus;
+    private RatingBar rb;
+
     public SettingMasseuse() {
         // Required empty public constructor
     }
@@ -49,6 +52,8 @@ public class SettingMasseuse extends Fragment {
         btnEditprofile = (Button) view.findViewById(R.id.btnEditprofile);
         btnAboutapp = (Button) view.findViewById(R.id.btnAboutapp);
         btnContactus = (Button) view.findViewById(R.id.btnContactus);
+        rb = (RatingBar) view.findViewById(R.id.rb);
+        rb.getVisibility();
 
         btnEditprofile.setOnClickListener(new View.OnClickListener() {
             @Override

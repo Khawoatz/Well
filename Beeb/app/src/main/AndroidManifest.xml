@@ -45,7 +45,7 @@
             android:value="@string/google_place_api" />
 
         <activity android:name=".Update_profile_User"></activity>
-        <activity android:name=".activity_update_profle_user2"></activity>
+        <activity android:name=".Update_profle_user2"></activity>
     </application>
 
 </manifest>
