@@ -11,7 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.khawoat_rmbp.well.Fragment_Masseuse.SettingMasseuse;
 import com.example.khawoat_rmbp.well.R;
+import com.example.khawoat_rmbp.well.Update_profile_User;
+import com.example.khawoat_rmbp.well.Update_profle_user2;
 import com.nanchen.titlebar.TitleView;
 
 public class SettingFragment extends Fragment {
@@ -44,6 +47,14 @@ public class SettingFragment extends Fragment {
 
         btnContactus = (Button) view.findViewById(R.id.btnContactus);
         btnEditprofile = (Button) view.findViewById(R.id.btnEditprofile);
+
+        btnEditprofile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(SettingFragment.this.getActivity(), Update_profle_user2.class);
+                startActivity(i);
+            }
+        });
 
         btnContactus.setOnClickListener(new View.OnClickListener() {
             @Override
