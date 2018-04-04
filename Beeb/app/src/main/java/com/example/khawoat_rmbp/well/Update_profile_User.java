@@ -94,6 +94,7 @@ public class Update_profile_User extends AppCompatActivity {
                     String Surname = jObj.getString("Surname");
                     String Email = jObj.getString("Email");
                     String Tel = jObj.getString("Telephone");
+                    Log.d("lol",Name);
 
 //          ส่งค่าไปหน้าอื่น              PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putString("sGaragename", Garagename).commit();
 //                        PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putString("sAddress", Address).commit();

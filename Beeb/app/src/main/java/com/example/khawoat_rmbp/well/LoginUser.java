@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.os.Build;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -119,14 +120,19 @@ public class LoginUser extends AppCompatActivity {
                 hideDialog();
                 try {
                     JSONObject jObj = new JSONObject(response);
+                    Log.d("ctoooo",response.toString());
                     boolean error = jObj.getBoolean("error");
                     if (!error) {
-                        String user = jObj.getJSONObject("user").getString("Name");
+                       // String user = jObj.getJSONObject("user").getString("Name");
+//                        String C_ID = jObj.getJSONObject("user").getString("Cus_id");
+                       // Log.d("ctoooo11111",user.toString());
+//                        PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("IDcut",C_ID).commit();
                         // Launch User activity
                         Intent intent = new Intent(LoginUser.this, MainFragment.class);
-                        intent.putExtra("Name", user);
+                       // intent.putExtra("Name", user);
                         startActivity(intent);
                         finish();
+
                     } else {
                         String errorMsg = jObj.getString("error_msg");
                         Toast.makeText(getApplicationContext(),
@@ -148,8 +154,8 @@ public class LoginUser extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 // Posting params to login url
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("Email", email);
-                params.put("Password", password);
+                params.put("email", email);
+                params.put("password", password);
                 return params;
             }
         };

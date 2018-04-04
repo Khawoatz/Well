@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -27,6 +28,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.khawoat_rmbp.well.Adapter.DataHistory;
+import com.example.khawoat_rmbp.well.Adapter.DataNoti;
 import com.example.khawoat_rmbp.well.Adapter.DataReview;
 import com.example.khawoat_rmbp.well.Adapter.MassNotiRecyclerView;
 import com.example.khawoat_rmbp.well.Adapter.MassSuccesRecyclerViewAdapter;
@@ -40,6 +42,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.BreakIterator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -48,9 +51,9 @@ import java.util.Map;
 
 public class NotificationMasseuse extends Fragment {
 
-    private static final String URL_FROM_RECYCLERVIE_NOTI = "http://203.158.131.67/~Adminwell/App/RecyclerView_Success_Mass.php";
+    private static final String URL_FROM_NOTI = "http://203.158.131.67/~Adminwell/App/ReviewNotiMass.php";
     private static final String URL_FROM_AVG = "http://203.158.131.67/~Adminwell/App/ReviewAvgMass.php";
-    List<DataReview> dataReviewsList;
+    List<DataNoti> dataNotiList;
     RecyclerView recyclerView;
 
     private RecyclerView.Adapter mAdapter;
@@ -61,7 +64,7 @@ public class NotificationMasseuse extends Fragment {
     private ArrayList<String> arrayList;
     private String IDMass;
     private ImageView start,start0,start1,start2,start3,start4,start5,start1h5,start2h5,start3h5,start4h5;
-
+    private TextView tvNameCuss,tvDescription;
 
 
     public NotificationMasseuse() {
@@ -83,7 +86,7 @@ public class NotificationMasseuse extends Fragment {
                              Bundle savedInstanceState) {
       // final View[] view = {inflater.inflate(R.layout.fragment_notification_masseuse,null)};
 
-      View view = inflater.inflate(R.layout.fragment_notification_masseuse, container, false);
+      final View view = inflater.inflate(R.layout.fragment_notification_masseuse, container, false);
 
         IDMass = PreferenceManager.getDefaultSharedPreferences(getContext()).getString("IDMass" , "Null Value");//การรับค่า
         //Toast.makeText(getContext(),IDMass,Toast.LENGTH_SHORT).show();
@@ -126,6 +129,13 @@ public class NotificationMasseuse extends Fragment {
         });
             @Override
             public boolean onInterceptTouchEvent(RecyclerView Recyclerview, MotionEvent motionEvent) {
+
+                View view = Recyclerview.findChildViewUnder(motionEvent.getX(),motionEvent.getY());
+
+                if (view !=null && gestureDetector.onTouchEvent(motionEvent) ){
+                    RecyclerViewClickedItemPOS = Recyclerview.getChildAdapterPosition(view);
+                }
+
                 return false;
             }
 
@@ -239,16 +249,17 @@ public class NotificationMasseuse extends Fragment {
 
     private void getdatalist(final String id) {
         final String cancel_req_tag = "listview";
-        final StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_FROM_RECYCLERVIE_NOTI, new Response.Listener<String>() {
+        final StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_FROM_NOTI, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+
                 Log.d("LatResponse:", response.toString());
 
                 GsonBuilder builder = new GsonBuilder();
                 Gson mGson = builder.create();
 
-                dataReviewsList = Arrays.asList(mGson.fromJson(response, DataReview[].class));
-                MassNotiRecyclerView adapter = new MassNotiRecyclerView(getContext(), dataReviewsList);
+                dataNotiList = Arrays.asList(mGson.fromJson(response, DataNoti[].class));
+                MassNotiRecyclerView adapter = new MassNotiRecyclerView(getContext(), dataNotiList);
                 recyclerView.setAdapter(adapter);
             }
         }, new Response.ErrorListener() {

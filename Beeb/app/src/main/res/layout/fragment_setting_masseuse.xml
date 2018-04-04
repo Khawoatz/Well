@@ -24,27 +24,7 @@
         android:textStyle="bold"
         android:layout_below="@+id/imgProfile"/>
 
-    <RelativeLayout
-        android:id="@+id/layReview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/nameProfile"
-        android:layout_centerInParent="true">
-    <ImageView
-        android:id="@+id/starReview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:src="@drawable/favorite"
-        />
-    <TextView
-        android:id="@+id/scoreReview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/starReview"
-        android:text=" 4.5"
-        android:textSize="15sp" />
-</RelativeLayout>
+
     <LinearLayout
         android:id="@+id/layoutProfile"
         android:layout_width="match_parent"
@@ -105,6 +85,24 @@
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="เปิดระบบรับงาน"
+            android:textSize="15sp"/>
+
+            <Switch
+                android:id="@+id/switch1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="230dp"/>
+        </LinearLayout>
     </LinearLayout>
 
     <com.nanchen.titlebar.TitleView

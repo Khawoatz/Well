@@ -105,22 +105,18 @@ public class NewServiceMasseuse extends Fragment {
                   //  Toast.makeText(getContext(),getId,Toast.LENGTH_SHORT).show();
                     AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                     builder.setMessage("คุณต้องการรับงานหรือไม่");
+
                     builder.setPositiveButton("รับ", new DialogInterface.OnClickListener() {
-
-
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
 
                           //  Toast.makeText(getContext(),"คุณได้รับงานนี้แล้ว",Toast.LENGTH_SHORT).show();
                             selectAppovred(getId,"1");
-
-
                         }
                     });
                     builder.setNegativeButton("ไม่รับ", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-
                             selectAppovred(getId,"2");
 
                         }

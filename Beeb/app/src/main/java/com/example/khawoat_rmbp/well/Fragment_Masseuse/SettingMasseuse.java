@@ -5,25 +5,41 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.RatingBar;
+import android.widget.Switch;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.example.khawoat_rmbp.well.AppSingleton;
 import com.example.khawoat_rmbp.well.R;
 import com.example.khawoat_rmbp.well.Update_profile_User;
 import com.nanchen.titlebar.TitleView;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 
-public class SettingMasseuse extends Fragment {
+public class SettingMasseuse extends Fragment implements CompoundButton.OnCheckedChangeListener {
 
 
+    private static final String URL_ONOFF_SWITCH ="http://203.158.131.67/~Adminwell/App/Switch_OnOff_Mass.php";
+    //private static final String URL_SELECT_ONOFF_SWITCH ="http://203.158.131.67/~Adminwell/App/Switch_Select_OnOff_Mass.php";
     private Button btnEditprofile,btnAboutapp,btnContactus;
     private RatingBar rb;
+    Switch mySwitch = null;
+    private String IDMass;
 
     public SettingMasseuse() {
         // Required empty public constructor
@@ -49,11 +65,17 @@ public class SettingMasseuse extends Fragment {
         mTitleBar.setTitle("ตั้งค่า");
         mTitleBar.setLeftButtonImage(R.drawable.settingicontitle,15,15);
 
+        IDMass = PreferenceManager.getDefaultSharedPreferences(getContext()).getString("IDMass" , "Null Value");//การรับค่า
+        Log.d("MS1",IDMass);
+
+       mySwitch = (Switch) view.findViewById(R.id.switch1);
+       mySwitch.setOnCheckedChangeListener(this);
+
+
+
         btnEditprofile = (Button) view.findViewById(R.id.btnEditprofile);
         btnAboutapp = (Button) view.findViewById(R.id.btnAboutapp);
         btnContactus = (Button) view.findViewById(R.id.btnContactus);
-        rb = (RatingBar) view.findViewById(R.id.rb);
-        rb.getVisibility();
 
         btnEditprofile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +96,57 @@ public class SettingMasseuse extends Fragment {
             }
         });
 
+
+
         // Inflate the layout for this fragment
         return view;
+    }
+
+    private void updateSwitch(final String id , final String choice) {
+        String cancel_reg_tag ="update";
+        StringRequest strReq = new StringRequest(Request.Method.POST, URL_ONOFF_SWITCH, new Response.Listener<String>() {
+
+
+            @Override
+            public void onResponse(String response) {
+                Log.d("response123", response.toString());
+                if (response.equals("On_Success")) {
+
+                    Toast.makeText(getContext(), "คุณได้ปิดระบบทำการ", Toast.LENGTH_SHORT).show();
+
+                } else {
+                    Toast.makeText(getContext(), "ไม่สำเร็จ", Toast.LENGTH_SHORT).show();
+
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            protected Map<String, String> getParams(){
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("MS_ID", id);
+                params.put("choice", choice);
+
+                return params;
+            }
+        };
+        // Adding request to request queue
+        AppSingleton.getInstance(getActivity()).addToRequestQueue(strReq, cancel_reg_tag); }
+
+
+
+
+        @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        if (isChecked){
+               // selectOn(getId,"1");
+            updateSwitch (IDMass,"1");
+        }else {
+            updateSwitch (IDMass,"2");
+        }
     }
 }

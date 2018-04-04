@@ -27,8 +27,8 @@ public class MassRecyclerView extends RecyclerView.Adapter<MassRecyclerView.View
 
     @Override
     public MassRecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.data_myservice_masseuse, parent, false);
-
+      //  View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.data_myservice_masseuse, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.data_pending_mass, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
 
         return viewHolder;
