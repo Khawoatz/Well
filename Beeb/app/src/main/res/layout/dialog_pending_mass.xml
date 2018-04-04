@@ -110,26 +110,7 @@
             android:hint="endtime"
             />
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="10dp">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="เบอร์ติดต่อ"
-            android:textSize="20sp"/>
-        <TextView
-            android:id="@+id/tvDitel"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:hint="tel"
-            />
-    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -167,6 +148,26 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="เปิด map"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="เบอร์ติดต่อ"
+            android:textSize="20sp"/>
+        <Button
+            android:id="@+id/BtnDitel"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+
+            android:text="กดโทร"
+            />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"

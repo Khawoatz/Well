@@ -1,14 +1,17 @@
 package com.example.khawoat_rmbp.well.Fragment_Masseuse;
 
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
@@ -62,9 +65,9 @@ public class PendingMasseuse extends Fragment {
     private RecyclerView.Adapter mAdapter;
     private int RecyclerViewClickedItemPOS;
     private  TextView tvDiname,tvDitypename,tvDidate,tvDistart,tvDiend,tvDilo,tvDitel;
-    private Button BtnDimap,Btnfinish,Btnunfinish;
-    private String NameCoustmer,TypeName,Date,TimeStart,TimeEnd,Location,Tel;
-    private  String Latt,Longg;
+    private Button BtnDimap,Btnfinish,Btnunfinish,BtnDitel;
+    private String NameCoustmer,TypeName,Date,TimeStart,TimeEnd,Location;
+    private  String Latt,Longg,call;
 
 
     public PendingMasseuse() {
@@ -123,18 +126,31 @@ public class PendingMasseuse extends Fragment {
                     tvDidate = (TextView) dialog.findViewById(R.id.tvDidate);
                     tvDistart = (TextView) dialog.findViewById(R.id.tvDistart);
                     tvDiend = (TextView) dialog.findViewById(R.id.tvDiend);
-                    tvDitel = (TextView) dialog.findViewById(R.id.tvDitel);
+                   // tvDitel = (TextView) dialog.findViewById(R.id.tvDitel);
                     tvDilo = (TextView) dialog.findViewById(R.id.tvDilo);
+
 
 
 
                     BtnDimap = (Button) dialog.findViewById(R.id.BtnDimap);
                     Btnfinish = (Button) dialog.findViewById(R.id.Btnfinish);
                     Btnunfinish = (Button) dialog.findViewById(R.id.Btnunfinish);
+                    BtnDitel = (Button) dialog.findViewById(R.id.BtnDitel);
 
 
                     Log.d("opop",getId.toString());
                     showdialog(getId);
+
+                    BtnDitel.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent callIntent = new Intent(Intent.ACTION_CALL);
+                            callIntent.setData(Uri.parse("tel:123456789"));
+                            startActivity(callIntent);
+                            //ak  callphone(getId);
+                        }
+                    });
+
                     BtnDimap.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -210,9 +226,61 @@ public class PendingMasseuse extends Fragment {
 
 
     }
-//show lat long
-    private void getLatLong(final String id) {
+    //call
+    private void callphone(final String id) {
         String cancel_reg_tag ="showdialog";
+        final StringRequest strReq = new StringRequest(Request.Method.POST, URL_FROM_DIALOG, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+
+                try {
+                    JSONObject jObj = new JSONObject(response);
+
+                    call = jObj.getString("Telephone");
+                    Log.d("a",call);
+
+//                    Intent callIntent = new Intent(Intent.ACTION_CALL);
+//                    callIntent.setData(Uri.parse("tel:0377778888"));
+//
+//                    if (ActivityCompat.checkSelfPermission(getContext(),
+//                            Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+//                        return;
+//                    }
+//                    startActivity(callIntent);
+
+
+                } catch (JSONException e) {
+                    Toast.makeText(getContext(), "enddddddddddddddddd", Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            @Override
+            //ส่งค่าไป php
+            protected Map<String, String> getParams() {
+                // Posting params to login url
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("MS_ID", id);//  ชื่อซ้ายตรงกับ php ชื่อขวาตรงกับข้างบน
+
+                //Log.d("select Map: ", String.valueOf(id));
+                return params;
+            }
+
+    }; // Adding request to request queue
+        AppSingleton.getInstance(getContext()).addToRequestQueue(strReq, cancel_reg_tag);
+
+    }
+
+
+    //show lat long
+    private void getLatLong(final String id) {
+        String cancel_reg_tag ="showcall";
         final StringRequest strReq = new StringRequest(Request.Method.POST, URL_FROM_DIALOG, new Response.Listener<String>() {
 
             @Override
@@ -225,9 +293,10 @@ public class PendingMasseuse extends Fragment {
                     Latt = jObj.getString("Lat");
                     Longg = jObj.getString("Longtitude");
 
-
-
-
+                    String strUri = "http://maps.google.com/maps?q=loc:" + Latt + "," + Longg + " (" + "Label which you want" + ")";
+                            Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(strUri));
+                            intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
+                            startActivity(intent);
 
 
                 } catch (JSONException e) {
@@ -275,7 +344,7 @@ public class PendingMasseuse extends Fragment {
                     TimeStart = jObj.getString("StartTime");
                     TimeEnd = jObj.getString("EndTime");
                     Location = jObj.getString("Location");
-                    Tel = jObj.getString("Telephone");
+                    //Tel = jObj.getString("Telephone");
                     Log.d("name222",NameCoustmer.toString());
 
                     Toast.makeText(getContext(), TypeName +" ----  "+ NameCoustmer , Toast.LENGTH_SHORT).show();
@@ -289,7 +358,7 @@ public class PendingMasseuse extends Fragment {
                     tvDistart.setText(TimeStart);
                     tvDiend.setText(TimeEnd);
                     tvDilo.setText(Location);
-                    tvDitel.setText(Tel);
+                    //tvDitel.setText(Tel);
 
 
                 } catch (JSONException e) {
