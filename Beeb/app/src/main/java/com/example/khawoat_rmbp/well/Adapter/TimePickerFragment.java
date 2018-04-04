@@ -64,7 +64,7 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
 
     public void onTimeSet(TimePicker view, int hourOfDay, int minute){
         // Do something with the returned time
-        TextView tv = (TextView) getActivity().findViewById(R.id.tvTime);
+        TextView tv = (TextView) getActivity().findViewById(R.id.arrivalTimeText);
         tv.setText(hourOfDay + ":" + minute);
     }
 }

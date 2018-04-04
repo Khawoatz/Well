@@ -39,7 +39,7 @@ import java.util.Map;
 public class LoginUser extends AppCompatActivity {
 
     private static final String TAG = "LoginUser";
-    private static final String URL_FOR_LOGIN = "http://203.158.131.67/~Adminwell/App/login.php";
+    private static final String URL_FOR_LOGIN = "http://203.158.131.67/~Adminwell/App/Login_User.php";
     ProgressDialog progressDialog;
 
 
@@ -120,24 +120,15 @@ public class LoginUser extends AppCompatActivity {
                 hideDialog();
                 try {
                     JSONObject jObj = new JSONObject(response);
-                    Log.d("ctoooo",response.toString());
-                    boolean error = jObj.getBoolean("error");
-                    if (!error) {
-                       // String user = jObj.getJSONObject("user").getString("Name");
-//                        String C_ID = jObj.getJSONObject("user").getString("Cus_id");
-                       // Log.d("ctoooo11111",user.toString());
-//                        PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("IDcut",C_ID).commit();
+//                        String user = jObj.getJSONObject("user").getString("Name");
+                        String CusID = jObj.getString("Cus_id");
                         // Launch User activity
                         Intent intent = new Intent(LoginUser.this, MainFragment.class);
-                       // intent.putExtra("Name", user);
+                        PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("Cus_id",CusID).commit();
                         startActivity(intent);
                         finish();
 
-                    } else {
-                        String errorMsg = jObj.getString("error_msg");
-                        Toast.makeText(getApplicationContext(),
-                                errorMsg, Toast.LENGTH_LONG).show();
-                    }
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

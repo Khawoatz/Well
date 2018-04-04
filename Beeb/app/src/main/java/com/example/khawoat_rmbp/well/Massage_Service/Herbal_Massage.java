@@ -28,9 +28,9 @@ public class Herbal_Massage extends AppCompatActivity {
         btnReserve.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String mstype = "3";
+                String mstype = "1";
                 Intent intent = new Intent(Herbal_Massage.this,reservation.class);
-                PreferenceManager.getDefaultSharedPreferences(getBaseContext()).edit().putString("นวดประคบ",mstype).commit();
+                PreferenceManager.getDefaultSharedPreferences(getBaseContext()).edit().putString("MassageType",mstype).commit();
                 startActivity(intent);
             }
         });
