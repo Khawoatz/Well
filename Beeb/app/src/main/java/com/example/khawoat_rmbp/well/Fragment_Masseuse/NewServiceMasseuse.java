@@ -136,7 +136,6 @@ public class NewServiceMasseuse extends Fragment {
             }
         });
 
-        //initializing the dataHistoryList
         //dataHistoryList = new ArrayList<>();
 
 

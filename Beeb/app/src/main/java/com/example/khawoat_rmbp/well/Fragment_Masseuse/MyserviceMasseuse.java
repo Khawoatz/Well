@@ -23,7 +23,7 @@ public class MyserviceMasseuse extends  Fragment{
     private ViewPager mViewPager;
 
     public MyserviceMasseuse () {
-        // Required empty public constructor
+        // /Required empty public constructor
     }
 
 
