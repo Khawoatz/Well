@@ -37,7 +37,7 @@ public class Update_profle_user2 extends AppCompatActivity {
     private JSONArray result;
     private ArrayList<String> arrayList;
     private Button btnSubmit;
-    private String IDcut;
+    private String Cus_id;
 
     protected  void onCreate(Bundle savedInstanceState) {
 
@@ -50,9 +50,9 @@ public class Update_profle_user2 extends AppCompatActivity {
         edEmail = (EditText) findViewById(R.id.edEmail);
         edTel = (EditText) findViewById(R.id.edTel);
 
-        IDcut = PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getString("IDcut" , "Null Value");//การรับค่า
-        Log.d("IDcutupdate",IDcut);
-        selectDetailGatage(IDcut);
+        Cus_id = PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getString("Cus_id" , "Null Value");//การรับค่า
+        Log.d("IDcutupdate",Cus_id);
+        selectDetailGatage(Cus_id);
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override

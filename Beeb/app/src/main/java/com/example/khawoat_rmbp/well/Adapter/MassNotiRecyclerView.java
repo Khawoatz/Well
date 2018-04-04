@@ -43,29 +43,20 @@ public class MassNotiRecyclerView extends RecyclerView.Adapter<MassNotiRecyclerV
 
         if (dataNotiList.get(position).getPoints().equals("0")){
             viewHolder.star0.setVisibility(View.VISIBLE);
-//            viewHolder.star2.setVisibility(View.VISIBLE);
-//            viewHolder.star3.setVisibility(View.VISIBLE);
-//            viewHolder.star4.setVisibility(View.VISIBLE);
-//            viewHolder.star5.setVisibility(View.VISIBLE);
+//
 
         }else if (dataNotiList.get(position).getPoints().equals("1")){
 
             viewHolder.star1.setVisibility(View.VISIBLE);
-//            viewHolder.star3.setVisibility(View.VISIBLE);
-//            viewHolder.star4.setVisibility(View.VISIBLE);
-//            viewHolder.star5.setVisibility(View.VISIBLE);
+//
 
         }else if (dataNotiList.get(position).getPoints().equals("2")){
 
             viewHolder.star2.setVisibility(View.VISIBLE);
-//            viewHolder.star4.setVisibility(View.VISIBLE);
-//            viewHolder.star5.setVisibility(View.VISIBLE);
+//
         }else if (dataNotiList.get(position).getPoints().equals("3")){
             viewHolder.star3.setVisibility(View.VISIBLE);
-//            viewHolder.star1.setVisibility(View.VISIBLE);
-//            viewHolder.star2.setVisibility(View.VISIBLE);
-//            viewHolder.star4.setVisibility(View.VISIBLE);
-//            viewHolder.star5.setVisibility(View.VISIBLE);
+//
         }else if (dataNotiList.get(position).getPoints().equals("4")){
 
             viewHolder.star4.setVisibility(View.VISIBLE);
