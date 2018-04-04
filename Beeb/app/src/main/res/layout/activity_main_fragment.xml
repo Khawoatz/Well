@@ -41,7 +41,6 @@
             style="@style/style_RadioButton"
             />
 
-
     </RadioGroup>
 
     <android.support.v4.view.ViewPager

@@ -29,7 +29,7 @@ public class Sport_Massage extends AppCompatActivity {
             public void onClick(View v) {
                 String mstype = "6";
                 Intent intent = new Intent(Sport_Massage.this,reservation.class);
-                PreferenceManager.getDefaultSharedPreferences(getBaseContext()).edit().putString("นวดสปอร์ต",mstype).commit();
+                PreferenceManager.getDefaultSharedPreferences(getBaseContext()).edit().putString("MassageType",mstype).commit();
                 startActivity(intent);
             }
         });

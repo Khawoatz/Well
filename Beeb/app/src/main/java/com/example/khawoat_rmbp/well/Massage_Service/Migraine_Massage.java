@@ -27,9 +27,9 @@ public class Migraine_Massage extends AppCompatActivity {
         btnReserve.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String mstype = "4";
+                String mstype = "5";
                 Intent intent = new Intent(Migraine_Massage.this,reservation.class);
-                PreferenceManager.getDefaultSharedPreferences(getBaseContext()).edit().putString("นวดไมเกรน",mstype).commit();
+                PreferenceManager.getDefaultSharedPreferences(getBaseContext()).edit().putString("MassageType",mstype).commit();
                 startActivity(intent);
             }
         });

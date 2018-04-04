@@ -27,9 +27,9 @@ public class Oil_Massage extends AppCompatActivity {
         btnReserve.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String mstype = "1";
+                String mstype = "3";
                 Intent intent = new Intent(Oil_Massage.this,reservation.class);
-                PreferenceManager.getDefaultSharedPreferences(getBaseContext()).edit().putString("นวดน้ำมัน",mstype).commit();
+                PreferenceManager.getDefaultSharedPreferences(getBaseContext()).edit().putString("MassageType",mstype).commit();
                 startActivity(intent);
             }
         });

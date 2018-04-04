@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.os.Build;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -38,7 +39,7 @@ import java.util.Map;
 public class LoginUser extends AppCompatActivity {
 
     private static final String TAG = "LoginUser";
-    private static final String URL_FOR_LOGIN = "http://203.158.131.67/~Adminwell/App/login.php";
+    private static final String URL_FOR_LOGIN = "http://203.158.131.67/~Adminwell/App/Login_User.php";
     ProgressDialog progressDialog;
 
 
@@ -119,19 +120,15 @@ public class LoginUser extends AppCompatActivity {
                 hideDialog();
                 try {
                     JSONObject jObj = new JSONObject(response);
-                    boolean error = jObj.getBoolean("error");
-                    if (!error) {
-                        String user = jObj.getJSONObject("user").getString("Name");
+//                        String user = jObj.getJSONObject("user").getString("Name");
+                        String CusID = jObj.getString("Cus_id");
                         // Launch User activity
                         Intent intent = new Intent(LoginUser.this, MainFragment.class);
-                        intent.putExtra("Name", user);
+                        PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("Cus_id",CusID).commit();
                         startActivity(intent);
                         finish();
-                    } else {
-                        String errorMsg = jObj.getString("error_msg");
-                        Toast.makeText(getApplicationContext(),
-                                errorMsg, Toast.LENGTH_LONG).show();
-                    }
+
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -148,8 +145,8 @@ public class LoginUser extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 // Posting params to login url
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("Email", email);
-                params.put("Password", password);
+                params.put("email", email);
+                params.put("password", password);
                 return params;
             }
         };

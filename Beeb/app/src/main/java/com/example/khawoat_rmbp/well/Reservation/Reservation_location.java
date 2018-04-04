@@ -2,9 +2,11 @@ package com.example.khawoat_rmbp.well.Reservation;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,6 +20,7 @@ public class Reservation_location extends AppCompatActivity {
 
     private TextView get_place;
     private ImageView img_Map;
+    private Button Btn_Next;
     int PLACE_PICKER_REQUEST = 1;
 
     @Override
@@ -26,6 +29,14 @@ public class Reservation_location extends AppCompatActivity {
         setContentView(R.layout.activity_reservation_location);
         img_Map = (ImageView) findViewById(R.id.img_Map);
         get_place = (TextView) findViewById(R.id.location_place);
+        Btn_Next = (Button) findViewById(R.id.btn_Next_Location);
+
+        Btn_Next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         get_place.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,6 +59,13 @@ public class Reservation_location extends AppCompatActivity {
             if (resultCode == RESULT_OK){
                 Place place = PlacePicker.getPlace(data,this);
                 String address = String.format("Place: %s",place.getAddress());
+                Double Latitude = place.getLatLng().latitude;
+                Double Longtitude = place.getLatLng().longitude;
+                String LatString = Latitude.toString();
+                String LongString = Longtitude.toString();
+                PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("Address",address).commit();
+                PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("Lat",LatString).commit();
+                PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("Long",LongString).commit();
                 get_place.setText(address);
             }
         }

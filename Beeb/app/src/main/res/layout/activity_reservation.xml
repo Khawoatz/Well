@@ -43,7 +43,7 @@
     <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:id="@+id/person_age"
+    android:id="@+id/massage_detail"
     android:layout_toRightOf="@+id/person_photo"
     android:layout_below="@+id/massage_name"
     android:text="บริการนวดประคบ"
@@ -82,6 +82,7 @@
                 android:layout_below="@+id/tvHours1"/>
 
             <Button
+                android:id="@+id/btn_1hr"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -115,6 +116,7 @@
                 android:layout_below="@+id/tvHours13"/>
 
             <Button
+                android:id="@+id/btn_1halfhr"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -148,6 +150,7 @@
                 android:layout_below="@+id/tvHours2"/>
 
             <Button
+                android:id="@+id/btn_2hr"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"

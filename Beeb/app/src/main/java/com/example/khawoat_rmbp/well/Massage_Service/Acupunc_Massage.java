@@ -28,9 +28,9 @@ public class Acupunc_Massage extends AppCompatActivity {
         btnReserve.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String mstype = "1";
+                String mstype = "2";
                 Intent intent = new Intent(Acupunc_Massage.this,reservation.class);
-                PreferenceManager.getDefaultSharedPreferences(getBaseContext()).edit().putString("นวดกดจุด",mstype).commit();
+                PreferenceManager.getDefaultSharedPreferences(getBaseContext()).edit().putString("MassageType",mstype).commit();
                 startActivity(intent);
             }
         });

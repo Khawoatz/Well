@@ -107,10 +107,10 @@ public class ServiceFragment extends Fragment {
 
     private void initView(View view){
         viewPager = (ViewPager) view.findViewById(R.id.Viewpager_container);
-        Fragment fragment1 = new SliderFragment();
-        Fragment fragment2 = new Fragment();
-        Fragment fragment3 = new Fragment();
-        Fragment fragment4 = new Fragment();
+        Fragment fragment1 = new ServiceFragment();
+        Fragment fragment2 = new RequestFragment();
+        Fragment fragment3 = new NotificationFragment();
+        Fragment fragment4 = new SettingFragment();
         List<Fragment> fragmentList = new ArrayList<Fragment>();
         fragmentList.add(fragment1);
         fragmentList.add(fragment2);

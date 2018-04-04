@@ -25,6 +25,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public RecyclerViewAdapter(Context context, List<DataHistory> DataHistoryList){
         this.context = context;
         this.dataHistoryList = DataHistoryList;
+
     }
 
     @Override

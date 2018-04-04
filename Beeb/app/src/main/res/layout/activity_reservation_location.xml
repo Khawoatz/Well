@@ -69,7 +69,7 @@
     <!--</LinearLayout>-->
 
     <Button
-        android:id="@+id/btn_sign_up"
+        android:id="@+id/btn_Next_Location"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="ต่อไป"
