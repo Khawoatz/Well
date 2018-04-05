@@ -19,7 +19,7 @@
         android:id="@+id/imgProfile"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginLeft="10"
+        android:layout_marginLeft="10dp"
         android:layout_centerVertical="true"
         android:layout_gravity="left"
         android:background="@drawable/circleimage"/>
