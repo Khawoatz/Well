@@ -39,7 +39,6 @@ public class Reservation_location extends AppCompatActivity {
         setContentView(R.layout.activity_reservation_location);
 
         Dialog_district = getResources().getStringArray(R.array.district_array);
-//        img_Map = (ImageView) findViewById(R.id.img_Map);
         get_place = (TextView) findViewById(R.id.location_place);
         Btn_Next = (Button) findViewById(R.id.btn_Next_Location);
         tv_Area = (TextView) findViewById(R.id.location_area);
