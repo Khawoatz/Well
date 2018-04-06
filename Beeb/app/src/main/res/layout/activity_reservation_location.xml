@@ -20,33 +20,66 @@
     </Toolbar>
 
     <LinearLayout
-        android:id="@+id/ll_location"
+        android:id="@+id/ll_area"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:orientation="vertical"
         android:layout_below="@id/toolbar">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" เขตที่ให้บริการ"
+            android:drawableLeft="@drawable/ic_placeholder"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/location_area"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            android:background="#FFCC00" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="vertical"
+        android:layout_below="@id/ll_area">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=" ตำแหน่งของคุณ"
-        android:drawableLeft="@drawable/placeholder"
+        android:drawableLeft="@drawable/ic_placeholder"
         android:textSize="20sp"/>
 
         <TextView
             android:id="@+id/location_place"
             android:layout_width="match_parent"
             android:layout_height="30dp"
+
             android:layout_marginTop="10dp"
             android:background="#FFCC00" />
 
-        <ImageView
-            android:id="@+id/img_Map"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="10dp"/>
+        <!--<ImageView-->
+            <!--android:id="@+id/img_Map"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:padding="10dp"/>-->
 </LinearLayout>
 
+    <TextView
+        android:id="@+id/caution"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_margin="10dp"
+        android:textColor="@android:color/holo_red_dark"
+        android:text="* กรุณาเลือกเขตกับตำแหน่งให้สัมพันธ์กัน"
+        android:layout_below="@+id/ll_location"/>
     <!--<LinearLayout-->
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="wrap_content"-->
