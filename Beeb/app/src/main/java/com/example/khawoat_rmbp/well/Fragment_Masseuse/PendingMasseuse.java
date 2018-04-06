@@ -126,21 +126,17 @@ public class PendingMasseuse extends Fragment {
                     tvDidate = (TextView) dialog.findViewById(R.id.tvDidate);
                     tvDistart = (TextView) dialog.findViewById(R.id.tvDistart);
                     tvDiend = (TextView) dialog.findViewById(R.id.tvDiend);
-                   // tvDitel = (TextView) dialog.findViewById(R.id.tvDitel);
                     tvDilo = (TextView) dialog.findViewById(R.id.tvDilo);
-
-
-
-
                     BtnDimap = (Button) dialog.findViewById(R.id.BtnDimap);
                     Btnfinish = (Button) dialog.findViewById(R.id.Btnfinish);
                     Btnunfinish = (Button) dialog.findViewById(R.id.Btnunfinish);
                     BtnDitel = (Button) dialog.findViewById(R.id.BtnDitel);
 
 
-                    Log.d("opop",getId.toString());
-                    showdialog(getId);
 
+
+                    showdialog(getId);
+                    Log.d("a333",getId.toString());
                     BtnDitel.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -388,7 +384,8 @@ public class PendingMasseuse extends Fragment {
         AppSingleton.getInstance(getContext()).addToRequestQueue(strReq, cancel_reg_tag);
     }
 
-                ///SHOW
+
+    ///SHOW
 
     private void getdatalist(final String id) {
         final String cancel_req_tag = "listview";

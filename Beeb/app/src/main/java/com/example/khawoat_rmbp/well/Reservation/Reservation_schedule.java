@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.content.Intent;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -95,7 +96,8 @@ public class Reservation_schedule extends AppCompatActivity {
         Btn_Next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i = new Intent(Reservation_schedule.this,Reservation_location.class);
+               startActivity(i);
 
 
             }
@@ -156,7 +158,7 @@ public class Reservation_schedule extends AppCompatActivity {
             } else {
                 dayS = "" + day;
             }
-
+/////////Show Date //////////////
             String date;
             date = (yearsS + "-" + monthS + "-" + dayS);
             tv_Date.setText(dayS + "/" + monthS + "/" + yearsS);
@@ -164,6 +166,7 @@ public class Reservation_schedule extends AppCompatActivity {
             PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("dateService",date).commit();
             DateG = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("date", "Null Value");
 
+        //    PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("date",date).commit();
             Log.d("testDate", date + " " + DateG);
         }
 
@@ -441,7 +444,7 @@ public class Reservation_schedule extends AppCompatActivity {
             ok.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+//////shoe Time////////////////
                     SimpleDateFormat format = new SimpleDateFormat("hh:mm aa");
                     String fTime = format.format(fromCal.getTime());
                     String tTime = format.format(toCal.getTime());
@@ -449,6 +452,8 @@ public class Reservation_schedule extends AppCompatActivity {
                     PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("dateStart",fTime).commit();
                     PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("dateEnd",tTime).commit();
                     d.dismiss();
+                    Log.d("testTime", fTime.toString());
+                    Log.d("testTime", tTime.toString());
 
                 }
             });

@@ -1,0 +1,178 @@
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardview1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    card_view:cardCornerRadius="6dp"
+    card_view:cardElevation="6dp"
+    card_view:contentPadding="7dp"
+    android:padding="10dp"
+    android:layout_margin="7dp"
+    card_view:cardBackgroundColor="#41A541"
+    >
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <!-- <TableRow>
+             <TextView
+                 android:id="@+id/textView10"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:textSize="20dp"
+                 android:text="รหัสการจอง : "
+                 android:textColor="#ffff"
+                 />
+
+             <TextView
+                 android:id="@+id/tvRes"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:textSize="20dp"
+                 android:text="reserve"
+                 android:textColor="#ffff"
+                 />
+         </TableRow> !-->
+
+        <TableRow>
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="ชื่อพนักงาน : "
+                android:textColor="#ffff"
+                />
+
+            <TextView
+                android:id="@+id/tvNameCus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="name mass"
+                android:textColor="#ffff"
+                />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="ประเภทการนวด : "
+                android:textColor="#ffff"
+                />
+
+            <TextView
+                android:id="@+id/tvNameType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="Name Show Here"
+                android:textColor="#ffff"/>
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="วันที่ : "
+                android:textColor="#ffff"
+                />
+
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="Date"
+                android:textColor="#ffff"
+                />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="เวลาเริ่ม : "
+                android:textColor="#ffff"
+                />
+
+            <TextView
+                android:id="@+id/tvStarTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="Time"
+                android:textColor="#ffff"
+                />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="เวลาจบ : "
+                android:textColor="#ffff"
+                />
+
+            <TextView
+                android:id="@+id/tvEndTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="Time"
+                android:textColor="#ffff"
+                />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="สถานที่ : "
+                android:textColor="#ffff"
+                />
+
+            <TextView
+                android:id="@+id/tvLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="Location"
+                android:textColor="#ffff"
+                />
+
+        </TableRow>
+
+        <TableRow>
+
+
+
+
+            />
+
+        </TableRow>
+
+
+
+    </TableLayout>
+
+</android.support.v7.widget.CardView>

@@ -39,6 +39,7 @@
         <activity android:name=".Reservation.reservation" />
         <activity android:name=".Reservation.Reservation_location" />
         <activity android:name=".Reservation.Reservation_schedule" />
+        <activity android:name=".Reservation.Reservation_ChooseMass" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

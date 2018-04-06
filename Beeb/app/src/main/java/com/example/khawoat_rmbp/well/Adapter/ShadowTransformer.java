@@ -13,7 +13,7 @@ public class ShadowTransformer implements ViewPager.OnPageChangeListener, ViewPa
 
     public ShadowTransformer(ViewPager viewPager, CardAdapter adapter) {
         this.viewPager = viewPager;
-        viewPager.addOnPageChangeListener(this);
+        //viewPager.addOnPageChangeListener(this);
         cardAdapter = adapter;
     }
 
