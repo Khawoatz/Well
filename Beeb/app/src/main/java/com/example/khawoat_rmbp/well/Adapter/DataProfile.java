@@ -17,7 +17,7 @@ public class DataProfile {
         this.id = id;
     }
 
-    @SerializedName("namemass")
+    @SerializedName("Name")
     private String nameMass;
 
     public String getNameMass(){

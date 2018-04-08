@@ -61,18 +61,44 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
-                android:text=" 27/03/2561"
+                android:hint=" date"
                 android:drawableStart="@drawable/ic_calendar"
                 android:textSize="15sp" />
+
+
+                </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@+id/ll_calen_time"
+                android:padding="5dp">
+
             <TextView
-                android:id="@+id/tv_Time"
+                android:id="@+id/tv_Stime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
-                android:text="10.30 - 12.00"
                 android:drawableLeft="@drawable/ic_clock"
-                android:textSize="15sp" />
-                </LinearLayout>
+                android:hint=" start"
+                android:textSize="15sp"
+                />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="-"
+                    android:textSize="15sp"/>
+                <TextView
+                    android:id="@+id/tv_Etime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="End"
+                    android:textSize="15sp"
+                    android:layout_marginLeft="10dp"/>
+
+
+            </LinearLayout>
             <TextView
                 android:id="@+id/tv_Location"
                 android:layout_width="match_parent"
@@ -81,7 +107,7 @@
                 android:drawableLeft="@drawable/ic_placeholder"
                 android:layout_marginBottom="5dp"
                 android:padding="5dp"
-                android:layout_below="@+id/ll_calen_time"/>
+                android:layout_below="@+id/ll_time"/>
             <TextView
                 android:id="@+id/tv_Price"
                 android:layout_width="match_parent"

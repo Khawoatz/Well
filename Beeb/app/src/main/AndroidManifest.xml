@@ -40,6 +40,7 @@
         <activity android:name=".Reservation.Reservation_location" />
         <activity android:name=".Reservation.Reservation_schedule" />
         <activity android:name=".Reservation.Reservation_ChooseMass" />
+        <activity android:name=".Reservation.Reservation_Result" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

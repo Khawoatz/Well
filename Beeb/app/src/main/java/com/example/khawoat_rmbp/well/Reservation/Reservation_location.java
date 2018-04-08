@@ -53,6 +53,7 @@ public class Reservation_location extends AppCompatActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         String Area = Dialog_district[i].toString();
                         tv_Area.setText(Dialog_district[i]);
+
                         dialogInterface.dismiss();
                         PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("Area",Area).commit();
                     }
@@ -68,7 +69,8 @@ public class Reservation_location extends AppCompatActivity {
         Btn_Next.setOnClickListener(new View.OnClickListener(){
         @Override
         public void onClick (View v){
-
+            Intent i = new Intent(Reservation_location.this,Reservation_ChooseMass.class);
+            startActivity(i);
     }
     });
 
@@ -118,6 +120,10 @@ public class Reservation_location extends AppCompatActivity {
                 PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("Address",address).commit();
                 PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("Lat",LatString).commit();
                 PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("Long",LongString).commit();
+
+                Log.d("champpppjah",address);
+
+
                 get_place.setText(address);
             }
         }

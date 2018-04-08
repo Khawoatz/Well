@@ -23,6 +23,8 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -118,7 +120,12 @@ public class PendingMasseuse extends Fragment {
                    final Dialog dialog = new Dialog(getContext());
 
                    dialog.setContentView(R.layout.dialog_pending_mass);
-
+                    Window window = dialog.getWindow();
+                    WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+                    lp.copyFrom(window.getAttributes());
+                    lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+                    lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+                    window.setAttributes(lp);
 //                   dialog.setTitle("รายละเอียดการจอง");
 
                     tvDiname = (TextView) dialog.findViewById(R.id.tvDiname);

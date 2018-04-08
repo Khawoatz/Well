@@ -36,6 +36,15 @@
                 android:textStyle="bold"
                 android:padding="5dp"
                 android:textSize="25sp"/>
+            <TextView
+                android:id="@+id/tv_nameMass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="ชื่อพนักงาน"
+                android:textStyle="bold"
+                android:padding="10dp"
+                android:textSize="15sp"
+                android:layout_below="@+id/tv_Massage"/>
 
             <LinearLayout
                 android:id="@+id/ll_calen_time"
@@ -43,54 +52,98 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginBottom="5dp"
-                android:padding="5dp"
-                android:layout_below="@+id/tv_Massage">
+                android:padding="10dp"
+                android:layout_below="@+id/tv_nameMass">
 
                 <TextView
                     android:id="@+id/tv_Calendar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
-                    android:text=" 27/03/2561"
+                    android:hint=" date"
                     android:drawableStart="@drawable/ic_calendar"
-                    android:textSize="15sp" />
+                    android:textSize="15sp"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/ll_calen_time"
+                android:padding="10dp">
+
                 <TextView
-                    android:id="@+id/tv_Time"
+                    android:id="@+id/tv_Stime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
-                    android:text="10.30 - 12.00"
                     android:drawableLeft="@drawable/ic_clock"
-                    android:textSize="15sp" />
+                    android:hint=" start"
+                    android:textSize="15sp"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="-"
+                    android:textSize="15sp"/>
+                <TextView
+                    android:id="@+id/tv_Etime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="End"
+                    android:textSize="15sp"
+                    android:layout_marginLeft="10dp"/>
             </LinearLayout>
             <TextView
                 android:id="@+id/tv_Location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Location"
+                android:hint="Location"
                 android:drawableLeft="@drawable/ic_placeholder"
                 android:layout_marginBottom="5dp"
-                android:padding="5dp"
-                android:layout_below="@+id/ll_calen_time"/>
+                android:padding="10dp"
+                android:layout_below="@+id/ll_time"/>
             <TextView
                 android:id="@+id/tv_Price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Price"
+                android:hint="Price"
                 android:drawableLeft="@drawable/ic_baht"
                 android:layout_marginBottom="5dp"
-                android:padding="5dp"
+                android:padding="10dp"
                 android:layout_below="@+id/tv_Location"/>
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerInParent="true"
-                android:src="@drawable/msherbal"
-                />
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/tv_Massage"
+                android:layout_marginEnd="19dp"
+                android:layout_marginTop="15dp"
+                android:layout_toEndOf="@+id/tv_Massage"
+                android:src="@drawable/msherbal" />
         </RelativeLayout>
     </android.support.v7.widget.CardView>
 
+    <Button
+        android:id="@+id/btn_Resver"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/ll_cardView"
+        android:layout_below="@+id/ll_cardView"
+        android:text="ยืนยันการจอง"
+        android:background="@drawable/login_btn"/>
+
+    <Button
+        android:id="@+id/btn_Cancel"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/ll_cardView"
+        android:layout_below="@+id/ll_cardView"
+        android:background="@drawable/resever_btn"
+        android:text="ยกเลิก" />
 
 
 </RelativeLayout>

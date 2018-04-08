@@ -24,17 +24,17 @@ public class MassProfileRecyclerView extends RecyclerView.Adapter<MassProfileRec
         this.dataProfileList = DataProfileList;
     }
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MassProfileRecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.data_profilemass_user, parent, false);
-
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(MassProfileRecyclerView.ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(ViewHolder viewHolder, int position) {
         DataProfile dataProfile = dataProfileList.get(position);
        dataProfile.getNameMass();
+
 
         viewHolder.tvNameMass.setText(dataProfile.getNameMass());
 
