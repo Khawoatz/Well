@@ -41,7 +41,7 @@ public class reservation extends AppCompatActivity {
 
 
         ms_type = PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getString("MassageType","Null");
-        ms_typePrict = "000";
+//        ms_typePrict = "000";
         ms_typePrict = PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getString("MassageTypePrice","Null");
 
 
@@ -98,9 +98,7 @@ public class reservation extends AppCompatActivity {
         Btn_1hr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String timeservice = "3600000";
-
-
+                String timeservice = "1";
                 Intent i = new Intent(reservation.this,Reservation_schedule.class);
                 i.putExtra("Time_Service",timeservice);
                 startActivity(i);
@@ -113,7 +111,7 @@ public class reservation extends AppCompatActivity {
         Btn_1halfhr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String timeservice = "7200000";
+                String timeservice = "2";
                 Intent i = new Intent(reservation.this,Reservation_schedule.class);
                 i.putExtra("Time_Service",timeservice);
                 startActivity(i);
@@ -127,7 +125,7 @@ public class reservation extends AppCompatActivity {
         Btn_2hr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String timeservice = "10800000";
+                String timeservice = "3";
                 Intent i = new Intent(reservation.this,Reservation_schedule.class);
                 i.putExtra("Time_Service",timeservice);
                 startActivity(i);
