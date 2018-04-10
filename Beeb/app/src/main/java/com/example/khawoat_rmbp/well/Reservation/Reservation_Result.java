@@ -4,34 +4,20 @@ import android.app.Activity;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.khawoat_rmbp.well.Adapter.DataNoti;
-import com.example.khawoat_rmbp.well.Adapter.DataProfile;
-import com.example.khawoat_rmbp.well.Adapter.MassNotiRecyclerView;
-import com.example.khawoat_rmbp.well.Adapter.MassProfileRecyclerView;
 import com.example.khawoat_rmbp.well.AppSingleton;
 import com.example.khawoat_rmbp.well.R;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Reservation_Result extends AppCompatActivity {
@@ -118,7 +104,7 @@ public class Reservation_Result extends AppCompatActivity {
 
 
         btn_Resver.setOnClickListener(new View.OnClickListener() {
-            public String Long_titudeE,Lat_titudeE,Address_LocationT,TimeStartT,TimeEndD;
+            public String Long_titudeE,Lat_titudeE,Address_LocationT,TimeStartT,TimeEndD,Status_Reser;
 
             @Override
             public void onClick(View v) {
@@ -127,10 +113,11 @@ public class Reservation_Result extends AppCompatActivity {
                 Lat_titudeE = "13.7784954";
                 Long_titudeE = "100.5569875";
                 TimeStartT = "05:15";
-                TimeEndD ="07:15";
+                TimeEndD ="09:15";
+                Status_Reser = "Waiting";
 
 
-                getreser(Customer_ID, Mass_ID, Date_Reserve, TimeStartT, TimeEndD, Address_LocationT, MassageType_ID, Lat_titudeE, Long_titudeE);
+                getreser(Customer_ID, Mass_ID, Date_Reserve, TimeStartT, TimeEndD, Address_LocationT,Status_Reser, MassageType_ID, Lat_titudeE, Long_titudeE);
             }
         });
 
@@ -138,7 +125,7 @@ public class Reservation_Result extends AppCompatActivity {
     }
 
     private void getreser(final String customer_id, final String mass_id, final String date_reserve, final String timeStart,
-                          final String timeEnd, final String address_location, final String massageType_id,
+                          final String timeEnd, final String address_location,final String status_reser ,final String massageType_id,
                           final String lat_titude, final String long_titude) {
         final String cancel_req_tag = "listview";
         final StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_FROM_RESER, new Response.Listener<String>() {
@@ -167,6 +154,7 @@ public class Reservation_Result extends AppCompatActivity {
                 params.put("Start_Time", timeStart);
                 params.put("End_Time", timeEnd);
                 params.put("Location_ID", address_location);
+                params.put("StatusReser_ID", status_reser);
                 params.put("MassType_ID", massageType_id);
                 params.put("Lat_ID", lat_titude);
                 params.put("Long_ID", long_titude);

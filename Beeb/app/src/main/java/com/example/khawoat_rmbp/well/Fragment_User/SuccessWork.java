@@ -2,8 +2,6 @@ package com.example.khawoat_rmbp.well.Fragment_User;
 
 
 import android.app.Dialog;
-import android.content.Intent;
-import android.media.Rating;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
@@ -27,12 +25,9 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.khawoat_rmbp.well.Adapter.DataHistory;
-import com.example.khawoat_rmbp.well.Adapter.DataHistoryUser;
-import com.example.khawoat_rmbp.well.Adapter.MassSuccesRecyclerViewAdapter;
-import com.example.khawoat_rmbp.well.Adapter.UserSuccRecyclerView;
+import com.example.khawoat_rmbp.well.RecycelViewUser.DataRecycelViewUser.DataHistoryUser;
+import com.example.khawoat_rmbp.well.RecycelViewUser.UserSuccRecyclerView;
 import com.example.khawoat_rmbp.well.AppSingleton;
-import com.example.khawoat_rmbp.well.Fragment_Masseuse.SettingMasseuse;
 import com.example.khawoat_rmbp.well.R;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

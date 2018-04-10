@@ -1,17 +1,11 @@
 package com.example.khawoat_rmbp.well.Fragment_Masseuse;
 
 
-import android.Manifest;
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
@@ -33,8 +27,8 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.khawoat_rmbp.well.Adapter.DataHistory;
-import com.example.khawoat_rmbp.well.Adapter.MassRecyclerView;
+import com.example.khawoat_rmbp.well.RecyclerView.DataRecyclerView.DataHistory;
+import com.example.khawoat_rmbp.well.RecyclerView.MassRecyclerView;
 
 
 import com.example.khawoat_rmbp.well.AppSingleton;

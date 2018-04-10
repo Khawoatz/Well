@@ -1,4 +1,4 @@
-package com.example.khawoat_rmbp.well.Adapter;
+package com.example.khawoat_rmbp.well.RecyclerView;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.khawoat_rmbp.well.RecyclerView.DataRecyclerView.DataNoti;
 import com.example.khawoat_rmbp.well.R;
 
 import java.util.List;
@@ -40,6 +41,9 @@ public class MassNotiRecyclerView extends RecyclerView.Adapter<MassNotiRecyclerV
     public void onBindViewHolder(MassNotiRecyclerView.ViewHolder viewHolder, int position) {
         DataNoti dataNoti = dataNotiList.get(position);
         dataNoti.getNdCustomer();
+        String i = dataNotiList.get(position).getPoints();
+        int value = Integer.parseInt(i);
+
 
         if (dataNotiList.get(position).getPoints().equals("0")){
             viewHolder.star0.setVisibility(View.VISIBLE);

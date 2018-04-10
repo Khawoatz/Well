@@ -1,4 +1,4 @@
-package com.example.khawoat_rmbp.well.Adapter;
+package com.example.khawoat_rmbp.well.RecyclerView.DataRecyclerView;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -26,7 +26,8 @@ public class DataProfile {
     public  void setNameMass(String nameMass){
         this.nameMass = nameMass;
     }
-    @SerializedName("Points")
+
+    @SerializedName("PointsMass")
     private String Points;
 
     public String getPoints(){

@@ -41,7 +41,7 @@ public class reservation extends AppCompatActivity {
 
 
         ms_type = PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getString("MassageType","Null");
-       ms_typePrict = "000";
+        ms_typePrict = "000";
         ms_typePrict = PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getString("MassageTypePrice","Null");
 
 

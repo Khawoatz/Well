@@ -3,7 +3,6 @@ package com.example.khawoat_rmbp.well.Fragment_Masseuse;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
@@ -25,18 +24,13 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.khawoat_rmbp.well.Adapter.DataHistory;
-import com.example.khawoat_rmbp.well.Adapter.RecyclerViewAdapter;
+import com.example.khawoat_rmbp.well.RecyclerView.DataRecyclerView.DataHistory;
+import com.example.khawoat_rmbp.well.RecyclerView.RecyclerViewAdapter;
 import com.example.khawoat_rmbp.well.AppSingleton;
 import com.example.khawoat_rmbp.well.R;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.nanchen.titlebar.TitleView;
 
-import org.json.JSONObject;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;

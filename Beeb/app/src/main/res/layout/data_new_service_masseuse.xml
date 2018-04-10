@@ -10,13 +10,15 @@
     card_view:contentPadding="7dp"
     android:padding="10dp"
     android:layout_margin="7dp"
-    card_view:cardBackgroundColor="#00B9FF"
+    card_view:cardBackgroundColor="#e6f2ff"
+
     >
 
 
-    <TableLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
        <!-- <TableRow>
             <TextView
@@ -37,145 +39,127 @@
                 android:textColor="#ffff"
                 />
         </TableRow> !-->
+        <TextView
+            android:id="@+id/tvNameType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:text="Name Mass"
+            android:textColor="#ffff"
+            android:padding="10dp"
+            android:background="#99ccff"/>
 
-        <TableRow>
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="ชื่อลูกค้า : "
-                android:textColor="#ffff"
-                />
+       <LinearLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           android:layout_marginBottom="5dp"
+           android:padding="10dp">
+           <ImageView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:src="@drawable/contactus"/>
 
             <TextView
                 android:id="@+id/tvNameCus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
+                android:textSize="15sp"
                 android:text="name customer"
-                android:textColor="#ffff"
+                android:textColor="#000"
+                android:layout_marginLeft="15dp"
                 />
-        </TableRow>
+       </LinearLayout>
 
-        <TableRow>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp"
+            android:padding="10dp">
 
-            <TextView
-                android:id="@+id/textView3"
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="ประเภทการนวด : "
-                android:textColor="#ffff"
-                />
-
-            <TextView
-                android:id="@+id/tvNameType"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="Name Show Here"
-                android:textColor="#ffff"/>
-        </TableRow>
-
-        <TableRow>
-
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="วันที่ : "
-                android:textColor="#ffff"
-                />
+                android:src="@drawable/ic_calendar"/>
 
             <TextView
                 android:id="@+id/tvDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="Date"
-                android:textColor="#ffff"
+                android:layout_marginLeft="10dp"
+                android:text=" date"
+                android:textSize="15sp"
+                android:textColor="#000"
+
                 />
-        </TableRow>
 
-        <TableRow>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp"
+            android:padding="10dp">
 
-            <TextView
-                android:id="@+id/textView7"
+
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="เวลาเริ่ม : "
-                android:textColor="#ffff"
+                android:src="@drawable/ic_clock"
+
                 />
 
             <TextView
                 android:id="@+id/tvStarTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="Time"
-                android:textColor="#ffff"
+                android:layout_marginRight="10dp"
+                android:text=" start"
+                android:textSize="15sp"
+                android:layout_marginLeft="10dp"
+                android:textColor="#000"
                 />
-
-        </TableRow>
-
-        <TableRow>
-
             <TextView
-                android:id="@+id/textView8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="เวลาจบ : "
-                android:textColor="#ffff"
-                />
-
+                android:text="-"
+                android:textSize="15sp"/>
             <TextView
                 android:id="@+id/tvEndTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="Time"
-                android:textColor="#ffff"
-                />
+                android:text="End"
+                android:textSize="15sp"
+                android:layout_marginLeft="10dp"
+                android:textColor="#000"/>
 
-        </TableRow>
+        </LinearLayout>
+       <LinearLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           android:layout_below="@id/ll_time"
+           android:padding="10dp">
 
-        <TableRow>
 
-            <TextView
-                android:id="@+id/textView9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="สถานที่ : "
-                android:textColor="#ffff"
-                />
+           <ImageView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:src="@drawable/ic_placeholder"/>
 
             <TextView
                 android:id="@+id/tvLocation"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
                 android:text="Location"
-                android:textColor="#ffff"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_below="@+id/ll_time"
+                android:textColor="#000"
                 />
+       </LinearLayout>
 
-        </TableRow>
-
-        <TableRow>
-
-
-
-
-                />
-
-        </TableRow>
-
-
-
-    </TableLayout>
+    </LinearLayout>
 
 </android.support.v7.widget.CardView>

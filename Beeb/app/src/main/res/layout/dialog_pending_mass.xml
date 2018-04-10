@@ -1,71 +1,85 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_cardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:layout_margin="5dp"
+    android:layout_below="@+id/toolbar">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="nametypemasss"
+        android:padding="15dp"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:id="@+id/tvDitype"
+        android:background=" #ffffb3"/>
 
   <LinearLayout
       android:layout_width="fill_parent"
       android:layout_height="wrap_content"
       android:orientation="horizontal"
      android:padding="10dp" >
-      <TextView
-          android:layout_width="0dp"
-          android:layout_weight="1"
+      <ImageView
+          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:text="ชื่อลุกค้า"
-          android:textSize="20sp"/>
+          android:src="@drawable/contactus"/>
+
       <TextView
           android:id="@+id/tvDiname"
           android:layout_width="0dp"
           android:layout_weight="1"
           android:layout_height="wrap_content"
-          android:textSize="20sp"
-          android:hint="name"
+          android:textSize="15sp"
+          android:layout_marginLeft="20dp"
+          android:text="name"
          />
 
 
   </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="10dp" >
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="ประเภทการนวด"
-            android:textSize="20sp"/>
-        <TextView
-            android:id="@+id/tvDitype"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:hint="typename"
-            />
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:padding="10dp" >-->
+        <!--<TextView-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="ประเภทการนวด"-->
+            <!--android:textSize="20sp"/>-->
+        <!--<TextView-->
+          <!---->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:textSize="20sp"-->
+            <!--android:hint="typename"-->
+            <!--/>-->
 
 
-    </LinearLayout>
+    <!--</LinearLayout>-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="10dp">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
+        <ImageView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="วันที่"
-            android:textSize="20sp"/>
+            android:src="@drawable/ic_calendar"/>
         <TextView
             android:id="@+id/tvDidate"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_width="wrap_content"
+         android:layout_marginLeft="20dp"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:hint="date"
           />
     </LinearLayout>
@@ -75,60 +89,54 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="10dp">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
+        <ImageView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="เวลาเริ่ม"
-            android:textSize="20sp"/>
+            android:src="@drawable/ic_clock">
+        </ImageView>
         <TextView
             android:id="@+id/tvDistart"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_width="wrap_content"
+
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:hint="starttime"
+            android:textSize="15sp"
+            android:text="starttime"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp"
            />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="10dp">
         <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="เวลาจบ"
-            android:textSize="20sp"/>
+            android:text="-"
+            android:textSize="15sp"/>
         <TextView
             android:id="@+id/tvDiend"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:hint="endtime"
+            android:textSize="15sp"
+            android:text="endtime"
+            android:layout_marginLeft="20dp"
             />
+
     </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="10dp">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
+        <ImageView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ตำแหน่งที่ตั้ง"
-            android:textSize="20sp"/>
+            android:src="@drawable/ic_placeholder"/>
         <TextView
             android:id="@+id/tvDilo"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:hint="location"
+            android:textSize="15sp"
+            android:text="location"
+            android:layout_marginLeft="20dp"
             />
     </LinearLayout>
     <LinearLayout
@@ -136,38 +144,36 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="10dp">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="แสดงแผนที่"
-            android:textSize="20sp"/>
+
         <Button
             android:id="@+id/BtnDimap"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/map"
+            android:paddingRight="5dp"/>
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="เปิด map"/>
+            android:text="กดเพื่อเปิดแผนที่"
+            android:layout_marginLeft="20dp"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="10dp">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="เบอร์ติดต่อ"
-            android:textSize="20sp"/>
+
         <Button
             android:id="@+id/BtnDitel"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-
-            android:text="กดโทร"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/phone"
             />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="กดเพื่อเติดต่อพนักงาน่"
+            android:layout_marginLeft="20dp"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -180,18 +186,24 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="เสร็จงาน"
-            android:textSize="20sp"/>
+            android:textSize="15sp"
+            android:background="@drawable/login_btn"/>
+
         <Button
             android:id="@+id/Btnunfinish"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="15sp"
            android:text="ไม่เสร็จงาน"
+            android:background="@drawable/resever_btn"
+            android:layout_marginLeft="20dp"
             />
     </LinearLayout>
 
 
 
 
+
+</LinearLayout>
 </LinearLayout>

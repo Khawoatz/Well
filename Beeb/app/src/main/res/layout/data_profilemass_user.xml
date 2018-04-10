@@ -65,17 +65,32 @@
             android:layout_below="@+id/tv_mass"
             android:layout_toRightOf="@+id/tv_point">
             <ImageView
+                android:id="@+id/star"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/star"
+                android:visibility="gone"
+
+                />
+            <ImageView
                 android:id="@+id/star0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/star0"
-
+                android:visibility="gone"
                 />
             <ImageView
                 android:id="@+id/star1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/star1"
+                android:visibility="gone"
+                />
+            <ImageView
+                android:id="@+id/start1h5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/star15"
                 android:visibility="gone"
                 />
             <ImageView
@@ -86,6 +101,13 @@
                 android:visibility="gone"
                 />
             <ImageView
+                android:id="@+id/start2h5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/star25"
+                android:visibility="gone"
+                />
+            <ImageView
                 android:id="@+id/star3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -93,10 +115,24 @@
                 android:visibility="gone"
                 />
             <ImageView
+                android:id="@+id/start3h5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/star35"
+                android:visibility="gone"
+                />
+            <ImageView
                 android:id="@+id/star4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/star4"
+                android:visibility="gone"
+                />
+            <ImageView
+                android:id="@+id/start4h5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/star45"
                 android:visibility="gone"
                 />
             <ImageView

@@ -9,7 +9,7 @@
     card_view:contentPadding="7dp"
     android:padding="10dp"
     android:layout_margin="7dp"
-    card_view:cardBackgroundColor="#41A541"
+    card_view:cardBackgroundColor="#F76A4B"
     >
 
     <android.support.v7.widget.CardView
@@ -35,15 +35,28 @@
                 android:textStyle="bold"
                 android:padding="5dp"
                 android:textSize="25sp"/>
-            <TextView
-                android:id="@+id/tvNameMass"
+
+            <LinearLayout
+                android:id="@+id/ll_namemass"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="ชื่อพนักงาน"
-                android:textStyle="bold"
-                android:padding="10dp"
-                android:textSize="15sp"
-                android:layout_below="@+id/tv_Massage"/>
+                android:orientation="horizontal"
+                android:layout_below="@+id/tv_Massage"
+                android:padding="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ชื่อพนักงาน"
+                    android:textSize="15sp"/>
+                <TextView
+                    android:id="@+id/tvNameMass"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="namemass"
+                    android:textStyle="bold"
+                    android:textSize="15sp"
+                    android:layout_marginLeft="10dp"/>
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/ll_calen_time"
@@ -52,7 +65,7 @@
                 android:orientation="horizontal"
                 android:layout_marginBottom="5dp"
                 android:padding="10dp"
-                android:layout_below="@+id/tvNameMass">
+                android:layout_below="@+id/ll_namemass">
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -112,19 +125,18 @@
                 android:orientation="horizontal"
                 android:layout_below="@id/ll_time"
                 android:padding="10dp">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_placeholder"/>
-                <TextView
-                    android:id="@+id/tvLocation"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Location"
-
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_below="@+id/ll_time"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_placeholder"/>
+            <TextView
+                android:id="@+id/tvLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Location"
+                android:layout_marginBottom="5dp"
+               android:layout_marginLeft="10dp"
+                android:layout_below="@+id/ll_time"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -136,15 +148,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_baht"/>
-                <TextView
-                    android:id="@+id/tv_Price"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Price"
+            <TextView
+                android:id="@+id/tv_Price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Price"
 
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_below="@+id/tv_Location"/>
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_below="@+id/tv_Location"/>
             </LinearLayout>
 
 

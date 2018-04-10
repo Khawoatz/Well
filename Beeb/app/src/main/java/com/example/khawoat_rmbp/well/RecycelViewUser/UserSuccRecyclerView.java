@@ -1,4 +1,4 @@
-package com.example.khawoat_rmbp.well.Adapter;
+package com.example.khawoat_rmbp.well.RecycelViewUser;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -7,8 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.khawoat_rmbp.well.RecycelViewUser.DataRecycelViewUser.DataHistoryUser;
 import com.example.khawoat_rmbp.well.R;
-import com.nostra13.universalimageloader.utils.L;
 
 import java.util.List;
 
@@ -41,13 +41,12 @@ public class UserSuccRecyclerView extends RecyclerView.Adapter<UserSuccRecyclerV
         DataHistoryUser dataHistoryUser = dataHistoryUserList.get(position);
         dataHistoryUser.getNameMass();
 
-        holder.tvNameCus.setText(dataHistoryUser.getNameMass());
-        holder.tvNameType.setText(dataHistoryUser.getNameType());
+        holder.tvNameMass.setText(dataHistoryUser.getNameMass());
+        holder.tv_Massage.setText(dataHistoryUser.getNameType());
         holder.tvDate.setText(dataHistoryUser.getDate());
         holder.tvStarTime.setText(dataHistoryUser.getStartTime());
         holder.tvEndTime.setText(dataHistoryUser.getEndTime());
         holder.tvLocation.setText(dataHistoryUser.getLocation());
-
     }
 
     @Override
@@ -56,11 +55,11 @@ public class UserSuccRecyclerView extends RecyclerView.Adapter<UserSuccRecyclerV
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvNameCus, tvNameType, tvDate, tvStarTime, tvEndTime, tvLocation, tvRes;
+        TextView tvNameMass, tv_Massage, tvDate, tvStarTime, tvEndTime, tvLocation, tvRes;
         public ViewHolder(View itemView) {
             super(itemView);
-            tvNameCus = (TextView) itemView.findViewById(R.id.tvNameCus);
-            tvNameType = (TextView) itemView.findViewById(R.id.tvNameType);
+            tvNameMass = (TextView) itemView.findViewById(R.id.tvNameMass);
+            tv_Massage = (TextView) itemView.findViewById(R.id.tv_Massage);
             tvDate = (TextView) itemView.findViewById(R.id.tvDate);
             tvStarTime = (TextView) itemView.findViewById(R.id.tvStarTime);
             tvEndTime = (TextView) itemView.findViewById(R.id.tvEndTime);

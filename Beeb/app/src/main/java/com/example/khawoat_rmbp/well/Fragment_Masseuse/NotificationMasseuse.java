@@ -1,7 +1,5 @@
 package com.example.khawoat_rmbp.well.Fragment_Masseuse;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -17,32 +15,24 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.khawoat_rmbp.well.Adapter.DataHistory;
-import com.example.khawoat_rmbp.well.Adapter.DataNoti;
-import com.example.khawoat_rmbp.well.Adapter.DataReview;
-import com.example.khawoat_rmbp.well.Adapter.MassNotiRecyclerView;
-import com.example.khawoat_rmbp.well.Adapter.MassSuccesRecyclerViewAdapter;
+import com.example.khawoat_rmbp.well.RecyclerView.DataRecyclerView.DataNoti;
+import com.example.khawoat_rmbp.well.RecyclerView.MassNotiRecyclerView;
 import com.example.khawoat_rmbp.well.AppSingleton;
 import com.example.khawoat_rmbp.well.R;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.nanchen.titlebar.TitleView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.BreakIterator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package com.example.khawoat_rmbp.well.Adapter;
+package com.example.khawoat_rmbp.well.RecyclerView.DataRecyclerView;
 
 import com.google.gson.annotations.SerializedName;
 

@@ -1,14 +1,8 @@
 package com.example.khawoat_rmbp.well.Reservation;
 
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Paint;
 import android.preference.PreferenceManager;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -22,25 +16,18 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.khawoat_rmbp.well.Adapter.CardFragmentPagerAdapter;
-import com.example.khawoat_rmbp.well.Adapter.DataProfile;
-import com.example.khawoat_rmbp.well.Adapter.MassProfileRecyclerView;
-import com.example.khawoat_rmbp.well.Adapter.ShadowTransformer;
+import com.example.khawoat_rmbp.well.RecyclerView.DataRecyclerView.DataProfile;
+import com.example.khawoat_rmbp.well.RecyclerView.MassProfileRecyclerView;
 import com.example.khawoat_rmbp.well.AppSingleton;
-import com.example.khawoat_rmbp.well.Massage_Service.Acupunc_Massage;
 import com.example.khawoat_rmbp.well.R;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -58,7 +45,7 @@ public class Reservation_ChooseMass extends AppCompatActivity {
 
     private static final String URL_FROM_SELECT_MASS = "http://203.158.131.67/~Adminwell/App/Reserve_SelectMass_User.php";
     private static final String URL_FROM_COUNT_MASS = "http://203.158.131.67/~Adminwell/App/ReviewNotiMass.php";
-    private String MassType,Date_Reserve,Time_Start,Time_End,Area_Dis,Address,Price;
+    private String MassType,Date_Reserve,Time_Start,Time_End,Area_Dis,Address,Price,IDMassType;
     private View view;
     private TextView tv_Massage,tv_Calendar,tv_Stime,tv_Etime,tv_Location,tv_Price;
     private Button btn_choose,btm_cancel;
@@ -87,11 +74,15 @@ public class Reservation_ChooseMass extends AppCompatActivity {
         //viewPager.setOffscreenPageLimit(3);
 
         MassType = PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getString("NameMassageType","Null");
+        IDMassType = PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getString("MassageType","Null");
+
         Date_Reserve = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString("dateService", "Null Value");
         Time_Start = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString("dateStart", "Null Value");
         Time_End = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString("dateEnd", "Null Value");
+
         Area_Dis = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString("Area", "Null Value");
         Address = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString("Address", "Null Value");
+
         Price = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString("priceTime", "Null Value");
 
 
@@ -128,7 +119,7 @@ public class Reservation_ChooseMass extends AppCompatActivity {
 
        // getProfileSelect(Customer_ID);
      //   getProfileCount(Date_Reserve,Time_Start,Time_End,Area_Dis);
-        getProfileSelect(Date_Reserve,Time_Start,Time_End,Area_Dis);
+        getProfileSelect(Date_Reserve,Time_Start,Time_End,Area_Dis,IDMassType);
         new Dialog(getApplicationContext());
 
         recyclerView = (RecyclerView) findViewById(R.id.recylcerView);///ใช้ viewpager แต่วิวได้มั้ย
@@ -193,7 +184,6 @@ public class Reservation_ChooseMass extends AppCompatActivity {
                 Log.d("logIDmass",id.toString());
                 Log.d("logNamemass",name.toString());
                 PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("Mas_id", id).commit();
-
                 PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("Get_nameMass", name).commit();
                 Intent i = new Intent(Reservation_ChooseMass.this,Reservation_Result.class);
                 startActivity(i);
@@ -219,7 +209,7 @@ public class Reservation_ChooseMass extends AppCompatActivity {
 
     }
 
-    private void getProfileSelect(final String Date_Reserve,final String Time_Start,final String Time_End,final String Area_Dis)  {
+    private void getProfileSelect(final String Date_Reserve,final String Time_Start,final String Time_End,final String Area_Dis,final String IDMassType)  {
         final String cancel_req_tag = "listview";
         final StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_FROM_SELECT_MASS, new Response.Listener<String>() {
             @Override
@@ -250,6 +240,7 @@ public class Reservation_ChooseMass extends AppCompatActivity {
                 params.put("StartTime", Time_Start);
                 params.put("EndTime", Time_End);
                 params.put("District", Area_Dis);
+                params.put("Type_id", IDMassType);
 
                 //  Log.d("select Map: ", String.valueOf(id));
                 return params;

@@ -1,14 +1,13 @@
-package com.example.khawoat_rmbp.well.Adapter;
+package com.example.khawoat_rmbp.well.RecyclerView;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.khawoat_rmbp.well.RecyclerView.DataRecyclerView.DataHistory;
 import com.example.khawoat_rmbp.well.R;
 
 import java.util.List;
