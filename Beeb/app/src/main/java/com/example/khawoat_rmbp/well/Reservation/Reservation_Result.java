@@ -1,6 +1,7 @@
 package com.example.khawoat_rmbp.well.Reservation;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.khawoat_rmbp.well.AppSingleton;
+import com.example.khawoat_rmbp.well.Fragment_User.PendingWork;
 import com.example.khawoat_rmbp.well.R;
 
 import java.util.HashMap;
@@ -75,8 +77,8 @@ public class Reservation_Result extends AppCompatActivity {
         Price = PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getString("MassageTypePrice", "Null");
 
         Date_Reserve = PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getString("dateService", "Null");
-        TimeStart = PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getString("dateStart", "Null");
-        TimeEnd = PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getString("dateEnd", "Null");
+        TimeStart = PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getString("StartTime", "Null");
+        TimeEnd = PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getString("EndTime", "Null");
 
         Address_Location = PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getString("Address", "Null");
         Lat_titude = PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getString("Lat", "Null");
@@ -117,7 +119,9 @@ public class Reservation_Result extends AppCompatActivity {
                 Status_Reser = "Waiting";
 
 
-                getreser(Customer_ID, Mass_ID, Date_Reserve, TimeStartT, TimeEndD, Address_LocationT,Status_Reser, MassageType_ID, Lat_titudeE, Long_titudeE);
+                getreser(Customer_ID, Mass_ID, Date_Reserve, TimeStart, TimeEnd, Address_LocationT,Status_Reser, MassageType_ID, Lat_titudeE, Long_titudeE);
+                Intent i = new Intent(Reservation_Result.this, PendingWork.class);
+                startActivity(i);
             }
         });
 
