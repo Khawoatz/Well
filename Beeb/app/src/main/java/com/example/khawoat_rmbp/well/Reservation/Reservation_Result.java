@@ -163,7 +163,7 @@ public class Reservation_Result extends AppCompatActivity {
                 params.put("Lat_ID", lat_titude);
                 params.put("Long_ID", long_titude);
 
-                //  1Log.d("select Map: ", String.valueOf(id));
+                //  Log.d("select Map: ", String.valueOf(id));
                 return params;
             }
         };
