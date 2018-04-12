@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:orientation="vertical"
+    tools:context="com.example.khawoat_rmbp.well.Mass_Choose_Work">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="กรุณาใส่ข้อมูลให้ครบถ้วน"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="17sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="เขตพื้นที่ให้บริการ"
+        android:textSize="15sp"/>
+
+    <TextView
+        android:id="@+id/tv_District_Mass"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="#FFCC00"
+        android:onClick="onDialog"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ประเภทนวด"
+        android:layout_marginTop="10dp"
+        android:textSize="15sp"/>
+
+    <CheckBox
+        android:id="@+id/cb_Herbal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="นวดประคบ"/>
+    <CheckBox
+        android:id="@+id/cb_Acu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="นวดกดจุด"/>
+    <CheckBox
+        android:id="@+id/cb_Oil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="นวดน้ำมัน"/>
+    <CheckBox
+        android:id="@+id/cb_Foot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="นวดฝ่าเท้า"/>
+    <CheckBox
+        android:id="@+id/cb_Mig"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="นวดไมเกรน"/>
+    <CheckBox
+        android:id="@+id/cb_Sport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="นวดสปอร์ต"/>
+
+    <Button
+        android:id="@+id/btn_next_Main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ยืนยัน"
+        android:gravity="center"
+        android:background="@drawable/login_btn" />
+
+</LinearLayout>
