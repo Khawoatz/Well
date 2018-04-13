@@ -22,6 +22,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.khawoat_rmbp.well.AppSingleton;
+import com.example.khawoat_rmbp.well.LoginMasseuse;
 import com.example.khawoat_rmbp.well.R;
 import com.example.khawoat_rmbp.well.Update_profile_User;
 import com.nanchen.titlebar.TitleView;
@@ -36,7 +37,7 @@ public class SettingMasseuse extends Fragment implements CompoundButton.OnChecke
 
     private static final String URL_ONOFF_SWITCH ="http://203.158.131.67/~Adminwell/App/Switch_OnOff_Mass.php";
     //private static final String URL_SELECT_ONOFF_SWITCH ="http://203.158.131.67/~Adminwell/App/Switch_Select_OnOff_Mass.php";
-    private Button btnEditprofile,btnAboutapp,btnContactus;
+    private Button btnEditprofile,btnAboutapp,btnContactus,btnLogout;
     private RatingBar rb;
     Switch mySwitch = null;
     private String IDMass;
@@ -76,6 +77,7 @@ public class SettingMasseuse extends Fragment implements CompoundButton.OnChecke
         btnEditprofile = (Button) view.findViewById(R.id.btnEditprofile);
         btnAboutapp = (Button) view.findViewById(R.id.btnAboutapp);
         btnContactus = (Button) view.findViewById(R.id.btnContactus);
+        btnLogout = (Button) view.findViewById(R.id.btnLogout);
 
         btnEditprofile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,6 +95,16 @@ public class SettingMasseuse extends Fragment implements CompoundButton.OnChecke
               //  ntent.setData(Uri.parse("market://details?id=com.example.android"));
 
                 startActivity(i);
+            }
+        });
+
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(), LoginMasseuse.class);
+                startActivity(i);
+                getActivity().finish();
+
             }
         });
 

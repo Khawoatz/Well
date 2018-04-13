@@ -1,5 +1,6 @@
 package com.example.khawoat_rmbp.well.Fragment_Masseuse;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -17,15 +18,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.example.khawoat_rmbp.well.LoginMasseuse;
 import com.example.khawoat_rmbp.well.RecyclerView.DataRecyclerView.DataNoti;
 import com.example.khawoat_rmbp.well.RecyclerView.MassNotiRecyclerView;
 import com.example.khawoat_rmbp.well.AppSingleton;
 import com.example.khawoat_rmbp.well.R;
+import com.example.khawoat_rmbp.well.SignUpMasseuse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -159,54 +163,58 @@ public class NotificationMasseuse extends Fragment {
                 try {
                     JSONObject j0bj = new JSONObject(response);
                     String Avgpoints = j0bj.getString("Avgpoints");
-                    double avg = Double.parseDouble(Avgpoints);
-                    Log.d("lol", String.valueOf(avg));
-
-                    start1.setVisibility(View.VISIBLE);
-                    if (avg==0){
-
+                    if(Avgpoints.equals("null")){
                         start0.setVisibility(View.VISIBLE);
-                    }
-                    else if (avg>=0.1 && avg<=0.5){
 
-                       start.setVisibility(View.VISIBLE);
-
-                    }else if (avg>=0.6 && avg<=1){
+                    }else {
+                        double avg = Double.parseDouble(Avgpoints);
+                        Log.d("lol", String.valueOf(avg));
 
                         start1.setVisibility(View.VISIBLE);
+                        if (avg == 0) {
 
-                    }else if (avg>=1.1 && avg<=1.5){
+                            start0.setVisibility(View.VISIBLE);
+                        } else if (avg >= 0.1 && avg <= 0.5) {
 
-                        start1h5.setVisibility(View.VISIBLE);
+                            start.setVisibility(View.VISIBLE);
 
-                    }else if (avg>=1.6 && avg<=2){
+                        } else if (avg >= 0.6 && avg <= 1) {
 
-                        start2.setVisibility(View.VISIBLE);
+                            start1.setVisibility(View.VISIBLE);
 
-                    }else if (avg>=2.1 && avg<=2.5){
+                        } else if (avg >= 1.1 && avg <= 1.5) {
 
-                        start2h5.setVisibility(View.VISIBLE);
+                            start1h5.setVisibility(View.VISIBLE);
 
-                    }else if (avg>=2.6 && avg<=3){
+                        } else if (avg >= 1.6 && avg <= 2) {
 
-                        start3.setVisibility(View.VISIBLE);
+                            start2.setVisibility(View.VISIBLE);
 
-                    }else if (avg>=3.1 && avg<=3.5){
+                        } else if (avg >= 2.1 && avg <= 2.5) {
 
-                        start3h5.setVisibility(View.VISIBLE);
+                            start2h5.setVisibility(View.VISIBLE);
 
-                    }else if (avg>=3.6 && avg<=4){
+                        } else if (avg >= 2.6 && avg <= 3) {
 
-                        start4.setVisibility(View.VISIBLE);
+                            start3.setVisibility(View.VISIBLE);
 
-                    }else if (avg>=4.1 && avg<=4.5){
+                        } else if (avg >= 3.1 && avg <= 3.5) {
 
-                        start4h5.setVisibility(View.VISIBLE);
+                            start3h5.setVisibility(View.VISIBLE);
 
-                    }else if (avg>=4.6 && avg<=5){
+                        } else if (avg >= 3.6 && avg <= 4) {
 
-                        start5.setVisibility(View.VISIBLE);
+                            start4.setVisibility(View.VISIBLE);
 
+                        } else if (avg >= 4.1 && avg <= 4.5) {
+
+                            start4h5.setVisibility(View.VISIBLE);
+
+                        } else if (avg >= 4.6 && avg <= 5) {
+
+                            start5.setVisibility(View.VISIBLE);
+
+                        }
                     }
 
 
@@ -214,6 +222,9 @@ public class NotificationMasseuse extends Fragment {
 
                 } catch (JSONException e) {
                     e.printStackTrace();
+
+                    Toast.makeText(getContext(),"เฮ้อออออออออออออออออออออออออออออออออ",Toast.LENGTH_SHORT).show();
+
                 }
             }
         }, new Response.ErrorListener() {

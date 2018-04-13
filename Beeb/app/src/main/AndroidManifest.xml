@@ -7,6 +7,9 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFIak_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- add these permissions -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name="android.support.multidex.MultiDexApplication"
@@ -21,12 +24,13 @@
         <activity android:name=".LoginUser" />
         <activity android:name=".ForgotPass" />
         <activity android:name=".LoginMasseuse">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
+
         <activity android:name=".Fragment_User.MainFragment" />
         <activity android:name=".Fragment_Masseuse.MainFragmentMasseuse" />
         <activity android:name=".SignUpMasseuse" />
@@ -41,6 +45,10 @@
         <activity android:name=".Reservation.Reservation_schedule" />
         <activity android:name=".Reservation.Reservation_ChooseMass" />
         <activity android:name=".Reservation.Reservation_Result" />
+        <activity android:name=".Upload_Photo.Photo_citizenpic_mass" />
+
+        <activity android:name=".Upload_photo"/>
+
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

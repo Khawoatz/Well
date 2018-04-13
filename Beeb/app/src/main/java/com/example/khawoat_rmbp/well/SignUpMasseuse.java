@@ -33,7 +33,7 @@ import java.util.Map;
 public class SignUpMasseuse extends AppCompatActivity {
 
     private static final String TAG = "RegisterActivityMasseuse";
-    private static final String URL_FOR_REGISTRATION = "http://203.158.131.67/~Adminwell/App/RegisterMass.php";
+    private static final String URL_FOR_REGISTRATION = "http://203.158.131.67/~Adminwell/App/RegisterMass1.php";
     private EditText etname,etsurname,etemail,etpassword,etpasswordrepeat,ettelephone,etage;
     private RadioGroup genderRadioGroup;
     private Button btnSignup;
@@ -168,7 +168,7 @@ public class SignUpMasseuse extends AppCompatActivity {
 //                try {
 //                    JSONObject jO = new JSONObject(response);
 //                    boolean error = jO.getBoolean("error");
-                if (response.equals("true")){
+                if (response.equals("\r\ntrue")){
 //                        String user = jO.getJSONObject("user").getString("Name");
 //                        Toast.makeText(getApplicationContext(), "Hi " + user +", You are successfully Added!", Toast.LENGTH_SHORT).show();
                     // Launch login activity

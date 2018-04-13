@@ -44,6 +44,8 @@ dependencies {
     compile 'com.google.android.gms:play-services:11.8.0'
     compile 'com.google.code.gson:gson:2.6.1'
 
+    compile 'net.gotev:uploadservice:2.1'
+
 
 
 

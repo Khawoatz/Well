@@ -112,14 +112,14 @@ public class Reservation_Result extends AppCompatActivity {
             public void onClick(View v) {
 
                 Address_LocationT ="เขตสวนหลวง";
-                Lat_titudeE = "13.7784954";
-                Long_titudeE = "100.5569875";
+                Lat_titude = "13.7784954";
+                Long_titude = "100.5569875";
                 TimeStartT = "05:15";
                 TimeEndD ="09:15";
                 Status_Reser = "Waiting";
 
 
-                getreser(Customer_ID, Mass_ID, Date_Reserve, TimeStart, TimeEnd, Address_LocationT,Status_Reser, MassageType_ID, Lat_titudeE, Long_titudeE);
+                getreser(Customer_ID, Mass_ID, Date_Reserve, TimeStart, TimeEnd, Address_LocationT,Status_Reser, MassageType_ID, Lat_titude, Long_titude);
                 Intent i = new Intent(Reservation_Result.this, PendingWork.class);
                 startActivity(i);
             }
