@@ -42,11 +42,9 @@ public class Oil_Massage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String mstype = "3";
+                PreferenceManager.getDefaultSharedPreferences(getBaseContext()).edit().putString("MassageType",mstype).commit();
                 gePrice(mstype);
 
-                Intent intent = new Intent(Oil_Massage.this,reservation.class);
-                PreferenceManager.getDefaultSharedPreferences(getBaseContext()).edit().putString("MassageType",mstype).commit();
-                startActivity(intent);
             }
         });
         changeStatusBarColor();
@@ -69,6 +67,8 @@ public class Oil_Massage extends AppCompatActivity {
                     PreferenceManager.getDefaultSharedPreferences(getBaseContext()).edit().putString("MassageTypePrice",Price).commit();
                     PreferenceManager.getDefaultSharedPreferences(getBaseContext()).edit().putString("NameMassageType",NameTpye).commit();
 
+                    Intent intent = new Intent(Oil_Massage.this,reservation.class);
+                    startActivity(intent);
 
 
                 }catch (JSONException e){

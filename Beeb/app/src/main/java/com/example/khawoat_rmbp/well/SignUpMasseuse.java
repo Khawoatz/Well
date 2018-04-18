@@ -26,6 +26,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.example.khawoat_rmbp.well.Upload_Photo.Photo_citizenpic_mass;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -152,6 +153,7 @@ public class SignUpMasseuse extends AppCompatActivity {
         Log.d("District",textDistrict);
         Log.d("Province",textProvince);
 
+
     }
 
     private void registerUser(final String name, final String surname, final String email, final String password, final String gender,
@@ -172,7 +174,7 @@ public class SignUpMasseuse extends AppCompatActivity {
 //                        String user = jO.getJSONObject("user").getString("Name");
 //                        Toast.makeText(getApplicationContext(), "Hi " + user +", You are successfully Added!", Toast.LENGTH_SHORT).show();
                     // Launch login activity
-                    Intent i = new Intent(SignUpMasseuse.this,LoginMasseuse.class);
+                    Intent i = new Intent(SignUpMasseuse.this,Photo_citizenpic_mass.class);
                     startActivity(i);
                     Toast.makeText(SignUpMasseuse.this, "Welcome :"+name, Toast.LENGTH_SHORT).show();
 
@@ -215,6 +217,8 @@ public class SignUpMasseuse extends AppCompatActivity {
         // Adding request to request queue
         AppSingleton.getInstance(getApplicationContext()).addToRequestQueue(strReq, cancel_req_tag);
     }
+
+
     private void showDialog() {
         if (progressDialog.isShowing())
             progressDialog.show();

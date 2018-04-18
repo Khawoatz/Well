@@ -15,19 +15,7 @@
         android:textColor="@android:color/holo_red_dark"
         android:textSize="17sp"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="เขตพื้นที่ให้บริการ"
-        android:textSize="15sp"/>
 
-    <TextView
-        android:id="@+id/tv_District_Mass"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:background="#FFCC00"
-        android:onClick="onDialog"
-        />
 
     <TextView
         android:layout_width="match_parent"
@@ -71,7 +59,7 @@
         android:id="@+id/btn_next_Main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ยืนยัน"
+        android:text="ถัดไป"
         android:gravity="center"
         android:background="@drawable/login_btn" />
 

@@ -20,20 +20,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity android:name=".MainActivity" />
-        <activity android:name=".SignUp" />
-        <activity android:name=".LoginUser" />
-        <activity android:name=".ForgotPass" />
-        <activity android:name=".LoginMasseuse">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".SignUp"/>
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
+        <activity android:name=".LoginUser">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
+        <activity android:name=".ForgotPass" />
+        <activity android:name=".LoginMasseuse"/>
+
+
 
         <activity android:name=".Fragment_User.MainFragment" />
+
         <activity android:name=".Fragment_Masseuse.MainFragmentMasseuse" />
-        <activity android:name=".SignUpMasseuse" />
+        <activity android:name=".SignUpMasseuse"/>
+
+
         <activity android:name=".Massage_Service.Herbal_Massage" />
         <activity android:name=".Massage_Service.Acupunc_Massage" />
         <activity android:name=".Massage_Service.Oil_Massage" />
@@ -44,10 +52,32 @@
         <activity android:name=".Reservation.Reservation_location" />
         <activity android:name=".Reservation.Reservation_schedule" />
         <activity android:name=".Reservation.Reservation_ChooseMass" />
+
         <activity android:name=".Reservation.Reservation_Result" />
-        <activity android:name=".Upload_Photo.Photo_citizenpic_mass" />
+        <activity android:name=".Upload_Photo.Photo_citizenpic_mass"/>
+        <activity android:name=".Mass_Choose_Work"/>
+        <activity android:name=".Mass_Choos_Work__Area"/>
+        <activity android:name=".Upload_Photo.Photo_MassageCertificate_Mass"/>
+        <activity android:name=".Upload_Photo.Photo_ClearanceCertificate"/>
+        <activity android:name=".Upload_Photo.Photo_User_Citizen"/>
+        <activity android:name=".Upload_Photo.Photo_Profile_Mass"/>
+
+        <activity android:name=".TestNotificatiion"/>
+
+
 
         <activity android:name=".Upload_photo"/>
+        <service android:name=".FirebaseMassagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <service android:name=".FirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+
 
 
         <meta-data

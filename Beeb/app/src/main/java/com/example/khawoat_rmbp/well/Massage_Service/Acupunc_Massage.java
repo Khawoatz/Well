@@ -43,10 +43,12 @@ public class Acupunc_Massage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String mstype = "2";
-                gePrice(mstype);
-                Intent intent = new Intent(Acupunc_Massage.this,reservation.class);
-                startActivity(intent);
                 PreferenceManager.getDefaultSharedPreferences(getBaseContext()).edit().putString("MassageType",mstype).commit();
+                getPrice(mstype);
+                Toast.makeText(getApplicationContext(), "Error e jaa"+mstype, Toast.LENGTH_LONG).show();
+//                Intent intent = new Intent(Acupunc_Massage.this,reservation.class);
+//                startActivity(intent);
+
 
             }
         });
@@ -54,7 +56,7 @@ public class Acupunc_Massage extends AppCompatActivity {
         changeStatusBarColor();
     }
 
-    private void gePrice(final String id) {
+    private void getPrice(final String id) {
 
         String cancel_req_tag = "select";
         StringRequest strReq = new StringRequest(Request.Method.POST, URL_FOR_SHOW_MT, new Response.Listener<String>() {
@@ -73,7 +75,8 @@ public class Acupunc_Massage extends AppCompatActivity {
                    PreferenceManager.getDefaultSharedPreferences(getBaseContext()).edit().putString("MassageTypePrice",Price).commit();
                    PreferenceManager.getDefaultSharedPreferences(getBaseContext()).edit().putString("NameMassageType",NameTpye).commit();
 
-
+                Intent intent = new Intent(Acupunc_Massage.this,reservation.class);
+                startActivity(intent);
 
 
                 }catch (JSONException e){

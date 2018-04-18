@@ -16,6 +16,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.khawoat_rmbp.well.AppSingleton;
+import com.example.khawoat_rmbp.well.Fragment_User.MainFragment;
 import com.example.khawoat_rmbp.well.Fragment_User.PendingWork;
 import com.example.khawoat_rmbp.well.R;
 
@@ -76,7 +77,7 @@ public class Reservation_Result extends AppCompatActivity {
         MassageType_Name = PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getString("NameMassageType", "Null");
         Price = PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getString("MassageTypePrice", "Null");
 
-        Date_Reserve = PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getString("dateService", "Null");
+        Date_Reserve = PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getString("date", "Null");
         TimeStart = PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getString("StartTime", "Null");
         TimeEnd = PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getString("EndTime", "Null");
 
@@ -117,15 +118,46 @@ public class Reservation_Result extends AppCompatActivity {
                 TimeStartT = "05:15";
                 TimeEndD ="09:15";
                 Status_Reser = "Waiting";
-
-
                 getreser(Customer_ID, Mass_ID, Date_Reserve, TimeStart, TimeEnd, Address_LocationT,Status_Reser, MassageType_ID, Lat_titude, Long_titude);
-                Intent i = new Intent(Reservation_Result.this, PendingWork.class);
+                Intent i = new Intent(Reservation_Result.this,MainFragment.class);
                 startActivity(i);
+                pushNotificationQueueReserve(Mass_ID,"ลูกกค้าทำการจองการนวด");
+
             }
         });
 
 
+    }
+    private void pushNotificationQueueReserve(final String id,final String noti) {
+        // Tag used to cancel the request
+        String cancel_req_tag = "deleteQueue";
+        //progressDialog.setMessage("Loading....");
+        //showDialog();
+        StringRequest strReq = new StringRequest(Request.Method.POST, "http://203.158.131.67/~Adminwell/App/push_notification_reserve_queue_mass.php", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d("Reponse",response.toString());
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() {
+                // Posting params to login url
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Masseuse_id", id);
+                params.put("Notification", noti);
+                Log.d("Noti Map: ", String.valueOf(id));
+                return params;
+            }
+
+        };
+        // Adding request to request queue
+        AppSingleton.getInstance(getApplicationContext()).addToRequestQueue(strReq, cancel_req_tag);
     }
 
     private void getreser(final String customer_id, final String mass_id, final String date_reserve, final String timeStart,

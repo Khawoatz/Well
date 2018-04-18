@@ -141,10 +141,8 @@ public class PendingMasseuse extends Fragment {
                     BtnDitel.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Intent callIntent = new Intent(Intent.ACTION_CALL);
-                            callIntent.setData(Uri.parse("tel:123456789"));
-                            startActivity(callIntent);
-                            //ak  callphone(getId);
+
+                              callphone(getId);
                         }
                     });
 
@@ -236,6 +234,9 @@ public class PendingMasseuse extends Fragment {
 
                     call = jObj.getString("Telephone");
                     Log.d("a",call);
+                    Intent callIntent = new Intent(Intent.ACTION_DIAL);
+                    callIntent.setData(Uri.parse("tel:"+call));
+                    startActivity(callIntent);
 
 //                    Intent callIntent = new Intent(Intent.ACTION_CALL);
 //                    callIntent.setData(Uri.parse("tel:0377778888"));

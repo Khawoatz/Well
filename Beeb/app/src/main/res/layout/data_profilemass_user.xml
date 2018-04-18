@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:text="ชื่อพนักงาน"
             android:layout_marginLeft="20dp"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:layout_toRightOf="@+id/design_line"/>
         <TextView
             android:id="@+id/tvNameMass"
@@ -46,13 +46,13 @@
             android:hint="name"
             android:layout_marginLeft="20dp"
             android:layout_toRightOf="@+id/tv_mass"
-            android:textSize="20sp"/>
+            android:textSize="15sp"/>
         <TextView
             android:id="@+id/tv_point"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="คะแนน"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:layout_below="@+id/tv_mass"

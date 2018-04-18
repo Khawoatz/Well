@@ -25,9 +25,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.khawoat_rmbp.well.AppSingleton;
 import com.example.khawoat_rmbp.well.Constants;
+import com.example.khawoat_rmbp.well.LoginUser;
 import com.example.khawoat_rmbp.well.R;
-import com.example.khawoat_rmbp.well.SignUpMasseuse;
-import com.example.khawoat_rmbp.well.Upload_photo;
 
 import net.gotev.uploadservice.MultipartUploadRequest;
 import net.gotev.uploadservice.UploadNotificationConfig;
@@ -36,19 +35,15 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 
 /**
- * Created by jah on 4/12/2018.
+ * Created by jah on 4/16/2018.
  */
 
-public class Photo_citizenpic_mass extends AppCompatActivity implements View.OnClickListener {
-    private static final String URL_FOR_UPDATE_SELECT_MAXIDMASS = "http://203.158.131.67/~Adminwell/App/Select_maxid_citizen.php";
-
-
-    private Button buttonChoose, buttonnext;
+public class Photo_User_Citizen extends AppCompatActivity implements View.OnClickListener{
+    private static final String URL_FOR_UPDATE_SELECT_MAX_IDCUS = "http://203.158.131.67/~Adminwell/App/Select_maxid_citizen_user.php";
+    private Button buttonChoose,buttonnext;
     private Button buttonUpload;
     private ImageView imageView;
     private TextView tv_name;
@@ -64,13 +59,13 @@ public class Photo_citizenpic_mass extends AppCompatActivity implements View.OnC
 
     //Uri to store the image uri
     private Uri filePath;
-    private String IDMASS;
-    private String IDMASS1234;
+    private String IDMaxMass;
+    private String cusidmax;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.upload_citizenpic_mass);
+        setContentView(R.layout.upload_citizen_user);
 
         //Requesting storage permission
         requestStoragePermission();
@@ -85,35 +80,34 @@ public class Photo_citizenpic_mass extends AppCompatActivity implements View.OnC
         //Setting clicklistener
         buttonChoose.setOnClickListener(this);
         buttonUpload.setOnClickListener(this);
-       // IDMass = PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getString("IDMass" , "Null Value");//การรับค่า
 
         showmassid();
     }
 
     private void showmassid() {
         String cancel_req_tag = "select";
-        StringRequest strReq = new StringRequest(Request.Method.POST, URL_FOR_UPDATE_SELECT_MAXIDMASS, new Response.Listener<String>() {
+        StringRequest strReq = new StringRequest(Request.Method.POST, URL_FOR_UPDATE_SELECT_MAX_IDCUS, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
                     JSONObject jObj = new JSONObject(response);
                     Log.d("responseIDMASS",response.toString());
-                    IDMASS1234 = jObj.getString("id");
+                    cusidmax = jObj.getString("id");
 
-  //                 Log.d("IDMASS",IDMASS);
+                    //                 Log.d("IDMASS",IDMASS);
 
 
-                    PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("IDmassMax", IDMASS1234).commit();
+                    PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("IDmassMax", cusidmax).commit();
 //                        PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putString("sAddress", Address).commit();
 //                        PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putString("sLatitude", Latitude).commit();
 
-                  //  Toast.makeText(Photo_citizenpic_mass.this,"dddddd", Toast.LENGTH_SHORT).show();
+                    //  Toast.makeText(Photo_citizenpic_mass.this,"dddddd", Toast.LENGTH_SHORT).show();
 
 
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-              //      Toast.makeText(Photo_citizenpic_mass.this,"FFFF", Toast.LENGTH_SHORT).show();
+                    //      Toast.makeText(Photo_citizenpic_mass.this,"FFFF", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -126,12 +120,11 @@ public class Photo_citizenpic_mass extends AppCompatActivity implements View.OnC
         // Adding request to request queue
         AppSingleton.getInstance(this).addToRequestQueue(strReq, cancel_req_tag);
     }
-
     public void uploadMultipart(){
         //getting name for the image
-    //  String name = tv_name.getText().toString().trim();
-        String name = IDMASS1234;
-        Log.d("IDansa",IDMASS1234.toString());
+        //  String name = tv_name.getText().toString().trim();
+        String name = cusidmax;
+        Log.d("IDansa",cusidmax.toString());
         //getting the actual path of the image
         String path = getPath(filePath);
 
@@ -140,7 +133,7 @@ public class Photo_citizenpic_mass extends AppCompatActivity implements View.OnC
             String uploadId = UUID.randomUUID().toString();
 
             //Creating a multi part request
-            new MultipartUploadRequest(this, uploadId, Constants.UPLOAD_URL_CITIZENPIC)
+            new MultipartUploadRequest(this, uploadId, Constants.UPLOAD_URL_CUSCITIZEN)
                     .addFileToUpload(path, "image") //Adding file
                     .addParameter("name", name) //Adding text parameter to the request
                     .setNotificationConfig(new UploadNotificationConfig())
@@ -189,9 +182,8 @@ public class Photo_citizenpic_mass extends AppCompatActivity implements View.OnC
 
         return path;
     }
-
     private void requestStoragePermission() {
-        if (ContextCompat.checkSelfPermission(Photo_citizenpic_mass.this,android. Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)
+        if (ContextCompat.checkSelfPermission(Photo_User_Citizen.this,android. Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)
             return;
 
         if (ActivityCompat.shouldShowRequestPermissionRationale(this,android. Manifest.permission.READ_EXTERNAL_STORAGE)) {
@@ -220,7 +212,6 @@ public class Photo_citizenpic_mass extends AppCompatActivity implements View.OnC
         }
     }
 
-
     @Override
     public void onClick(View v) {
         if (v == buttonChoose) {
@@ -228,16 +219,15 @@ public class Photo_citizenpic_mass extends AppCompatActivity implements View.OnC
         }
         if (v == buttonUpload) {
             uploadMultipart();
-            Toast.makeText(Photo_citizenpic_mass.this, "Upload Success ", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Photo_User_Citizen.this, "Upload Success ", Toast.LENGTH_SHORT).show();
 
         }
-     buttonnext.setOnClickListener(new View.OnClickListener() {
-         @Override
-         public void onClick(View v) {
-             Intent i = new Intent(Photo_citizenpic_mass.this,Photo_MassageCertificate_Mass.class);
-             startActivity(i);
-         }
-     });
+        buttonnext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Photo_User_Citizen.this,LoginUser.class);
+                startActivity(i);
+            }
+        });
     }
-
 }

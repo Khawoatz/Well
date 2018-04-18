@@ -169,6 +169,9 @@ public class Reservation_schedule extends AppCompatActivity {
                     tv_Time.setText(fromTime+" - "+toTime);
                     PreferenceManager.getDefaultSharedPreferences(getBaseContext()).edit().putString("StartTime", fromTime).commit();
                     PreferenceManager.getDefaultSharedPreferences(getBaseContext()).edit().putString("EndTime", toTime).commit();
+
+                    Log.d("starttime",fromTime.toString());
+                    Log.d("starttime",toTime.toString());
                 }
 
 //                Integer toTimeplus = toTimeint + 2;

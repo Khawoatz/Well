@@ -52,6 +52,18 @@
             android:textAlignment="textStart"
             android:drawableRight="@drawable/settingprofile"
             android:background="@drawable/borderbottomnavi" />
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/borderbottomnavi"
+            android:drawableRight="@drawable/logout"
+            android:text=" ออกจากระบบ"
+            android:textAlignment="textStart"
+            android:textSize="15sp" />
+
         <Button
             android:id="@+id/btnContactus"
             android:layout_width="match_parent"
@@ -62,26 +74,8 @@
             android:layout_marginBottom="5dp"
             android:drawableEnd="@drawable/contactus"
             android:background="@drawable/borderbottomnavi" />
-        <Button
-            android:id="@+id/btnAboutapp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=" เกี่ยวกับแอปพลิเคชั่น"
-            android:textSize="15sp"
-            android:textAlignment="textStart"
-            android:drawableEnd="@drawable/information"
-            android:background="@drawable/borderbottomnavi" />
-        <Button
-            android:id="@+id/btnLogout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=" ออกจากระบบ"
-            android:textSize="15sp"
-            android:textAlignment="textStart"
-            android:layout_marginTop="10dp"
-            android:drawableRight="@drawable/logout"
-            android:background="@drawable/borderbottomnavi" />
-       <ImageView
+
+        <ImageView
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            />
@@ -101,7 +95,7 @@
                 android:id="@+id/switch1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="230dp"/>
+                android:layout_marginLeft="200dp"/>
         </LinearLayout>
     </LinearLayout>
 

@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.khawoat_rmbp.well.Fragment_Masseuse.SettingMasseuse;
+import com.example.khawoat_rmbp.well.LoginMasseuse;
+import com.example.khawoat_rmbp.well.LoginUser;
 import com.example.khawoat_rmbp.well.R;
 import com.example.khawoat_rmbp.well.Update_profile_User;
 import com.example.khawoat_rmbp.well.Update_profle_user2;
@@ -20,7 +22,7 @@ import com.nanchen.titlebar.TitleView;
 public class SettingFragment extends Fragment {
 
 
-    private Button btnContactus,btnEditprofile;
+    private Button btnContactus,btnEditprofile,btnLogout;
 
 
     public SettingFragment() {
@@ -47,6 +49,16 @@ public class SettingFragment extends Fragment {
 
         btnContactus = (Button) view.findViewById(R.id.btnContactus);
         btnEditprofile = (Button) view.findViewById(R.id.btnEditprofile);
+        btnLogout = (Button) view.findViewById(R.id.btnLogout);
+
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(), LoginUser.class);
+                startActivity(i);
+                getActivity().finish();
+            }
+        });
 
         btnEditprofile.setOnClickListener(new View.OnClickListener() {
             @Override

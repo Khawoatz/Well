@@ -75,7 +75,7 @@ public class SettingMasseuse extends Fragment implements CompoundButton.OnChecke
 
 
         btnEditprofile = (Button) view.findViewById(R.id.btnEditprofile);
-        btnAboutapp = (Button) view.findViewById(R.id.btnAboutapp);
+
         btnContactus = (Button) view.findViewById(R.id.btnContactus);
         btnLogout = (Button) view.findViewById(R.id.btnLogout);
 

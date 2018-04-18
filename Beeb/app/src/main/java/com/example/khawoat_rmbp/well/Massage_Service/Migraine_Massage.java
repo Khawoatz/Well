@@ -42,11 +42,9 @@ public class Migraine_Massage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String mstype = "5";
+                PreferenceManager.getDefaultSharedPreferences(getBaseContext()).edit().putString("MassageType",mstype).commit();
                 gePrice(mstype);
 
-                Intent intent = new Intent(Migraine_Massage.this,reservation.class);
-                PreferenceManager.getDefaultSharedPreferences(getBaseContext()).edit().putString("MassageType",mstype).commit();
-                startActivity(intent);
             }
         });
 
@@ -68,6 +66,8 @@ public class Migraine_Massage extends AppCompatActivity {
                     PreferenceManager.getDefaultSharedPreferences(getBaseContext()).edit().putString("MassageTypePrice",Price).commit();
                     PreferenceManager.getDefaultSharedPreferences(getBaseContext()).edit().putString("NameMassageType",NameTpye).commit();
 
+                    Intent intent = new Intent(Migraine_Massage.this,reservation.class);
+                    startActivity(intent);
 
                 }catch (JSONException e){
                     e.printStackTrace();

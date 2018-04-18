@@ -16,6 +16,15 @@ public class DataHistory {
     public void setId(String id){
         this.id = id;
     }
+    @SerializedName("Cus_id")
+    private String idCus;
+
+    public String getIdCus(){
+        return idCus;
+    }
+    public void setIdCus(String idCus){
+        this.idCus = idCus;
+    }
 
     @SerializedName("Name")
     private String nameCustomer;

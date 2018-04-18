@@ -112,9 +112,11 @@ public class LoginMasseuse extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(LoginMasseuse.this,SignUpMasseuse.class);
                 startActivity(i);
+
             }
         });
     }
+
 
     private void loginUser( final String email, final String password) {
         // Tag used to cancel the request
@@ -131,14 +133,30 @@ public class LoginMasseuse extends AppCompatActivity {
                     responseTxt = response.replace("localhost","");
                     JSONObject jObj = new JSONObject(response);
                         String MassID = jObj.getString("Masseuse_id");
+                        String Statusallow = jObj.getString("Status_allow");
+
                         // Launch User activity
-                        Log.d("MassID",MassID);
+                    Log.d("MassID",MassID);
 
-                        Intent intent = new Intent(LoginMasseuse.this, MainFragmentMasseuse.class);
+                        Log.d("Statusallow",Statusallow);
+                        if(Statusallow.equals("FristApproved")){
 
-                        PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("IDMass",MassID).commit();//ส่งค่าไปหน้าอื่น
-                        startActivity(intent);
-                        finish();
+                            Toast.makeText(getApplicationContext(), "FristApproved", Toast.LENGTH_LONG).show();
+
+                            Intent intent = new Intent(LoginMasseuse.this, Mass_Choose_Work.class);
+
+                            PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("IDMass", MassID).commit();//ส่งค่าไปหน้าอื่น
+                            startActivity(intent);
+
+                        }else {
+
+
+                            Intent intent = new Intent(LoginMasseuse.this, MainFragmentMasseuse.class);
+
+                            PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("IDMass", MassID).commit();//ส่งค่าไปหน้าอื่น
+                            startActivity(intent);
+                            finish();
+                        }
 
                 } catch (JSONException e) {
                     e.printStackTrace();

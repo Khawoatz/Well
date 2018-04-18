@@ -42,16 +42,7 @@
                 android:layout_marginBottom="5dp"
                 android:drawableRight="@drawable/settingprofile"
                 android:background="@drawable/borderbottomnavi" />
-             <Button
-            android:id="@+id/btnAddress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=" ที่อยู่ของฉัน"
-            android:textSize="15sp"
-            android:textAlignment="textStart"
-            android:drawableRight="@drawable/addressprofile"
-            android:background="@drawable/borderbottomnavi" />
-</LinearLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -69,15 +60,7 @@
             android:layout_marginBottom="5dp"
             android:drawableEnd="@drawable/contactus"
             android:background="@drawable/borderbottomnavi" />
-        <Button
-            android:id="@+id/btnAboutapp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=" เกี่ยวกับแอปพลิเคชั่น"
-            android:textSize="15sp"
-            android:textAlignment="textStart"
-            android:drawableEnd="@drawable/information"
-            android:background="@drawable/borderbottomnavi" />
+
         <Button
             android:id="@+id/btnLogout"
             android:layout_width="match_parent"

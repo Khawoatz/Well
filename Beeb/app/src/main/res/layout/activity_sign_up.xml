@@ -401,37 +401,8 @@
 
         </LinearLayout>
 
+
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@drawable/bg_ediitext"
-            android:paddingBottom="5dp"
-            android:layout_marginBottom="20dp">
-
-            <TextView
-                android:id="@+id/tv_idimg"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="บัตรประชาชน"
-                android:textSize="15sp"
-                android:layout_marginBottom="5dp"
-                android:textColor="@android:color/white"/>
-
-            <Button
-                android:id="@+id/btn_uploadid"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="คลิกที่นี่เพื่ออัพโหลดไฟล์"/>
-            
-            <ImageView
-                android:id="@+id/imgID"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-
-    <LinearLayout
         android:id="@+id/ll_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -440,7 +411,7 @@
             android:id="@+id/btn_sign_up"
             android:layout_width="250dp"
             android:layout_height="50dp"
-            android:text="ลงทะเบียน !"
+            android:text="ถัดไป"
             android:textAllCaps="false"
             android:textSize="18sp"
             android:textColor="@color/colorPrimary"

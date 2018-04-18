@@ -394,6 +394,12 @@
                     android:layout_marginBottom="5dp"
                     android:textColor="@android:color/white"/>
 
+                <Spinner
+                    android:id="@+id/dl_province"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:textColor="@android:color/white"
+                    />
                 <!--<EditText-->
                     <!--android:id="@+id/et_province"-->
                     <!--android:layout_width="match_parent"-->
@@ -407,88 +413,6 @@
                     <!--android:inputType="text"-->
                     <!--android:background="@android:color/transparent"/>-->
 
-                <Spinner
-                    android:id="@+id/dl_province"
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:hint="กรุณาเลือกจังหวัด"
-                    android:textColor="@android:color/white"
-                    />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/bg_ediitext"
-                android:paddingBottom="5dp"
-                android:layout_marginBottom="20dp">
-
-                <TextView
-                    android:id="@+id/tv_idimg"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="บัตรประชาชน"
-                    android:textSize="15sp"
-                    android:layout_marginBottom="5dp"
-                    android:textColor="@android:color/white"/>
-
-                <Button
-                    android:id="@+id/btn_uploadid"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="คลิกที่นี่เพื่ออัพโหลดไฟล์"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/bg_ediitext"
-                android:paddingBottom="5dp"
-                android:layout_marginBottom="20dp">
-
-                <TextView
-                    android:id="@+id/tv_picCer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="ใบรับรองประกอบวิชาชีพ"
-                    android:textSize="15sp"
-                    android:layout_marginBottom="5dp"
-                    android:textColor="@android:color/white"/>
-
-                <Button
-                    android:id="@+id/btn_uploadCer"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="คลิกที่นี่เพื่ออัพโหลดไฟล์"/>
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/bg_ediitext"
-                android:paddingBottom="5dp"
-                android:layout_marginBottom="20dp">
-
-                <TextView
-                    android:id="@+id/tv_picClear"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="ใบรับรองพฤติกรรม"
-                    android:textSize="15sp"
-                    android:layout_marginBottom="5dp"
-                    android:textColor="@android:color/white"/>
-
-                <Button
-                    android:id="@+id/btn_uploadClear"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="คลิกที่นี่เพื่ออัพโหลดไฟล์"/>
 
             </LinearLayout>
 
@@ -554,16 +478,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <Button
                     android:id="@+id/btn_sign_up"
                     android:layout_width="250dp"
                     android:layout_height="50dp"
-                    android:text="ลงทะเบียน !"
-                    android:textAllCaps="false"
-                    android:textSize="18sp"
-                    android:textColor="@color/colorPrimary"
+                    android:layout_marginBottom="20dp"
                     android:background="@drawable/login_btn"
-                    android:layout_marginBottom="20dp"/>
+                    android:text="ถัดไป"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="18sp" />
                 <TextView
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"

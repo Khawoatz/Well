@@ -39,6 +39,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.khawoat_rmbp.well.Adapter.RequestHandler;
+import com.example.khawoat_rmbp.well.Upload_Photo.Photo_User_Citizen;
+import com.example.khawoat_rmbp.well.Upload_Photo.Photo_MassageCertificate_Mass;
+import com.example.khawoat_rmbp.well.Upload_Photo.Photo_User_Citizen;
+import com.example.khawoat_rmbp.well.Upload_Photo.Photo_citizenpic_mass;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -167,7 +171,7 @@ public class SignUp extends AppCompatActivity {
 
         changeStatusBarColor();
 
-        img_ID = (ImageView) findViewById(R.id.imgID);
+      //  img_ID = (ImageView) findViewById(R.id.imgID);
 
         TextView tvsignup = (TextView) findViewById(R.id.tv_sign_up);
         TextView tvhaveacc = (TextView) findViewById(R.id.tv_have_acc);
@@ -180,7 +184,7 @@ public class SignUp extends AppCompatActivity {
         TextView tvgender = (TextView) findViewById(R.id.tv_gender);
         TextView tvtelephone = (TextView) findViewById(R.id.tv_telephone);
         TextView tvage = (TextView) findViewById(R.id.tv_age);
-        TextView tvidimg = (TextView) findViewById(R.id.tv_idimg);
+     //   TextView tvidimg = (TextView) findViewById(R.id.tv_idimg);
         TextView tvarea = (TextView) findViewById(R.id.tv_area);
 
         etname = (EditText) findViewById(R.id.et_name);
@@ -195,7 +199,7 @@ public class SignUp extends AppCompatActivity {
         RadioButton rbFemale = (RadioButton) findViewById(R.id.female_radio_btn);
 
         Button btnSignup = (Button) findViewById(R.id.btn_sign_up);
-        btnUpload = (Button) findViewById(R.id.btn_uploadid);
+      //  btnUpload = (Button) findViewById(R.id.btn_uploadid);
 
         Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/RSUlight.ttf");
         tvhaveacc.setTypeface(custom_font);
@@ -219,10 +223,10 @@ public class SignUp extends AppCompatActivity {
         etage.setTypeface(custom_font);
         rbMale.setTypeface(custom_font);
         rbFemale.setTypeface(custom_font);
-        tvidimg.setTypeface(custom_font);
+     //   tvidimg.setTypeface(custom_font);
         tvarea.setTypeface(custom_font);
 //        etarea.setTypeface(custom_font);
-        btnUpload.setTypeface(custom_font);
+//        btnUpload.setTypeface(custom_font);
         ll_button = (LinearLayout) findViewById(R.id.ll_button);
         ease(ll_button);
 
@@ -250,26 +254,16 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                uploadImage();
-                submitForm(uploadImage);
+//                uploadImage();
+               submitForm();
+
             }
         });
 
-        btnUpload.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showFileChooser();
-            }
-        });
 
     }
 
-    private void showFileChooser() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent,"เลือกรูปภาพ"), PICK_IMAGE_REQUEST);
-    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -294,46 +288,11 @@ public class SignUp extends AppCompatActivity {
         return encodedImage;
     }
 
-    private void uploadImage(){
-        class UploadImage extends AsyncTask<Bitmap,Void,String> {
-
-            ProgressDialog loading;
-            RequestHandler rh = new RequestHandler();
-
-            @Override
-            protected void onPreExecute() {
-                super.onPreExecute();
-                loading = ProgressDialog.show(SignUp.this, "Uploading...", null,true,true);
-            }
-
-            @Override
-            protected void onPostExecute(String s) {
-                super.onPostExecute(s);
-                loading.dismiss();
-                Toast.makeText(getApplicationContext(),s,Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public String doInBackground(Bitmap... params) {
-                bitmap = params[0];
-                uploadImage = getStringImage(bitmap);
-                HashMap<String,String> data = new HashMap<>();
-
-                data.put(UPLOAD_KEY, uploadImage);
-
-                result = rh.sendPostRequest(UPLOAD_URL,data);
-
-                return result;
-            }
-        }
-
-        UploadImage ui = new UploadImage();
-        ui.execute(bitmap);
-    }
 
 
 
-    private void submitForm(String citizenid) {
+
+    private void submitForm() {
         int selectedId = genderRadioGroup.getCheckedRadioButtonId();
 //        String textDistrict = spinnerDistrict.getSelectedItem().toString();
         String textProvince = spinnerProvince.getSelectedItem().toString();
@@ -352,15 +311,15 @@ public class SignUp extends AppCompatActivity {
                 ettelephone.getText().toString(),
                 etage.getText().toString(),
                 textDistrict,
-                textProvince,
-                citizenid);
+                textProvince);
+//                citizenid);
         Log.d("Gender",gender);
         Log.d("District",textDistrict);
         Log.d("Province",textProvince);
 
     }
     private void registerUser(final String name, final String surname, final String email, final String password, final String gender,
-                              final String telephone, final String age, final String address, final String province,final String citizenpic) {
+                              final String telephone, final String age, final String address, final String province) {
         // Tag used to cancel the request
         String cancel_req_tag = "register";
         progressDialog.setMessage("Adding you ...");
@@ -377,7 +336,7 @@ public class SignUp extends AppCompatActivity {
 //                        String user = jO.getJSONObject("user").getString("Name");
 //                        Toast.makeText(getApplicationContext(), "Hi " + user +", You are successfully Added!", Toast.LENGTH_SHORT).show();
                         // Launch login activity
-                        Intent i = new Intent(SignUp.this,LoginUser.class);
+                        Intent i = new Intent(SignUp.this,Photo_User_Citizen.class);
                         startActivity(i);
                     Toast.makeText(SignUp.this, "Welcome :"+name, Toast.LENGTH_SHORT).show();
 
@@ -413,7 +372,7 @@ public class SignUp extends AppCompatActivity {
                 params.put("Age", age);
                 params.put("District",address);
                 params.put("Province",province);
-                params.put("Citizen_Pic",citizenpic);
+              //  params.put("Citizen_Pic",citizenpic);
                 return params;
             }
         };

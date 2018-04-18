@@ -76,9 +76,9 @@ public class Reservation_ChooseMass extends AppCompatActivity {
         MassType = PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getString("NameMassageType","Null");
         IDMassType = PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getString("MassageType","Null");
 
-        Date_Reserve = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString("dateService", "Null Value");
-        Time_Start = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString("dateStart", "Null Value");
-        Time_End = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString("dateEnd", "Null Value");
+        Date_Reserve = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString("date", "Null Value");
+        Time_Start = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString("StartTime", "Null Value");
+        Time_End = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString("EndTime", "Null Value");
 
         Area_Dis = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString("Area", "Null Value");
         Address = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString("Address", "Null Value");

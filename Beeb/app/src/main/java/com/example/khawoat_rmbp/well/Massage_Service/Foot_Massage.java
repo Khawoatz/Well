@@ -42,10 +42,9 @@ public class Foot_Massage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String mstype = "4";
-                gePrice(mstype);
-                Intent intent = new Intent(Foot_Massage.this,reservation.class);
-                startActivity(intent);
                 PreferenceManager.getDefaultSharedPreferences(getBaseContext()).edit().putString("MassageType",mstype).commit();
+                gePrice(mstype);
+
             }
         });
 
@@ -69,6 +68,8 @@ public class Foot_Massage extends AppCompatActivity {
                     PreferenceManager.getDefaultSharedPreferences(getBaseContext()).edit().putString("MassageTypePrice",Price).commit();
                     PreferenceManager.getDefaultSharedPreferences(getBaseContext()).edit().putString("NameMassageType",NameTpye).commit();
 
+                    Intent intent = new Intent(Foot_Massage.this,reservation.class);
+                    startActivity(intent);
 
 
                 }catch (JSONException e){

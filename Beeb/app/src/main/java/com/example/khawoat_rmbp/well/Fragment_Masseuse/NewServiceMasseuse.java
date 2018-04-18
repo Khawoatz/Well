@@ -46,6 +46,7 @@ public class NewServiceMasseuse extends Fragment {
     List<DataHistory> dataHistoryList;
      RecyclerView recyclerView;
     String IDMass;
+    String getIdCus;
     private Button bntYes,bntNo;
 
     private RecyclerView.Adapter mAdapter;
@@ -96,6 +97,8 @@ public class NewServiceMasseuse extends Fragment {
                     //Toast.makeText(MainActivity.this, getDataAdapterTels.get(RecyclerViewClickedItemPOS).getTelname(), Toast.LENGTH_SHORT).show();
                     //Êè§¤èÒ ID ä»·ÕèË¹éÒ detailfield
                     final String getId = dataHistoryList.get(RecyclerViewClickedItemPOS).getId();
+                    getIdCus = dataHistoryList.get(RecyclerViewClickedItemPOS).getIdCus();
+                    Log.d("Cus_is",getIdCus);
                   //  Toast.makeText(getContext(),getId,Toast.LENGTH_SHORT).show();
                     AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                     builder.setMessage("คุณต้องการรับงานหรือไม่");
@@ -180,6 +183,37 @@ public class NewServiceMasseuse extends Fragment {
         AppSingleton.getInstance(getContext()).addToRequestQueue(stringRequest, cancel_req_tag);
 
     }
+    private void pushNotificationQueueReserve(final String id,final String noti) {
+        // Tag used to cancel the request
+        String cancel_req_tag = "deleteQueue";
+        //progressDialog.setMessage("Loading....");
+        //showDialog();
+        StringRequest strReq = new StringRequest(Request.Method.POST, "http://203.158.131.67/~Adminwell/App/push_notification_reserve_queue_user2.php", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d("Reponse",response.toString());
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() {
+                // Posting params to login url
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Cus_id", id);
+                params.put("Notification", noti);
+                Log.d("Noti Map: ", String.valueOf(id));
+                return params;
+            }
+
+        };
+        // Adding request to request queue
+        AppSingleton.getInstance(getContext()).addToRequestQueue(strReq, cancel_req_tag);
+    }
 ///update
     private void selectAppovred (final String id , final String choice){
         String cancel_reg_tag ="update";
@@ -191,8 +225,8 @@ public class NewServiceMasseuse extends Fragment {
                 getdatalist(IDMass);
                 recyclerView.setAdapter(mAdapter);
                // Toast.makeText(getContext(),response.toString(),Toast.LENGTH_SHORT).show();
-                if (response.equals("AP_Success")) {
-
+                if (response.equals("\r\nAP_Success")) {
+                    pushNotificationQueueReserve(getIdCus,"พนักงานรับการจองเรียบร้อยแล้ว");
                     Toast.makeText(getContext(), "คุณได้รับงานนี้แล้ว", Toast.LENGTH_SHORT).show();
 
                 } else {
