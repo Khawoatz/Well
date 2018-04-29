@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="30dp"
+            android:gravity="center"
+            android:layout_gravity="left"
+            android:orientation="vertical">
+        <ImageView
+            android:id="@+id/img_Map"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/map"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ติดตามพนักงานนวด"
+            android:textSize="15sp" />
+</LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingRight="30dp"
+            android:gravity="center"
+            android:layout_gravity="right"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/img_Phone"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/phone"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ติดต่อพนักงานนวด"
+                android:textSize="15sp"/>
+
+        </LinearLayout>
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:background="@android:color/darker_gray"/>
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

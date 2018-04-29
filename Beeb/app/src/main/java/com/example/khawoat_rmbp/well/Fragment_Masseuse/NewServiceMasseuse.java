@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -27,10 +30,13 @@ import com.android.volley.toolbox.StringRequest;
 import com.example.khawoat_rmbp.well.RecyclerView.DataRecyclerView.DataHistory;
 import com.example.khawoat_rmbp.well.RecyclerView.RecyclerViewAdapter;
 import com.example.khawoat_rmbp.well.AppSingleton;
+import com.example.khawoat_rmbp.well.BannerSlider.SliderFragment;
+import com.example.khawoat_rmbp.well.Fragment_User.ServiceFragment;
 import com.example.khawoat_rmbp.well.R;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -42,6 +48,7 @@ public class NewServiceMasseuse extends Fragment {
 
     private static final String URL_FROM_RECYCLERVIE_NEWSERVICE = "http://203.158.131.67/~Adminwell/App/RecyclerView_Newmyservice_Mass.php";
     private static final String URL_FROM_RECYCLERVIE_NEWSERVICE_UPDATE = "http://203.158.131.67/~Adminwell/App/RecyclerView_Newmyservice_Mass_Update.php";
+    ViewPager viewPager;
 
     List<DataHistory> dataHistoryList;
      RecyclerView recyclerView;
@@ -62,7 +69,8 @@ public class NewServiceMasseuse extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final View[] view = {inflater.inflate(R.layout.fragment_new_service_masseuse, null)};
+        View view = inflater.inflate(R.layout.fragment_new_service_masseuse, null);
+//         View[] view = {inflater.inflate(R.layout.fragment_new_service_masseuse, null)};
 
         IDMass = PreferenceManager.getDefaultSharedPreferences(getContext()).getString("IDMass" , "Null Value");//การรับค่า
         Toast.makeText(getContext(),IDMass,Toast.LENGTH_SHORT).show();
@@ -70,7 +78,8 @@ public class NewServiceMasseuse extends Fragment {
         Log.d("MS1",IDMass);
         getdatalist(IDMass);
         //getting the recyclerview from xml
-        recyclerView = (RecyclerView) view[0].findViewById(R.id.recylcerView);
+        recyclerView = (RecyclerView) view.findViewById(R.id.recylcerView);
+        viewPager = (ViewPager) view.findViewById(R.id.viewPager);
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.HORIZONTAL));
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(mAdapter);
@@ -87,11 +96,11 @@ public class NewServiceMasseuse extends Fragment {
             @Override
             public boolean onInterceptTouchEvent(RecyclerView  Recyclerview, MotionEvent motionEvent) {
 
-                view[0] = Recyclerview.findChildViewUnder(motionEvent.getX(),motionEvent.getY());
+                View view = Recyclerview.findChildViewUnder(motionEvent.getX(),motionEvent.getY());
 
-                if(view[0] !=null && gestureDetector.onTouchEvent(motionEvent)){
+                if(view !=null && gestureDetector.onTouchEvent(motionEvent)){
                     //Getting RecyclerView Clicked item value.
-                    RecyclerViewClickedItemPOS = Recyclerview.getChildAdapterPosition(view[0]);
+                    RecyclerViewClickedItemPOS = Recyclerview.getChildAdapterPosition(view);
                     //Printing RecyclerView Clicked item clicked value using Toast Message./
                     //Toast.makeText(ZListActivity.this, getDataAdapterList.get(RecyclerViewClickedItemPOS).getZdepth()), Toast.LENGTH_LONG).show();*/
                     //Toast.makeText(MainActivity.this, getDataAdapterTels.get(RecyclerViewClickedItemPOS).getTelname(), Toast.LENGTH_SHORT).show();
@@ -140,11 +149,62 @@ public class NewServiceMasseuse extends Fragment {
 
 
         // Inflate the layout for this fragment
-        return view[0];
+        initView(view);
+        return view;
 
 
     }
+    private void initView(View view){
+        viewPager = (ViewPager) view.findViewById(R.id.viewPager);
+        Fragment fragment1 = new NewServiceMasseuse();
+        Fragment fragment2 = new MyserviceMasseuse();
+        Fragment fragment3 = new NotificationMasseuse();
+        Fragment fragment4 = new SettingMasseuse();
+        List<Fragment> fragmentList = new ArrayList<Fragment>();
+        fragmentList.add(fragment1);
+        fragmentList.add(fragment2);
+        fragmentList.add(fragment3);
+        fragmentList.add(fragment4);
+        viewPager.setAdapter(new PagerAdapter((getActivity()).getSupportFragmentManager(), fragmentList));
 
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+    }
+
+
+    public class PagerAdapter extends FragmentPagerAdapter {
+
+        private List<Fragment> mList;
+
+        public PagerAdapter(FragmentManager fm, List<Fragment> list) {
+            super(fm);
+            mList = list;
+        }
+
+        @Override
+        public Fragment getItem(int i) {
+            return mList.get(i);
+        }
+
+        @Override
+        public int getCount() {
+            return mList.size();
+        }
+    }
 
 
     private void getdatalist(final String id) {

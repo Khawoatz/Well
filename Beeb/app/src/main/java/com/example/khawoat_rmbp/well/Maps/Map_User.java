@@ -4,6 +4,8 @@ import android.Manifest;
 import android.animation.ValueAnimator;
 import android.app.AlarmManager;
 import android.app.Dialog;
+import android.app.IntentService;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -11,9 +13,12 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.location.Location;
 import android.os.Bundle;
+import android.os.ResultReceiver;
 import android.preference.PreferenceManager;
+import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.NotificationCompat;
 import android.util.Log;
 import android.view.animation.LinearInterpolator;
 import android.widget.Toast;
@@ -50,7 +55,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 
-public class Map extends FragmentActivity implements OnMapReadyCallback,
+public class Map_User extends FragmentActivity implements OnMapReadyCallback,
         GoogleMap.OnInfoWindowClickListener,GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
@@ -75,9 +80,6 @@ public class Map extends FragmentActivity implements OnMapReadyCallback,
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
-
-        Intent intent = new Intent(this, TimerService.class);
-        startService(intent);
 
         ResID = PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getString("Res_Id","Null");
 
@@ -122,7 +124,7 @@ public class Map extends FragmentActivity implements OnMapReadyCallback,
             return;
         }
         //Uncomment To Show Google Location Blue Pointer
-       // mMap.setMyLocationEnabled(true);
+        // mMap.setMyLocationEnabled(true);
     }
 
     Marker mk = null;
@@ -329,6 +331,7 @@ public class Map extends FragmentActivity implements OnMapReadyCallback,
 
         Toast.makeText(getApplicationContext(), "Location changed!",
                 Toast.LENGTH_SHORT).show();
+        Log.v("LocationBack","Location changedddd");
 
         // Displaying the new location on UI
         displayLocation();
@@ -377,6 +380,7 @@ public class Map extends FragmentActivity implements OnMapReadyCallback,
         float result = fraction * rotation + start;
         return (result + 360) % 360;
     }
+
     private interface LatLngInterpolator {
         LatLng interpolate(float fraction, LatLng a, LatLng b);
 

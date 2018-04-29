@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.khawoat_rmbp.well.Maps.Map_User">
+
+    <fragment
+        android:id="@+id/map_User"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:padding="5dp"
+        android:background="#FFCC00">
+
+        <ImageView
+            android:id="@+id/imgMass"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/circleimage"
+            android:layout_centerVertical="true" />
+
+        <View
+            android:id="@+id/viewline"
+            android:layout_width="1dp"
+            android:layout_height="50dp"
+            android:background="@android:color/darker_gray"
+            android:layout_toRightOf="@+id/imgMass"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp" />
+
+        <TextView
+            android:id="@+id/nameMass_map"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/viewline"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:textSize="17sp"
+            android:text="ชื่อพนักงาน : "/>
+
+        <TextView
+            android:id="@+id/tv_nameMass_Map"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/nameMass_map"
+            android:textSize="17sp"
+            android:layout_marginTop="5dp"
+            android:text="นางสมศรี หีเหม็น"/>
+
+        <TextView
+            android:id="@+id/tv_timeroute"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/tv_timeroute_Map"
+            android:layout_alignBottom="@+id/tv_timeroute_Map"
+            android:layout_alignStart="@+id/nameMass_map"
+            android:drawableLeft="@drawable/ic_clock"
+            android:text="  Timeroute : "
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tv_timeroute_Map"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nameMass_map"
+            android:layout_marginTop="10dp"
+            android:textSize="15sp"
+            android:text="22"
+            android:layout_toRightOf="@+id/tv_timeroute"/>
+
+        <TextView
+            android:id="@+id/tv_routeDistance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:drawableLeft="@drawable/ic_distance"
+            android:layout_toEndOf="@+id/tv_timeroute_Map"
+            android:layout_below="@+id/nameMass_map"
+            android:text="  Distance : "
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tv_routeDistance_Map"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/tv_routeDistance"
+            android:layout_below="@+id/nameMass_map"
+            android:layout_marginTop="10dp"
+            android:text="10.0"
+            android:textSize="15sp"/>
+</RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_refesh_map"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Refresh"
+        android:padding="5dp"
+        android:drawableTop="@drawable/ic_reload"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/login_btn"/>
+</RelativeLayout>

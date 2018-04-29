@@ -15,6 +15,7 @@ import android.widget.TimePicker;
 
 import com.example.khawoat_rmbp.well.R;
 
+import java.text.DateFormat;
 import java.util.Calendar;
 
 /**
@@ -30,17 +31,18 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
         int hour = calendar.get(Calendar.HOUR_OF_DAY);
         int minute = calendar.get(Calendar.MINUTE);
 
+
+
         /*
             Creates a new time picker dialog with the specified theme.
 
                 TimePickerDialog(Context context, int themeResId,
                     TimePickerDialog.OnTimeSetListener listener,
-                    int hourOfDay, int minute, boolean is24HourView)
-         */
+                    int hourOfDay, int minute, boolean is24HourView) */
 
         // TimePickerDialog Theme : THEME_DEVICE_DEFAULT_LIGHT
         TimePickerDialog tpd = new TimePickerDialog(getActivity(),
-                AlertDialog.THEME_DEVICE_DEFAULT_LIGHT,this,hour,minute,false);
+                AlertDialog.THEME_DEVICE_DEFAULT_LIGHT,this,hour,minute,true);
 
         // TimePickerDialog Theme : THEME_DEVICE_DEFAULT_DARK
         TimePickerDialog tpd2 = new TimePickerDialog(getActivity(),
@@ -52,18 +54,21 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
 
         // TimePickerDialog Theme : THEME_HOLO_LIGHT
         TimePickerDialog tpd4 = new TimePickerDialog(getActivity(),
-                AlertDialog.THEME_HOLO_LIGHT,this,hour,minute,false);
+                AlertDialog.THEME_HOLO_LIGHT,this,hour,minute,true);
 
         // TimePickerDialog Theme : THEME_TRADITIONAL
         TimePickerDialog tpd5 = new TimePickerDialog(getActivity(),
                 AlertDialog.THEME_TRADITIONAL,this,hour,minute,false);
 
         // Return the TimePickerDialog
-        return tpd;
+        return tpd4;
     }
+
 
     public void onTimeSet(TimePicker view, int hourOfDay, int minute){
         // Do something with the returned time
+        view.setHour((hourOfDay)-10);
+
         TextView tv = (TextView) getActivity().findViewById(R.id.arrivalTimeText);
         tv.setText(hourOfDay + ":" + minute);
     }

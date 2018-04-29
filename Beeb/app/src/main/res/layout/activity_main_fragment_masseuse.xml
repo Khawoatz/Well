@@ -17,10 +17,10 @@
 
         <RadioButton
             android:id="@+id/rb_newjob"
+            android:checked="true"
             android:text="งานใหม่"
             android:drawableTop="@drawable/rb_service_selector"
-            style="@style/style_RadioButton"
-            />
+            style="@style/style_RadioButton" />
 
         <RadioButton
             android:id="@+id/rb_request"
@@ -29,8 +29,8 @@
             style="@style/style_RadioButton"
             />
         <RadioButton
-            android:id="@+id/rb_notification"
-            android:text="ข้อความ"
+            android:id="@+id/rb_notification_mass"
+            android:text="รีวิว"
             android:drawableTop="@drawable/rb_notification_selector"
             style="@style/style_RadioButton"
             />

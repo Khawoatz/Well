@@ -74,14 +74,14 @@
                 android:layout_weight="1"
                 android:scaleX="1.2"
                 android:scaleY="1.2"/>
-            <com.example.khawoat_rmbp.well.Adapter.TimeNumberPicker
-                android:id="@+id/p3"
-                android:layout_height="wrap_content"
-                android:layout_width="0dp"
-                android:layout_marginRight="3dp"
-                android:layout_weight="1"
-                android:scaleX="1.2"
-                android:scaleY="1.2" />
+            <!--<com.example.khawoat_rmbp.well.Adapter.TimeNumberPicker-->
+                <!--android:id="@+id/p3"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_marginRight="3dp"-->
+                <!--android:layout_weight="1"-->
+                <!--android:scaleX="1.2"-->
+                <!--android:scaleY="1.2" />-->
         </LinearLayout>
 
         <View
@@ -115,13 +115,13 @@
                 android:layout_weight="1"
                 android:scaleX="1.2"
                 android:scaleY="1.2"/>
-            <com.example.khawoat_rmbp.well.Adapter.TimeNumberPicker
-                android:id="@+id/p6"
-                android:layout_height="wrap_content"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:scaleX="1.2"
-                android:scaleY="1.2"/>
+            <!--<com.example.khawoat_rmbp.well.Adapter.TimeNumberPicker-->
+                <!--android:id="@+id/p6"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_weight="1"-->
+                <!--android:scaleX="1.2"-->
+                <!--android:scaleY="1.2"/>-->
         </LinearLayout>
 
     </LinearLayout>

@@ -5,10 +5,13 @@
     tools:context="com.example.khawoat_rmbp.well.Fragment_Masseuse.NewServiceMasseuse">
 
 
-    <com.nanchen.titlebar.TitleView
-        android:id="@+id/titleBar"
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:layout_below="@+id/titleBar">
+    </android.support.v4.view.ViewPager>
 
     <RelativeLayout
         android:layout_width="match_parent"
